@@ -1,0 +1,206 @@
+﻿@model System.Data.DataSet
+
+@{
+    ViewBag.Title = "Usuario";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form action="@Url.Action("Usuario", "Usuario")" method="post">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h2>Lista de Usuarios</h2>
+            </div>
+            <div class="col-md-6">
+                <a href="@Url.Action("Empleado", "Empleado")" class="btn btn-secondary" style="margin-top: 5px;">
+                    <i class="fa fa-chevron-left" mr-2></i> Regresar
+                </a>
+            </div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col-md-6">
+                <div class="input-group">
+                    <input type="text" id="ID" name="ID" class="form-control" placeholder="Buscar por ID de usuario">
+                    <div class="input-group-append">
+                        <button class="btn btn-primary" type="submit"><i class="fa fa-search"></i></button>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-6">
+                <button type="button" class="btn btn-success" style="margin-bottom: 10px;"
+                        data-toggle="modal" data-target="#createUserModal">
+                    <i class="fa fa-plus"></i> Agregar Nuevo
+                </button>
+            </div>
+        </div>
+
+        <div class="row" style="margin-top: 20px;">
+            <div class="col-md-12">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Usuario</th>
+                            <th>Contraseña</th>
+                            <th>Id Empleado</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model.Tables.Count > 0)
+                        {
+                            if (Model.Tables[0].Rows.Count > 0)
+                            {
+                                for (int x = 0; x < Model.Tables[0].Rows.Count; x++)
+                                {
+                                    <tr>
+                                        <td>@Model.Tables[0].Rows[x]["ID"]</td>
+                                        <td>@Model.Tables[0].Rows[x]["Usuario"]</td>
+                                        <td>@Model.Tables[0].Rows[x]["Contraseña"]</td>
+                                        <td>@Model.Tables[0].Rows[x]["IdEmpleado"]</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger btn-sm delete-btn"
+                                                    data-id="@Model.Tables[0].Rows[x]["ID"]">
+                                                <i class="fa fa-trash"></i> Eliminar
+                                            </button>
+                                            <button type="button"
+                                                    class="btn btn-warning btn-sm edit-btn"
+                                                    data-id="@Model.Tables[0].Rows[x]["ID"]"
+                                                    data-usuario="@Model.Tables[0].Rows[x]["Usuario"]"
+                                                    data-contraseña="@Model.Tables[0].Rows[x]["Contraseña"]"
+                                                    data-empleado="@Model.Tables[0].Rows[x]["IdEmpleado"]">
+                                                <i class="fa fa-edit"></i> Editar
+                                            </button>
+
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</form>
+
+<!-- MODAL PARA AGREGAR USUARIO -->
+<form action="@Url.Action("newUsuario", "Usuario")" method="post">
+    <div class="modal fade" id="createUserModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel">Agregar Usuario</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="Usuario" class="form-label">Usuario</label>
+                        <input type="text" class="form-control" id="Usuario" name="Usuario" placeholder="Juan">
+                    </div>
+                    <div class="mb-3">
+                        <label for="Contraseña" class="form-label">Contraseña</label>
+                        <input type="text" class="form-control" id="Contraseña" name="Contraseña" placeholder="12345">
+                    </div>
+                    <div class="mb-3">
+                        <label for="IdEmpleado" class="form-label">Id Empleado</label>
+                        <input type="number" class="form-control" id="IdEmpleado" name="IdEmpleado" placeholder="1">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-outline-primary">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+<!-- MODAL PARA ACTUALIZAR USUARIO -->
+<form action="@Url.Action("updateUsuario", "Usuario")" method="post">
+    <div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel">Actualizar Empleado</h4>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" id="UpdateID" name="ID" />
+                    <div class="mb-3">
+                        <label for="UpdateUsuario" class="form-label">Usuario</label>
+                        <input type="text" class="form-control" id="UpdateUsuario" name="Usuario" placeholder="juan">
+                    </div>
+                    <div class="mb-3">
+                        <label for="UpdateContraseña" class="form-label">Contraseña</label>
+                        <input type="text" class="form-control" id="UpdateContraseña" name="Contraseña" placeholder="12345">
+                    </div>
+                    <div class="mb-3">
+                        <label for="UpdateIdEmpleado" class="form-label">Id de Empleado</label>
+                        <input type="number" class="form-control" id="UpdateIdEmpleado" name="IdEmpleado" placeholder="1">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-outline-primary" data-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-outline-primary">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+<!-- Modal de confirmación para eliminar -->
+<form action="@Url.Action("deleteUsuario", "Usuario")" method="post">
+    <div class="modal fade" id="confirmDeleteModal" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="confirmDeleteModalLabel">Confirmar Eliminación</h5>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" id="deleteID" name="ID" />
+                    ¿Estás seguro de que deseas eliminar este usuario?, 
+                    para que se pueda eliminar es importante que se haya eliminado antes el empleado relacionado.
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-outline-secondary" data-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-outline-danger" id="confirmDeleteBtn">Eliminar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.edit-btn').on('click', function () {
+            var id = $(this).data('id');
+            var usuario = $(this).data('usuario');
+            var contraseña = $(this).data('contraseña');
+            var idEmpleado = $(this).data('empleado');
+
+            $('#updateModal #UpdateID').val(id);
+            $('#updateModal #UpdateUsuario').val(usuario);
+            $('#updateModal #UpdateContraseña').val(contraseña);
+            $('#updateModal #UpdateIdEmpleado').val(idEmpleado);
+            console.log(idEmpleado)
+            $('#updateModal').modal('show');
+        });
+    });
+
+    $(document).ready(function () {
+        $('.delete-btn').on('click', function () {
+            var id = $(this).data('id');
+
+            $('#confirmDeleteModal #deleteID').val(id);
+
+            $('#confirmDeleteModal').modal('show');
+        });
+    });
+</script>
+
+

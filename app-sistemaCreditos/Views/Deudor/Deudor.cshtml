@@ -1,0 +1,205 @@
+﻿@model System.Data.DataSet
+@{
+    ViewBag.Title = "Deudor";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form action="@Url.Action("Deudor", "Deudor")" method="post">
+
+    <div class="container">
+        <h2>Lista de Deudores</h2>
+        <hr />
+        <div class="row">
+            <div class="col-md-6">
+                <div class="input-group">
+                    <input type="text" id="ID" name="ID" class="form-control" placeholder="Buscar por ID de deudor">
+                    <div class="input-group-append">
+                        <button class="btn btn-primary" type="submit"><i class="fa fa-search"></i></button>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-6">
+                <button type="button" class="btn btn-success" style="margin-bottom: 10px;" data-toggle="modal" data-target="#myModal">
+                    <i class="fa fa-plus"></i> Agregar Nuevo
+                </button>
+            </div>
+        </div>
+
+        <div class="row" style="margin-top: 20px;">
+            <div class="col-md-12">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>NIT</th>
+                            <th>DPI</th>
+                            <th>Nombre</th>
+                            <th>Apellido</th>
+                            <th>Domicilio</th>
+                            <th>Teléfono</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model.Tables.Count > 0)
+                        {
+                            if (Model.Tables[0].Rows.Count > 0)
+                            {
+                                for (int x = 0; x < Model.Tables[0].Rows.Count; x++)
+                                {
+                                    <tr>
+                                        <td>@Model.Tables[0].Rows[x]["ID"]</td>
+                                        <td>@Model.Tables[0].Rows[x]["NIT"]</td>
+                                        <td>@Model.Tables[0].Rows[x]["DPI"]</td>
+                                        <td>@Model.Tables[0].Rows[x]["Nombre"]</td>
+                                        <td>@Model.Tables[0].Rows[x]["Apellido"]</td>
+                                        <td>@Model.Tables[0].Rows[x]["Domicilio"]</td>
+                                        <td>@Model.Tables[0].Rows[x]["Telefono"]</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger btn-sm delete-btn"
+                                                    data-id="@Model.Tables[0].Rows[x]["ID"]">
+                                                <i class="fa fa-trash"></i> Eliminar
+                                            </button>
+                                            <button class="btn btn-warning btn-sm">
+                                                <i class="fa fa-edit"></i> Editar
+                                            </button>
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</form>
+
+<!-- MODAL PARA AGREGAR DEUDOR -->
+<form action="@Url.Action("NuevoDeudor", "Deudor")" method="post">
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel">Agregar Deudor</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="NIT" class="form-label">NIT</label>
+                        <input type="number" class="form-control" id="NIT" name="NIT" placeholder="NIT">
+                    </div>
+                    <div class="mb-3">
+                        <label for="DPI" class="form-label">DPI</label>
+                        <input type="number" class="form-control" id="DPI" name="DPI" placeholder="DPI">
+                    </div>
+                    <div class="mb-3">
+                        <label for="Nombre" class="form-label">Nombre</label>
+                        <input type="text" class="form-control" id="Nombre" name="Nombre" placeholder="Nombre">
+                    </div>
+                    <div class="mb-3">
+                        <label for="Apellido" class="form-label">Apellido</label>
+                        <input type="text" class="form-control" id="Apellido" name="Apellido" placeholder="Apellido">
+                    </div>
+                    <div class="mb-3">
+                        <label for="Domicilio" class="form-label">Domicilio</label>
+                        <input type="text" class="form-control" id="Domicilio" name="Domicilio" placeholder="Domicilio">
+                    </div>
+                    <div class="mb-3">
+                        <label for="Telefono" class="form-label">Teléfono</label>
+                        <input type="number" class="form-control" id="Telefono" name="Telefono" placeholder="Telefono">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-outline-primary">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+
+<!-- MODAL PARA ACTUALIZAR EMPLEADO -->
+<form action="@Url.Action("updateDeudor", "Deudor")" method="post">
+    <div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel">Actualizar Deudor</h4>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" id="UpdateID" name="ID" />
+                    <div class="mb-3">
+                        <label for="UpdateNombres" class="form-label">Nombres</label>
+                        <input type="text" class="form-control" id="UpdateNombres" name="Nombres" placeholder="Juan">
+                    </div>
+                    <div class="mb-3">
+                        <label for="UpdateApellidos" class="form-label">Apellidos</label>
+                        <input type="text" class="form-control" id="UpdateApellidos" name="Apellidos" placeholder="Pérez">
+                    </div>
+                    <div class="mb-3">
+                        <label for="UpdatePuesto" class="form-label">Puesto</label>
+                        <input type="text" class="form-control" id="UpdatePuesto" name="Puesto" placeholder="Administrador">
+                    </div>
+
+
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-outline-primary" data-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-outline-primary">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+<!-- Modal de confirmación para eliminar -->
+<form action="@Url.Action("deleteDeudor", "Deudor")" method="post">
+    <div class="modal fade" id="confirmDeleteModal" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="confirmDeleteModalLabel">Confirmar Eliminación</h5>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" id="deleteID" name="ID" />
+                    ¿Estás seguro de que deseas eliminar a este deudor?
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-outline-secondary" data-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-outline-danger" id="confirmDeleteBtn">Eliminar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.edit-btn').on('click', function () {
+                var id = $(this).data('id');
+                var nombres = $(this).data('nombres');
+                var apellidos = $(this).data('apellidos');
+                var puesto = $(this).data('puesto');
+
+                $('#updateModal #UpdateID').val(id);
+                $('#updateModal #UpdateNombres').val(nombres);
+                $('#updateModal #UpdateApellidos').val(apellidos);
+                $('#updateModal #UpdatePuesto').val(puesto);
+
+                $('#updateModal').modal('show');
+            });
+        });
+
+        $(document).ready(function () {
+            $('.delete-btn').on('click', function () {
+                var id = $(this).data('id');
+
+                $('#confirmDeleteModal #deleteID').val(id);
+
+                $('#confirmDeleteModal').modal('show');
+            });
+        });
+    </script>
