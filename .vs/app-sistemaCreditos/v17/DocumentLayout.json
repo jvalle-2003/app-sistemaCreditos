@@ -1,0 +1,423 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Dell\\source\\repos\\app-sistemaCreditos\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{B5E693F6-3DB3-4177-8988-9E06CE3D71C8}|app-sistemaCreditos\\app-sistemaCreditos.csproj|c:\\users\\dell\\source\\repos\\app-sistemacreditos\\app-sistemacreditos\\views\\deudor\\deudor.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B5E693F6-3DB3-4177-8988-9E06CE3D71C8}|app-sistemaCreditos\\app-sistemaCreditos.csproj|solutionrelative:app-sistemacreditos\\views\\deudor\\deudor.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B5E693F6-3DB3-4177-8988-9E06CE3D71C8}|app-sistemaCreditos\\app-sistemaCreditos.csproj|C:\\Users\\Dell\\source\\repos\\app-sistemaCreditos\\app-sistemacreditos\\controllers\\deudorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B5E693F6-3DB3-4177-8988-9E06CE3D71C8}|app-sistemaCreditos\\app-sistemaCreditos.csproj|solutionrelative:app-sistemacreditos\\controllers\\deudorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B5E693F6-3DB3-4177-8988-9E06CE3D71C8}|app-sistemaCreditos\\app-sistemaCreditos.csproj|C:\\Users\\Dell\\source\\repos\\app-sistemaCreditos\\app-sistemacreditos\\controllers\\amortizacioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B5E693F6-3DB3-4177-8988-9E06CE3D71C8}|app-sistemaCreditos\\app-sistemaCreditos.csproj|solutionrelative:app-sistemacreditos\\controllers\\amortizacioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B5E693F6-3DB3-4177-8988-9E06CE3D71C8}|app-sistemaCreditos\\app-sistemaCreditos.csproj|c:\\users\\dell\\source\\repos\\app-sistemacreditos\\app-sistemacreditos\\global.asax.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B5E693F6-3DB3-4177-8988-9E06CE3D71C8}|app-sistemaCreditos\\app-sistemaCreditos.csproj|solutionrelative:app-sistemacreditos\\global.asax.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B5E693F6-3DB3-4177-8988-9E06CE3D71C8}|app-sistemaCreditos\\app-sistemaCreditos.csproj|C:\\Users\\Dell\\source\\repos\\app-sistemaCreditos\\app-sistemacreditos\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{B5E693F6-3DB3-4177-8988-9E06CE3D71C8}|app-sistemaCreditos\\app-sistemaCreditos.csproj|solutionrelative:app-sistemacreditos\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B5E693F6-3DB3-4177-8988-9E06CE3D71C8}|app-sistemaCreditos\\app-sistemaCreditos.csproj|c:\\users\\dell\\source\\repos\\app-sistemacreditos\\app-sistemacreditos\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B5E693F6-3DB3-4177-8988-9E06CE3D71C8}|app-sistemaCreditos\\app-sistemaCreditos.csproj|solutionrelative:app-sistemacreditos\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B5E693F6-3DB3-4177-8988-9E06CE3D71C8}|app-sistemaCreditos\\app-sistemaCreditos.csproj|c:\\users\\dell\\source\\repos\\app-sistemacreditos\\app-sistemacreditos\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B5E693F6-3DB3-4177-8988-9E06CE3D71C8}|app-sistemaCreditos\\app-sistemaCreditos.csproj|solutionrelative:app-sistemacreditos\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B5E693F6-3DB3-4177-8988-9E06CE3D71C8}|app-sistemaCreditos\\app-sistemaCreditos.csproj|c:\\users\\dell\\source\\repos\\app-sistemacreditos\\app-sistemacreditos\\views\\usuario\\usuario.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B5E693F6-3DB3-4177-8988-9E06CE3D71C8}|app-sistemaCreditos\\app-sistemaCreditos.csproj|solutionrelative:app-sistemacreditos\\views\\usuario\\usuario.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B5E693F6-3DB3-4177-8988-9E06CE3D71C8}|app-sistemaCreditos\\app-sistemaCreditos.csproj|c:\\users\\dell\\source\\repos\\app-sistemacreditos\\app-sistemacreditos\\views\\saldo\\saldo.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B5E693F6-3DB3-4177-8988-9E06CE3D71C8}|app-sistemaCreditos\\app-sistemaCreditos.csproj|solutionrelative:app-sistemacreditos\\views\\saldo\\saldo.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B5E693F6-3DB3-4177-8988-9E06CE3D71C8}|app-sistemaCreditos\\app-sistemaCreditos.csproj|c:\\users\\dell\\source\\repos\\app-sistemacreditos\\app-sistemacreditos\\views\\pago\\pago.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B5E693F6-3DB3-4177-8988-9E06CE3D71C8}|app-sistemaCreditos\\app-sistemaCreditos.csproj|solutionrelative:app-sistemacreditos\\views\\pago\\pago.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B5E693F6-3DB3-4177-8988-9E06CE3D71C8}|app-sistemaCreditos\\app-sistemaCreditos.csproj|c:\\users\\dell\\source\\repos\\app-sistemacreditos\\app-sistemacreditos\\views\\empleado\\empleado.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B5E693F6-3DB3-4177-8988-9E06CE3D71C8}|app-sistemaCreditos\\app-sistemaCreditos.csproj|solutionrelative:app-sistemacreditos\\views\\empleado\\empleado.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B5E693F6-3DB3-4177-8988-9E06CE3D71C8}|app-sistemaCreditos\\app-sistemaCreditos.csproj|c:\\users\\dell\\source\\repos\\app-sistemacreditos\\app-sistemacreditos\\views\\credito\\credito.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B5E693F6-3DB3-4177-8988-9E06CE3D71C8}|app-sistemaCreditos\\app-sistemaCreditos.csproj|solutionrelative:app-sistemacreditos\\views\\credito\\credito.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B5E693F6-3DB3-4177-8988-9E06CE3D71C8}|app-sistemaCreditos\\app-sistemaCreditos.csproj|c:\\users\\dell\\source\\repos\\app-sistemacreditos\\app-sistemacreditos\\views\\articulo\\articulo.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B5E693F6-3DB3-4177-8988-9E06CE3D71C8}|app-sistemaCreditos\\app-sistemaCreditos.csproj|solutionrelative:app-sistemacreditos\\views\\articulo\\articulo.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B5E693F6-3DB3-4177-8988-9E06CE3D71C8}|app-sistemaCreditos\\app-sistemaCreditos.csproj|c:\\users\\dell\\source\\repos\\app-sistemacreditos\\app-sistemacreditos\\views\\amortizacion\\amortizacion.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B5E693F6-3DB3-4177-8988-9E06CE3D71C8}|app-sistemaCreditos\\app-sistemaCreditos.csproj|solutionrelative:app-sistemacreditos\\views\\amortizacion\\amortizacion.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B5E693F6-3DB3-4177-8988-9E06CE3D71C8}|app-sistemaCreditos\\app-sistemaCreditos.csproj|C:\\Users\\Dell\\source\\repos\\app-sistemaCreditos\\app-sistemacreditos\\controllers\\logincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B5E693F6-3DB3-4177-8988-9E06CE3D71C8}|app-sistemaCreditos\\app-sistemaCreditos.csproj|solutionrelative:app-sistemacreditos\\controllers\\logincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B5E693F6-3DB3-4177-8988-9E06CE3D71C8}|app-sistemaCreditos\\app-sistemaCreditos.csproj|C:\\Users\\Dell\\source\\repos\\app-sistemaCreditos\\app-sistemacreditos\\views\\login\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B5E693F6-3DB3-4177-8988-9E06CE3D71C8}|app-sistemaCreditos\\app-sistemaCreditos.csproj|solutionrelative:app-sistemacreditos\\views\\login\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B5E693F6-3DB3-4177-8988-9E06CE3D71C8}|app-sistemaCreditos\\app-sistemaCreditos.csproj|C:\\Users\\Dell\\source\\repos\\app-sistemaCreditos\\app-sistemacreditos\\models\\usuarios\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B5E693F6-3DB3-4177-8988-9E06CE3D71C8}|app-sistemaCreditos\\app-sistemaCreditos.csproj|solutionrelative:app-sistemacreditos\\models\\usuarios\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B5E693F6-3DB3-4177-8988-9E06CE3D71C8}|app-sistemaCreditos\\app-sistemaCreditos.csproj|C:\\Users\\Dell\\source\\repos\\app-sistemaCreditos\\app-sistemacreditos\\controllers\\usuariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B5E693F6-3DB3-4177-8988-9E06CE3D71C8}|app-sistemaCreditos\\app-sistemaCreditos.csproj|solutionrelative:app-sistemacreditos\\controllers\\usuariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B5E693F6-3DB3-4177-8988-9E06CE3D71C8}|app-sistemaCreditos\\app-sistemaCreditos.csproj|C:\\Users\\Dell\\source\\repos\\app-sistemaCreditos\\app-sistemacreditos\\views\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{B5E693F6-3DB3-4177-8988-9E06CE3D71C8}|app-sistemaCreditos\\app-sistemaCreditos.csproj|solutionrelative:app-sistemacreditos\\views\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B5E693F6-3DB3-4177-8988-9E06CE3D71C8}|app-sistemaCreditos\\app-sistemaCreditos.csproj|C:\\Users\\Dell\\source\\repos\\app-sistemaCreditos\\app-sistemacreditos\\controllers\\empleadocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B5E693F6-3DB3-4177-8988-9E06CE3D71C8}|app-sistemaCreditos\\app-sistemaCreditos.csproj|solutionrelative:app-sistemacreditos\\controllers\\empleadocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B5E693F6-3DB3-4177-8988-9E06CE3D71C8}|app-sistemaCreditos\\app-sistemaCreditos.csproj|C:\\Users\\Dell\\source\\repos\\app-sistemaCreditos\\app-sistemacreditos\\controllers\\pagocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B5E693F6-3DB3-4177-8988-9E06CE3D71C8}|app-sistemaCreditos\\app-sistemaCreditos.csproj|solutionrelative:app-sistemacreditos\\controllers\\pagocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B5E693F6-3DB3-4177-8988-9E06CE3D71C8}|app-sistemaCreditos\\app-sistemaCreditos.csproj|C:\\Users\\Dell\\source\\repos\\app-sistemaCreditos\\app-sistemacreditos\\controllers\\creditocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B5E693F6-3DB3-4177-8988-9E06CE3D71C8}|app-sistemaCreditos\\app-sistemaCreditos.csproj|solutionrelative:app-sistemacreditos\\controllers\\creditocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B5E693F6-3DB3-4177-8988-9E06CE3D71C8}|app-sistemaCreditos\\app-sistemaCreditos.csproj|C:\\Users\\Dell\\source\\repos\\app-sistemaCreditos\\app-sistemacreditos\\controllers\\saldocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B5E693F6-3DB3-4177-8988-9E06CE3D71C8}|app-sistemaCreditos\\app-sistemaCreditos.csproj|solutionrelative:app-sistemacreditos\\controllers\\saldocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B5E693F6-3DB3-4177-8988-9E06CE3D71C8}|app-sistemaCreditos\\app-sistemaCreditos.csproj|C:\\Users\\Dell\\source\\repos\\app-sistemaCreditos\\app-sistemacreditos\\controllers\\articulocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B5E693F6-3DB3-4177-8988-9E06CE3D71C8}|app-sistemaCreditos\\app-sistemaCreditos.csproj|solutionrelative:app-sistemacreditos\\controllers\\articulocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 319,
+          "SelectedChildIndex": 4,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\Dell\\source\\repos\\app-sistemaCreditos\\app-sistemaCreditos\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "app-sistemaCreditos\\Views\\Home\\Index.cshtml",
+              "ToolTip": "C:\\Users\\Dell\\source\\repos\\app-sistemaCreditos\\app-sistemaCreditos\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "app-sistemaCreditos\\Views\\Home\\Index.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAkAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-05-18T12:23:31.783Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Pago.cshtml",
+              "DocumentMoniker": "C:\\Users\\Dell\\source\\repos\\app-sistemaCreditos\\app-sistemaCreditos\\Views\\Pago\\Pago.cshtml",
+              "RelativeDocumentMoniker": "app-sistemaCreditos\\Views\\Pago\\Pago.cshtml",
+              "ToolTip": "C:\\Users\\Dell\\source\\repos\\app-sistemaCreditos\\app-sistemaCreditos\\Views\\Pago\\Pago.cshtml",
+              "RelativeToolTip": "app-sistemaCreditos\\Views\\Pago\\Pago.cshtml",
+              "ViewState": "AQIAAGgAAAAAAAAAAADwv4UAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-05-18T12:08:38.247Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Empleado.cshtml",
+              "DocumentMoniker": "C:\\Users\\Dell\\source\\repos\\app-sistemaCreditos\\app-sistemaCreditos\\Views\\Empleado\\Empleado.cshtml",
+              "RelativeDocumentMoniker": "app-sistemaCreditos\\Views\\Empleado\\Empleado.cshtml",
+              "ToolTip": "C:\\Users\\Dell\\source\\repos\\app-sistemaCreditos\\app-sistemaCreditos\\Views\\Empleado\\Empleado.cshtml",
+              "RelativeToolTip": "app-sistemaCreditos\\Views\\Empleado\\Empleado.cshtml",
+              "ViewState": "AQIAAFQAAAAAAAAAAADwv3EAAAASAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-05-18T12:08:07.082Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Deudor.cshtml",
+              "DocumentMoniker": "C:\\Users\\Dell\\source\\repos\\app-sistemaCreditos\\app-sistemaCreditos\\Views\\Deudor\\Deudor.cshtml",
+              "RelativeDocumentMoniker": "app-sistemaCreditos\\Views\\Deudor\\Deudor.cshtml",
+              "ToolTip": "C:\\Users\\Dell\\source\\repos\\app-sistemaCreditos\\app-sistemaCreditos\\Views\\Deudor\\Deudor.cshtml",
+              "RelativeToolTip": "app-sistemaCreditos\\Views\\Deudor\\Deudor.cshtml",
+              "ViewState": "AQIAAFEAAAAAAAAAAADwv3EAAABwAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-05-18T12:07:24.479Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Credito.cshtml",
+              "DocumentMoniker": "C:\\Users\\Dell\\source\\repos\\app-sistemaCreditos\\app-sistemaCreditos\\Views\\Credito\\Credito.cshtml",
+              "RelativeDocumentMoniker": "app-sistemaCreditos\\Views\\Credito\\Credito.cshtml",
+              "ToolTip": "C:\\Users\\Dell\\source\\repos\\app-sistemaCreditos\\app-sistemaCreditos\\Views\\Credito\\Credito.cshtml",
+              "RelativeToolTip": "app-sistemaCreditos\\Views\\Credito\\Credito.cshtml",
+              "ViewState": "AQIAAGwAAAAAAAAAAADwv4kAAAAOAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-05-18T12:06:24.081Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "Amortizacion.cshtml",
+              "DocumentMoniker": "C:\\Users\\Dell\\source\\repos\\app-sistemaCreditos\\app-sistemaCreditos\\Views\\Amortizacion\\Amortizacion.cshtml",
+              "RelativeDocumentMoniker": "app-sistemaCreditos\\Views\\Amortizacion\\Amortizacion.cshtml",
+              "ToolTip": "C:\\Users\\Dell\\source\\repos\\app-sistemaCreditos\\app-sistemaCreditos\\Views\\Amortizacion\\Amortizacion.cshtml",
+              "RelativeToolTip": "app-sistemaCreditos\\Views\\Amortizacion\\Amortizacion.cshtml",
+              "ViewState": "AQIAAGgAAAAAAAAAAAAAAG4AAACBAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-05-18T12:05:27.348Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "AmortizacionController.cs",
+              "DocumentMoniker": "C:\\Users\\Dell\\source\\repos\\app-sistemaCreditos\\app-sistemaCreditos\\Controllers\\AmortizacionController.cs",
+              "RelativeDocumentMoniker": "app-sistemaCreditos\\Controllers\\AmortizacionController.cs",
+              "ToolTip": "C:\\Users\\Dell\\source\\repos\\app-sistemaCreditos\\app-sistemaCreditos\\Controllers\\AmortizacionController.cs",
+              "RelativeToolTip": "app-sistemaCreditos\\Controllers\\AmortizacionController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAKoAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-18T01:57:03.597Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "DeudorController.cs",
+              "DocumentMoniker": "C:\\Users\\Dell\\source\\repos\\app-sistemaCreditos\\app-sistemaCreditos\\Controllers\\DeudorController.cs",
+              "RelativeDocumentMoniker": "app-sistemaCreditos\\Controllers\\DeudorController.cs",
+              "ToolTip": "C:\\Users\\Dell\\source\\repos\\app-sistemaCreditos\\app-sistemaCreditos\\Controllers\\DeudorController.cs",
+              "RelativeToolTip": "app-sistemaCreditos\\Controllers\\DeudorController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABYAAABRAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-18T01:54:09.813Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Global.asax.cs",
+              "DocumentMoniker": "C:\\Users\\Dell\\source\\repos\\app-sistemaCreditos\\app-sistemaCreditos\\Global.asax.cs",
+              "RelativeDocumentMoniker": "app-sistemaCreditos\\Global.asax.cs",
+              "ToolTip": "C:\\Users\\Dell\\source\\repos\\app-sistemaCreditos\\app-sistemaCreditos\\Global.asax.cs",
+              "RelativeToolTip": "app-sistemaCreditos\\Global.asax.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-18T13:02:06.92Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Saldo.cshtml",
+              "DocumentMoniker": "C:\\Users\\Dell\\source\\repos\\app-sistemaCreditos\\app-sistemaCreditos\\Views\\Saldo\\Saldo.cshtml",
+              "RelativeDocumentMoniker": "app-sistemaCreditos\\Views\\Saldo\\Saldo.cshtml",
+              "ToolTip": "C:\\Users\\Dell\\source\\repos\\app-sistemaCreditos\\app-sistemaCreditos\\Views\\Saldo\\Saldo.cshtml",
+              "RelativeToolTip": "app-sistemaCreditos\\Views\\Saldo\\Saldo.cshtml",
+              "ViewState": "AQIAAHAAAAAAAAAAAADwv40AAAASAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-05-18T12:08:58.865Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Usuario.cshtml",
+              "DocumentMoniker": "C:\\Users\\Dell\\source\\repos\\app-sistemaCreditos\\app-sistemaCreditos\\Views\\Usuario\\Usuario.cshtml",
+              "RelativeDocumentMoniker": "app-sistemaCreditos\\Views\\Usuario\\Usuario.cshtml",
+              "ToolTip": "C:\\Users\\Dell\\source\\repos\\app-sistemaCreditos\\app-sistemaCreditos\\Views\\Usuario\\Usuario.cshtml",
+              "RelativeToolTip": "app-sistemaCreditos\\Views\\Usuario\\Usuario.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAI8AAAAqAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-05-18T12:09:24.975Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Web.config",
+              "DocumentMoniker": "C:\\Users\\Dell\\source\\repos\\app-sistemaCreditos\\app-sistemaCreditos\\Web.config",
+              "RelativeDocumentMoniker": "app-sistemaCreditos\\Web.config",
+              "ToolTip": "C:\\Users\\Dell\\source\\repos\\app-sistemaCreditos\\app-sistemaCreditos\\Web.config",
+              "RelativeToolTip": "app-sistemaCreditos\\Web.config",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2024-05-18T04:24:37.908Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "C:\\Users\\Dell\\source\\repos\\app-sistemaCreditos\\app-sistemaCreditos\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "app-sistemaCreditos\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "C:\\Users\\Dell\\source\\repos\\app-sistemaCreditos\\app-sistemaCreditos\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "app-sistemaCreditos\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AQIAAAoAAAAAAAAAAAAAAB4AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-05-18T12:29:18.897Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Articulo.cshtml",
+              "DocumentMoniker": "C:\\Users\\Dell\\source\\repos\\app-sistemaCreditos\\app-sistemaCreditos\\Views\\Articulo\\Articulo.cshtml",
+              "RelativeDocumentMoniker": "app-sistemaCreditos\\Views\\Articulo\\Articulo.cshtml",
+              "ToolTip": "C:\\Users\\Dell\\source\\repos\\app-sistemaCreditos\\app-sistemaCreditos\\Views\\Articulo\\Articulo.cshtml",
+              "RelativeToolTip": "app-sistemaCreditos\\Views\\Articulo\\Articulo.cshtml",
+              "ViewState": "AQIAAGYAAAAAAAAAAAAAAH8AAACCAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-05-18T04:37:59.436Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "Web.config",
+              "DocumentMoniker": "C:\\Users\\Dell\\source\\repos\\app-sistemaCreditos\\app-sistemaCreditos\\Views\\Web.config",
+              "RelativeDocumentMoniker": "app-sistemaCreditos\\Views\\Web.config",
+              "ToolTip": "C:\\Users\\Dell\\source\\repos\\app-sistemaCreditos\\app-sistemaCreditos\\Views\\Web.config",
+              "RelativeToolTip": "app-sistemaCreditos\\Views\\Web.config",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2024-05-18T04:24:21.373Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "EmpleadoController.cs",
+              "DocumentMoniker": "C:\\Users\\Dell\\source\\repos\\app-sistemaCreditos\\app-sistemaCreditos\\Controllers\\EmpleadoController.cs",
+              "RelativeDocumentMoniker": "app-sistemaCreditos\\Controllers\\EmpleadoController.cs",
+              "ToolTip": "C:\\Users\\Dell\\source\\repos\\app-sistemaCreditos\\app-sistemaCreditos\\Controllers\\EmpleadoController.cs",
+              "RelativeToolTip": "app-sistemaCreditos\\Controllers\\EmpleadoController.cs",
+              "ViewState": "AQIAAAwAAAAAAAAAAAAAABYAAABUAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-18T01:46:50.273Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "LoginController.cs",
+              "DocumentMoniker": "C:\\Users\\Dell\\source\\repos\\app-sistemaCreditos\\app-sistemaCreditos\\Controllers\\LoginController.cs",
+              "RelativeDocumentMoniker": "app-sistemaCreditos\\Controllers\\LoginController.cs",
+              "ToolTip": "C:\\Users\\Dell\\source\\repos\\app-sistemaCreditos\\app-sistemaCreditos\\Controllers\\LoginController.cs",
+              "RelativeToolTip": "app-sistemaCreditos\\Controllers\\LoginController.cs",
+              "ViewState": "AQIAABYAAAAAAAAAAAAzwCsAAAAYAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-18T01:46:30.274Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "PagoController.cs",
+              "DocumentMoniker": "C:\\Users\\Dell\\source\\repos\\app-sistemaCreditos\\app-sistemaCreditos\\Controllers\\PagoController.cs",
+              "RelativeDocumentMoniker": "app-sistemaCreditos\\Controllers\\PagoController.cs",
+              "ToolTip": "C:\\Users\\Dell\\source\\repos\\app-sistemaCreditos\\app-sistemaCreditos\\Controllers\\PagoController.cs",
+              "RelativeToolTip": "app-sistemaCreditos\\Controllers\\PagoController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAKoAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-18T01:45:25.41Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "SaldoController.cs",
+              "DocumentMoniker": "C:\\Users\\Dell\\source\\repos\\app-sistemaCreditos\\app-sistemaCreditos\\Controllers\\SaldoController.cs",
+              "RelativeDocumentMoniker": "app-sistemaCreditos\\Controllers\\SaldoController.cs",
+              "ToolTip": "C:\\Users\\Dell\\source\\repos\\app-sistemaCreditos\\app-sistemaCreditos\\Controllers\\SaldoController.cs",
+              "RelativeToolTip": "app-sistemaCreditos\\Controllers\\SaldoController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAKsAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-18T01:44:29.586Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "Usuario.cs",
+              "DocumentMoniker": "C:\\Users\\Dell\\source\\repos\\app-sistemaCreditos\\app-sistemaCreditos\\Models\\usuarios\\Usuario.cs",
+              "RelativeDocumentMoniker": "app-sistemaCreditos\\Models\\usuarios\\Usuario.cs",
+              "ToolTip": "C:\\Users\\Dell\\source\\repos\\app-sistemaCreditos\\app-sistemaCreditos\\Models\\usuarios\\Usuario.cs",
+              "RelativeToolTip": "app-sistemaCreditos\\Models\\usuarios\\Usuario.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-18T01:40:01.346Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "UsuarioController.cs",
+              "DocumentMoniker": "C:\\Users\\Dell\\source\\repos\\app-sistemaCreditos\\app-sistemaCreditos\\Controllers\\UsuarioController.cs",
+              "RelativeDocumentMoniker": "app-sistemaCreditos\\Controllers\\UsuarioController.cs",
+              "ToolTip": "C:\\Users\\Dell\\source\\repos\\app-sistemaCreditos\\app-sistemaCreditos\\Controllers\\UsuarioController.cs",
+              "RelativeToolTip": "app-sistemaCreditos\\Controllers\\UsuarioController.cs",
+              "ViewState": "AQIAAA4AAAAAAAAAAAAAwKYAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-18T01:40:10.225Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "Login.cshtml",
+              "DocumentMoniker": "C:\\Users\\Dell\\source\\repos\\app-sistemaCreditos\\app-sistemaCreditos\\Views\\Login\\Login.cshtml",
+              "RelativeDocumentMoniker": "app-sistemaCreditos\\Views\\Login\\Login.cshtml",
+              "ToolTip": "C:\\Users\\Dell\\source\\repos\\app-sistemaCreditos\\app-sistemaCreditos\\Views\\Login\\Login.cshtml",
+              "RelativeToolTip": "app-sistemaCreditos\\Views\\Login\\Login.cshtml",
+              "ViewState": "AQIAAAwAAAAAAAAAAAAAADwAAAB6AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-05-18T02:02:48.285Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "CreditoController.cs",
+              "DocumentMoniker": "C:\\Users\\Dell\\source\\repos\\app-sistemaCreditos\\app-sistemaCreditos\\Controllers\\CreditoController.cs",
+              "RelativeDocumentMoniker": "app-sistemaCreditos\\Controllers\\CreditoController.cs",
+              "ToolTip": "C:\\Users\\Dell\\source\\repos\\app-sistemaCreditos\\app-sistemaCreditos\\Controllers\\CreditoController.cs",
+              "RelativeToolTip": "app-sistemaCreditos\\Controllers\\CreditoController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAKwAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-18T01:55:39.297Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "ArticuloController.cs",
+              "DocumentMoniker": "C:\\Users\\Dell\\source\\repos\\app-sistemaCreditos\\app-sistemaCreditos\\Controllers\\ArticuloController.cs",
+              "RelativeDocumentMoniker": "app-sistemaCreditos\\Controllers\\ArticuloController.cs",
+              "ToolTip": "C:\\Users\\Dell\\source\\repos\\app-sistemaCreditos\\app-sistemaCreditos\\Controllers\\ArticuloController.cs",
+              "RelativeToolTip": "app-sistemaCreditos\\Controllers\\ArticuloController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAKwAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-18T01:56:19.582Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

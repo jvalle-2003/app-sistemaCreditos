@@ -1,0 +1,209 @@
+﻿﻿@model System.Data.DataSet
+@{
+    ViewBag.Title = "Amortizacion";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
+{
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        @ViewBag.ErrorMessage
+        <button id="myAlert" type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+}
+
+@if (!string.IsNullOrEmpty(ViewBag.SuccessMessage))
+{
+    <div class="alert alert-success" role="alert">
+        @ViewBag.SuccessMessage
+    </div>
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        @ViewBag.SuccessMessage
+        <button id="myAlert" type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+}
+
+
+<form action="@Url.Action("Amortizacion", "Amortizacion")" method="post">
+
+    <div class="container">
+        <h2>Lista de Amortizaciones</h2>
+        <hr />
+        <div class="row">
+            <div class="col-md-6">
+                <div class="input-group">
+                    <input type="text" id="Id" name="Id" class="form-control" placeholder="Buscar por ID del Amortizacion">
+                    <div class="input-group-append">
+                        <button class="btn btn-primary" type="submit"><i class="fa fa-search"></i></button>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-6">
+                <button type="button" class="btn btn-success" style="margin-bottom: 10px;" data-toggle="modal" data-target="#myModal">
+                    <i class="fa fa-plus"></i> Agregar Nuevo
+                </button>
+            </div>
+        </div>
+
+        <div class="row" style="margin-top: 20px;">
+            <div class="col-md-12">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Tipo</th>
+                            <th>TasaInteres</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model.Tables.Count > 0)
+                        {
+                            if (Model.Tables[0].Rows.Count > 0)
+                            {
+                                for (int x = 0; x < Model.Tables[0].Rows.Count; x++)
+                                {
+                                    <tr>
+                                        <td>@Model.Tables[0].Rows[x]["ID"]</td>
+                                        <td>@Model.Tables[0].Rows[x]["Tipo"]</td>
+                                        <td>@Model.Tables[0].Rows[x]["TasaInteres"]</td>
+
+                                        <td>
+                                            <button type="button" class="btn btn-danger btn-sm delete-btn"
+                                                    data-id="@Model.Tables[0].Rows[x]["ID"]">
+                                                <i class="fa fa-trash"></i> Eliminar
+                                            </button>
+                                            <button type="button"
+                                                    class="btn btn-warning btn-sm edit-btn"
+                                                    data-id="@Model.Tables[0].Rows[x]["ID"]"
+                                                    data-tipo="@Model.Tables[0].Rows[x]["Tipo"]"
+                                                    data-tasainteres="@Model.Tables[0].Rows[x]["TasaInteres"]">
+                                                <i class="fa fa-edit"></i> Editar
+                                            </button>
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</form>
+
+<!-- MODAL PARA AGREGAR AMORTIZACION -->
+<form action="@Url.Action("newAmortizacion", "Amortizacion")" method="post">
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel">Agregar Amortización</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="Tipo" class="form-label">Tipo</label>
+                        <input type="text" class="form-control" id="Tipo" name="Tipo" placeholder="Tipo de Amortizacion" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="TasaInteres" class="form-label">Tasa de Interes</label>
+                        <input type="number" min="0" class="form-control" id="TasaInteres" name="TasaInteres" placeholder="Tasa de Interes" required>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-outline-primary">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+<!-- MODAL PARA ACTUALIZAR AMORTIZACION -->
+
+<form action="@Url.Action("updateAmortizacion", "Amortizacion")" method="post">
+    <div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel">Actualizar Amortizacion</h4>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" id="UpdateID" name="ID" />
+                    <div class="mb-3">
+                        <label for="UpdateTipo" class="form-label">Tipo</label>
+                        <input type="text" class="form-control" id="UpdateTipo" name="Tipo" placeholder="Tipo de Amortizacion" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="UpdateTasaInteres" class="form-label">TasaInteres</label>
+                        <input type="number" min="0" class="form-control" id="UpdateTasaInteres" name="TasaInteres" placeholder="Tasa de Interes" required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-outline-primary">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+<!-- Modal de confirmación para eliminar -->
+<form action="@Url.Action("deleteAmortizacion", "Amortizacion")" method="post">
+    <div class="modal fade" id="confirmDeleteModal" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="confirmDeleteModalLabel">Confirmar Eliminación</h5>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" id="deleteID" name="ID" />
+                    ¿Estás seguro de que deseas eliminar este articulo?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-outline-danger" id="confirmDeleteBtn">Eliminar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.edit-btn').on('click', function () {
+            var id = $(this).data('id');
+            var tipo = $(this).data('tipo')
+            var tasainteres = $(this).data('tasainteres');
+
+
+            $('#updateModal #UpdateID').val(id);
+            $('#updateModal #UpdateTipo').val(tipo);
+            $('#updateModal #UpdateTasaInteres').val(tasainteres);
+
+
+            $('#updateModal').modal('show');
+        });
+    });
+
+    $(document).ready(function () {
+        $('.delete-btn').on('click', function () {
+            var id = $(this).data('id');
+
+            $('#confirmDeleteModal #deleteID').val(id);
+
+            $('#confirmDeleteModal').modal('show');
+        });
+    });
+
+</script>

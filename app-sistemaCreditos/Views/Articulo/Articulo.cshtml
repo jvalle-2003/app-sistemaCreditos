@@ -1,0 +1,234 @@
+﻿﻿@model System.Data.DataSet
+@{
+    ViewBag.Title = "Articulo";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
+{
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        @ViewBag.ErrorMessage
+        <button id="myAlert" type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+}
+
+@if (!string.IsNullOrEmpty(ViewBag.SuccessMessage))
+{
+    <div class="alert alert-success" role="alert">
+        @ViewBag.SuccessMessage
+    </div>
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        @ViewBag.SuccessMessage
+        <button id="myAlert" type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+}
+
+
+<form action="@Url.Action("Articulo", "Articulo")" method="post">
+
+    <div class="container">
+        <h2>Lista de Articulos</h2>
+        <hr />
+        <div class="row">
+            <div class="col-md-6">
+                <div class="input-group">
+                    <input type="text" id="Id" name="Id" class="form-control" placeholder="Buscar por ID de Articulo">
+                    <div class="input-group-append">
+                        <button class="btn btn-primary" type="submit"><i class="fa fa-search"></i></button>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-6">
+                <button type="button" class="btn btn-success" style="margin-bottom: 10px;" data-toggle="modal" data-target="#myModal">
+                    <i class="fa fa-plus"></i> Agregar Nuevo
+                </button>
+            </div>
+        </div>
+
+        <div class="row" style="margin-top: 20px;">
+            <div class="col-md-12">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Nombre</th>
+                            <th>Descripcion</th>
+                            <th>Precio</th>
+                            <th>Stock</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model.Tables.Count > 0)
+                        {
+                            if (Model.Tables[0].Rows.Count > 0)
+                            {
+                                for (int x = 0; x < Model.Tables[0].Rows.Count; x++)
+                                {
+                                    <tr>
+                                        <td>@Model.Tables[0].Rows[x]["Id"]</td>
+                                        <td>@Model.Tables[0].Rows[x]["Nombre"]</td>
+                                        <td>@Model.Tables[0].Rows[x]["Descripcion"]</td>
+                                        <td>@Model.Tables[0].Rows[x]["Precio"]</td>
+                                        <td>@Model.Tables[0].Rows[x]["Stock"]</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger btn-sm delete-btn"
+                                                    data-id="@Model.Tables[0].Rows[x]["Id"]">
+                                                <i class="fa fa-trash"></i> Eliminar
+                                            </button>
+                                            <button type="button"
+                                                    class="btn btn-warning btn-sm edit-btn"
+                                                    data-id="@Model.Tables[0].Rows[x]["Id"]"
+                                                    data-nombre="@Model.Tables[0].Rows[x]["Nombre"]"
+                                                    data-descripcion="@Model.Tables[0].Rows[x]["Descripcion"]"
+                                                    data-precio="@Model.Tables[0].Rows[x]["Precio"]"
+                                                    data-stock="@Model.Tables[0].Rows[x]["Stock"]">
+                                                <i class="fa fa-edit"></i> Editar
+                                            </button>
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</form>
+
+<!-- MODAL PARA AGREGAR EMPLEADO -->
+<form action="@Url.Action("newArticulo", "Articulo")" method="post">
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel">Agregar Articulo</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="Nombre" class="form-label">Nombre</label>
+                        <input type="text" class="form-control" id="Nombre" name="Nombre" placeholder="Nombre del Articulo" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="Descripcion" class="form-label">Descripcion</label>
+                        <input type="text" class="form-control" id="Descripcion" name="Descripcion" placeholder="Descripcion del Articulo."required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="Precio" class="form-label">Precio</label>
+                        <input type="number" class="form-control" id="Precio" name="Precio" placeholder="Precio del Articulo"required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="Stock" class="form-label">Stock</label>
+                        <input type="number" class="form-control" id="Stock" name="Stock" placeholder="Stock del Articulo"required>
+                    </div>
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-outline-primary">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+<!-- MODAL PARA ACTUALIZAR EMPLEADO -->
+
+<form action="@Url.Action("updateArticulo", "Articulo")" method="post">
+    <div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel">Actualizar Articulo</h4>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" id="UpdateId" name="Id" />
+                    <div class="mb-3">
+                        <label for="UpdateNombre" class="form-label">Nombre</label>
+                        <input type="text" class="form-control" id="UpdateNombre" name="Nombre" placeholder="Nombre del Articulo">
+                    </div>
+                    <div class="mb-3">
+                        <label for="UpdateDescripcion" class="form-label">Descripcion</label>
+                        <input type="text" class="form-control" id="UpdateDescripcion" name="Descripcion" placeholder="Descripcion del Articulo.">
+                    </div>
+                    <div class="mb-3">
+                        <label for="UpdatePrecio" class="form-label">Precio</label>
+                        <input type="number" class="form-control" id="UpdatePrecio" name="Precio" placeholder="Precio del Articulo">
+                    </div>
+                    <div class="mb-3">
+                        <label for="UpdateStock" class="form-label">Stock</label>
+                        <input type="number" class="form-control" id="UpdateStock" name="Stock" placeholder="Stock del Articulo">
+                    </div>
+
+
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-outline-primary" data-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-outline-primary">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+<!-- Modal de confirmación para eliminar -->
+<form action="@Url.Action("deleteArticulo", "Articulo")" method="post">
+    <div class="modal fade" id="confirmDeleteModal" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="confirmDeleteModalLabel">Confirmar Eliminación</h5>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" id="deleteID" name="ID" />
+                    ¿Estás seguro de que deseas eliminar este articulo?
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-outline-primary" data-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-outline-danger" id="confirmDeleteBtn">Eliminar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.edit-btn').on('click', function () {
+            var id = $(this).data('id');
+            var nombre = $(this).data('nombre');
+            var descripcion = $(this).data('descripcion');
+            var precio = $(this).data('precio');
+            var stock = $(this).data('stock');
+
+            $('#updateModal #UpdateId').val(id);
+            $('#updateModal #UpdateNombre').val(nombre);
+            $('#updateModal #UpdateDescripcion').val(descripcion);
+            $('#updateModal #UpdatePrecio').val(precio);
+            $('#updateModal #UpdateStock').val(stock);
+
+            $('#updateModal').modal('show');
+        });
+    });
+
+    $(document).ready(function () {
+        $('.delete-btn').on('click', function () {
+            var id = $(this).data('id');
+
+            $('#confirmDeleteModal #deleteID').val(id);
+            console.log(id)
+            $('#confirmDeleteModal').modal('show');
+        });
+    });
+</script>
