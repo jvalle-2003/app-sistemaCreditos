@@ -4,29 +4,25 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
+@if (TempData["ErrorMessage"] != null)
 {
-    <div class="alert alert-warning alert-dismissible fade show" role="alert">
-        @ViewBag.ErrorMessage
-        <button id="myAlert" type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        @TempData["ErrorMessage"]
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
     </div>
 }
 
-@if (!string.IsNullOrEmpty(ViewBag.SuccessMessage))
+@if (TempData["SuccessMessage"] != null)
 {
-    <div class="alert alert-success" role="alert">
-        @ViewBag.SuccessMessage
-    </div>
     <div class="alert alert-success alert-dismissible fade show" role="alert">
-        @ViewBag.SuccessMessage
-        <button id="myAlert" type="button" class="close" data-dismiss="alert" aria-label="Close">
+        @TempData["SuccessMessage"]
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
     </div>
 }
-
 
 <form action="@Url.Action("Credito", "Credito")" method="post">
 
@@ -115,19 +111,24 @@
                 <div class="modal-body">
                     <div class="mb-3">
                         <label for="IdDeudor" class="form-label">IdDeudor</label>
-                        <input type="number" class="form-control" id="IdDeudor" name="IdDeudor" placeholder="ID del Deudor"required>
+                        <select class="form-control" id="IdDeudor" name="IdDeudor" required>
+                            @foreach (var item in ViewBag.Deudores)
+                            {
+                                <option value="@item.Id">@item.Nombre</option>
+                            }
+                        </select>
                     </div>
                     <div class="mb-3">
                         <label for="IdArticulo" class="form-label">IdArticulo</label>
-                        <input type="number" class="form-control" id="IdArticulo" name="IdArticulo" placeholder="ID del Articulo"required>
+                        <input type="number" class="form-control" id="IdArticulo" name="IdArticulo" placeholder="ID del Articulo" required>
                     </div>
                     <div class="mb-3">
                         <label for="IdAmortizacion" class="form-label">IdAmortizacion</label>
-                        <input type="number" class="form-control" id="IdAmortizacion" name="IdAmortizacion" placeholder="ID de la Amortizacion"required>
+                        <input type="number" class="form-control" id="IdAmortizacion" name="IdAmortizacion" placeholder="ID de la Amortizacion" required>
                     </div>
                     <div class="mb-3">
                         <label for="IdEmpleado" class="form-label">IdEmpleado</label>
-                        <input type="number" class="form-control" id="IdEmpleado" name="IdEmpleado" placeholder="ID del Empleado"required>
+                        <input type="number" class="form-control" id="IdEmpleado" name="IdEmpleado" placeholder="ID del Empleado" required>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -152,25 +153,25 @@
                     <input type="hidden" id="UpdateID" name="ID" />
                     <div class="mb-3">
                         <label for="UpdateIdDeudor" class="form-label">IdDeudor</label>
-                        <input type="number" class="form-control" id="UpdateIdDeudor" name="IdDeudor" placeholder="ID del Deudor">
+                        <input type="number" class="form-control" id="UpdateIdDeudor" name="IdDeudor" placeholder="ID del Deudor" required>
                     </div>
                     <div class="mb-3">
                         <label for="UpdateIdArticulo" class="form-label">IdArticulo</label>
-                        <input type="number" class="form-control" id="UpdateIdArticulo" name="IdArticulo" placeholder="ID del Articulo">
+                        <input type="number" class="form-control" id="UpdateIdArticulo" name="IdArticulo" placeholder="ID del Articulo" required>
                     </div>
                     <div class="mb-3">
                         <label for="UpdateIdAmortizacion" class="form-label">IdAmortizacion</label>
-                        <input type="number" class="form-control" id="UpdateIdAmortizacion" name="IdAmortizacion" placeholder="ID de la Amortizacion">
+                        <input type="number" class="form-control" id="UpdateIdAmortizacion" name="IdAmortizacion" placeholder="ID de la Amortizacion" required>
                     </div>
                     <div class="mb-3">
                         <label for="UpdateIdEmpleado" class="form-label">IdEmpleado</label>
-                        <input type="number" class="form-control" id="UpdateIdEmpleado" name="IdEmpleado" placeholder="ID del Empleado">
+                        <input type="number" class="form-control" id="UpdateIdEmpleado" name="IdEmpleado" placeholder="ID del Empleado" required>
                     </div>
 
 
                 </div>
                 <div class="modal-footer">
-                    <button class="btn btn-outline-primary" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">Cancelar</button>
                     <button type="submit" class="btn btn-outline-primary">Guardar</button>
                 </div>
             </div>
@@ -191,7 +192,7 @@
                     ¿Estás seguro de que deseas eliminar este articulo?
                 </div>
                 <div class="modal-footer">
-                    <button class="btn btn-outline-primary" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">Cancelar</button>
                     <button type="submit" class="btn btn-outline-danger" id="confirmDeleteBtn">Eliminar</button>
                 </div>
             </div>

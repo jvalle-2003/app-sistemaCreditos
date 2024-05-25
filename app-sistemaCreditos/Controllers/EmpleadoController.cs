@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using app_sistemaCreditos.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -19,9 +20,9 @@ namespace app_sistemaCreditos.Controllers
             var url = "";
 
             if (string.IsNullOrEmpty(ID))
-                url = "http://localhost/api_Creditos/rest/api/listarEmpleados";
+                url = "http://localhost/api-sistemaCreditos/rest/api/listarEmpleados";
             else
-                url = "http://localhost/api_Creditos/rest/api/listarEmpleadoById?ID=" + ID;
+                url = "http://localhost/api-sistemaCreditos/rest/api/listarEmpleadoById?ID=" + ID;
 
 
             var request = (HttpWebRequest)WebRequest.Create(url);
@@ -54,7 +55,7 @@ namespace app_sistemaCreditos.Controllers
 
         public ActionResult newEmpleado(string Nombres, string Apellidos, string Puesto)
         {
-            var url = "http://localhost/api_Creditos/rest/api/insertarEmpleado";
+            var url = "http://localhost/api-sistemaCreditos/rest/api/insertarEmpleado";
 
             var nuevoEmpleado = new
             {
@@ -78,18 +79,34 @@ namespace app_sistemaCreditos.Controllers
             {
                 using (WebResponse response = request.GetResponse())
                 {
+                    using (var streamReader = new StreamReader(response.GetResponseStream()))
+                    {
+                        var responseText = streamReader.ReadToEnd();
+                        var apiResponse = JsonConvert.DeserializeObject<ApiResponse>(responseText);
+
+                        if (apiResponse.Respuesta == 1)
+                        {
+                            TempData["SuccessMessage"] = "La acción se completó satisfactoriamente";
+                        }
+                        else
+                        {
+                            TempData["ErrorMessage"] = "Error al realizar la acción";
+                        }
+                    }
                 }
+                return RedirectToAction("Empleado");
             }
             catch (Exception ex)
             {
-                ViewBag.ErrorMessage = "Error al realizar la acción";
+                TempData["ErrorMessage"] = "Error al realizar la acción";
+                return RedirectToAction("Empleado");
+
             }
-            return RedirectToAction("Empleado");
         }
 
         public ActionResult updateEmpleado(int ID, string Nombres, string Apellidos, string Puesto)
         {
-            var url = "http://localhost/api_Creditos/rest/api/actualizarEmpleado";
+            var url = "http://localhost/api-sistemaCreditos/rest/api/actualizarEmpleado";
 
             var actualizarEmpleado = new
             {
@@ -115,20 +132,34 @@ namespace app_sistemaCreditos.Controllers
             {
                 using (WebResponse response = request.GetResponse())
                 {
-                    ViewBag.SuccessMessage = "La acción se completó satisfactoriamente";
+                    using (var streamReader = new StreamReader(response.GetResponseStream()))
+                    {
+                        var responseText = streamReader.ReadToEnd();
+                        var apiResponse = JsonConvert.DeserializeObject<ApiResponse>(responseText);
+
+                        if (apiResponse.Respuesta == 1)
+                        {
+                            TempData["SuccessMessage"] = "La acción se completó satisfactoriamente";
+                        }
+                        else
+                        {
+                            TempData["ErrorMessage"] = "Error al realizar la acción";
+                        }
+                    }
                 }
+                return RedirectToAction("Empleado");
             }
             catch (Exception ex)
             {
-                ViewBag.ErrorMessage = "Error al realizar la acción";
-            }
+                TempData["ErrorMessage"] = "Error al realizar la acción";
+                return RedirectToAction("Empleado");
 
-            return RedirectToAction("Empleado");
+            }
         }
 
         public ActionResult deleteEmpleado(int ID)
         {
-            var url = "http://localhost/api_Creditos/rest/api/eliminarEmpleado";
+            var url = "http://localhost/api-sistemaCreditos/rest/api/eliminarEmpleado";
 
             var idEmpleado = new
             {
@@ -151,15 +182,29 @@ namespace app_sistemaCreditos.Controllers
             {
                 using (WebResponse response = request.GetResponse())
                 {
-                    ViewBag.SuccessMessage = "La acción se completó satisfactoriamente";
+                    using (var streamReader = new StreamReader(response.GetResponseStream()))
+                    {
+                        var responseText = streamReader.ReadToEnd();
+                        var apiResponse = JsonConvert.DeserializeObject<ApiResponse>(responseText);
+
+                        if (apiResponse.Respuesta == 1)
+                        {
+                            TempData["SuccessMessage"] = "La acción se completó satisfactoriamente";
+                        }
+                        else
+                        {
+                            TempData["ErrorMessage"] = "Error al realizar la acción";
+                        }
+                    }
                 }
+                return RedirectToAction("Empleado");
             }
             catch (Exception ex)
             {
-                ViewBag.ErrorMessage = "Error al realizar la acción";
-            }
+                TempData["ErrorMessage"] = "Error al realizar la acción";
+                return RedirectToAction("Empleado");
 
-            return RedirectToAction("Empleado");
+            }
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using app_sistemaCreditos.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -16,12 +17,12 @@ namespace app_sistemaCreditos.Controllers
         public ActionResult Amortizacion(string ID)
         {
             DataSet dsi = new DataSet();
-            var url = "";
+            var url = "";,
 
             if (string.IsNullOrEmpty(ID))
-                url = "http://localhost/api_Creditos/rest/api/listarAMortizaciones";
+                url = "http://localhost/api-sistemaCreditos/rest/api/listarAMortizaciones";
             else
-                url = "http://localhost/api_Creditos/rest/api/listarAmortizacionesXID?ID=" + ID;
+                url = "http://localhost/api-sistemaCreditos/rest/api/listarAmortizacionesXID?ID=" + ID;
 
 
             var request = (HttpWebRequest)WebRequest.Create(url);
@@ -54,9 +55,8 @@ namespace app_sistemaCreditos.Controllers
 
         public ActionResult newAmortizacion(string Tipo, int TasaInteres)
         {
-            var url = "http://localhost/api_Creditos/rest/api/insertarAmortizacion";
+            var url = "http://localhost/api-sistemaCreditos/rest/api/insertarAmortizacion";
 
-            // Crear un objeto con los datos del nuevo articulo
             var nuevoAmortizacion = new
             {
                 Tipo = Tipo,
@@ -70,32 +70,45 @@ namespace app_sistemaCreditos.Controllers
             request.ContentType = "application/json";
             request.Accept = "application/json";
 
-            // Escribir los datos JSON en el cuerpo de la solicitud
             using (var streamWriter = new StreamWriter(request.GetRequestStream()))
             {
                 streamWriter.Write(json);
             }
 
-            // Enviar la solicitud y recibir la respuesta
             try
             {
                 using (WebResponse response = request.GetResponse())
                 {
-                    // Puedes hacer algo con la respuesta si es necesario
+                    using (var streamReader = new StreamReader(response.GetResponseStream()))
+                    {
+                        var responseText = streamReader.ReadToEnd();
+                        var apiResponse = JsonConvert.DeserializeObject<ApiResponse>(responseText);
+
+                        if (apiResponse.Respuesta == 1)
+                        {
+                            TempData["SuccessMessage"] = "La acción se completó satisfactoriamente";
+                        }
+                        else
+                        {
+                            TempData["ErrorMessage"] = "Error al realizar la acción";
+                        }
+                    }
                 }
+                return RedirectToAction("Amortizacion");
+
             }
             catch (Exception ex)
             {
-                // Manejar cualquier error que ocurra durante la solicitud
-                // Puedes agregar código aquí para manejar errores de manera apropiada
+                TempData["ErrorMessage"] = "Error al realizar la acción";
+                return RedirectToAction("Amortizacion");
+
             }
 
-            return RedirectToAction("Amortizacion");
         }
 
         public ActionResult updateAmortizacion(int ID, string Tipo, int TasaInteres)
         {
-            var url = "http://localhost/api_Creditos/rest/api/actualizarAmortizacion";
+            var url = "http://localhost/api-sistemaCreditos/rest/api/actualizarAmortizacion";
 
             var actualizarAmortizacion = new
             {
@@ -120,20 +133,35 @@ namespace app_sistemaCreditos.Controllers
             {
                 using (WebResponse response = request.GetResponse())
                 {
-                    ViewBag.SuccessMessage = "La acción se completó satisfactoriamente";
+                    using (var streamReader = new StreamReader(response.GetResponseStream()))
+                    {
+                        var responseText = streamReader.ReadToEnd();
+                        var apiResponse = JsonConvert.DeserializeObject<ApiResponse>(responseText);
+
+                        if (apiResponse.Respuesta == 1)
+                        {
+                            TempData["SuccessMessage"] = "La acción se completó satisfactoriamente";
+                        }
+                        else
+                        {
+                            TempData["ErrorMessage"] = "Error al realizar la acción";
+                        }
+                    }
                 }
+                return RedirectToAction("Amortizacion");
             }
             catch (Exception ex)
             {
-                ViewBag.ErrorMessage = "Error al realizar la acción";
+                TempData["ErrorMessage"] = "Error al realizar la acción";
+                return RedirectToAction("Amortizacion");
+
             }
 
-            return RedirectToAction("Amortizacion");
         }
 
         public ActionResult deleteAmortizacion(int ID)
         {
-            var url = "http://localhost/api_Creditos/rest/api/eliminarAmortizacion";
+            var url = "http://localhost/api-sistemaCreditos/rest/api/eliminarAmortizacion";
 
             var idAmortizacion = new
             {
@@ -156,15 +184,31 @@ namespace app_sistemaCreditos.Controllers
             {
                 using (WebResponse response = request.GetResponse())
                 {
-                    ViewBag.SuccessMessage = "La acción se completó satisfactoriamente";
+                    using (var streamReader = new StreamReader(response.GetResponseStream()))
+                    {
+                        var responseText = streamReader.ReadToEnd();
+                        var apiResponse = JsonConvert.DeserializeObject<ApiResponse>(responseText);
+
+                        if (apiResponse.Respuesta == 1)
+                        {
+                            TempData["SuccessMessage"] = "La acción se completó satisfactoriamente";
+                        }
+                        else
+                        {
+                            TempData["ErrorMessage"] = "Error al realizar la acción";
+                        }
+                    }
                 }
+                return RedirectToAction("Amortizacion");
+
             }
             catch (Exception ex)
             {
-                ViewBag.ErrorMessage = "Error al realizar la acción";
+                TempData["ErrorMessage"] = "Error al realizar la acción";
+                return RedirectToAction("Amortizacion");
+
             }
 
-            return RedirectToAction("Amortizacion");
         }
 
 

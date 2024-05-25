@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using app_sistemaCreditos.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -19,9 +20,9 @@ namespace app_sistemaCreditos.Controllers
             var url = "";
 
             if (string.IsNullOrEmpty(ID))
-                url = "http://localhost/api_Creditos/rest/api/listarDeudores";
+                url = "http://localhost/api-sistemaCreditos/rest/api/listarDeudores";
             else
-                url = "http://localhost/api_Creditos/rest/api/listarDeudorXID?ID=" + ID;
+                url = "http://localhost/api-sistemaCreditos/rest/api/listarDeudorXID?ID=" + ID;
 
 
             var request = (HttpWebRequest)WebRequest.Create(url);
@@ -47,15 +48,13 @@ namespace app_sistemaCreditos.Controllers
             }
             catch (Exception ex)
             {
-                // Manejar cualquier error que ocurra durante la solicitud
-                // Puedes agregar código aquí para manejar errores de manera apropiada
             }
             return View(dsDeudor);
         }
 
         public ActionResult NuevoDeudor(int NIT, int DPI, string Nombre, string Apellido, string Domicilio, string Telefono)
         {
-            var url = "http://localhost/api_Creditos/rest/api/insertarDeudor";
+            var url = "http://localhost/api-sistemaCreditos/rest/api/insertarDeudor";
 
             // Crear un objeto con los datos del nuevo deudor
             var nuevoDeudor = new
@@ -75,32 +74,42 @@ namespace app_sistemaCreditos.Controllers
             request.ContentType = "application/json";
             request.Accept = "application/json";
 
-            // Escribir los datos JSON en el cuerpo de la solicitud
             using (var streamWriter = new StreamWriter(request.GetRequestStream()))
             {
                 streamWriter.Write(json);
             }
 
-            // Enviar la solicitud y recibir la respuesta
             try
             {
                 using (WebResponse response = request.GetResponse())
                 {
-                    // Puedes hacer algo con la respuesta si es necesario
+                    using (var streamReader = new StreamReader(response.GetResponseStream()))
+                    {
+                        var responseText = streamReader.ReadToEnd();
+                        var apiResponse = JsonConvert.DeserializeObject<ApiResponse>(responseText);
+
+                        if (apiResponse.Respuesta == 1)
+                        {
+                            TempData["SuccessMessage"] = "La acción se completó satisfactoriamente";
+                        }
+                        else
+                        {
+                            TempData["ErrorMessage"] = "Error al realizar la acción";
+                        }
+                    }
                 }
+                return RedirectToAction("Deudor");
             }
             catch (Exception)
             {
-                // Manejar cualquier error que ocurra durante la solicitud
-                // Puedes agregar código aquí para manejar errores de manera apropiada
+                TempData["ErrorMessage"] = "Error al realizar la acción";
+                return RedirectToAction("Deudor");
             }
-
-            return RedirectToAction("Deudor");
         }
 
         public ActionResult updateDeudor(int ID, int NIT, int DPI, string Nombre, string Apellido, string Domicilio, string Telefono)
         {
-            var url = "http://localhost/api_Creditos/rest/api/actualizarDeudor";
+            var url = "http://localhost/api-sistemaCreditos/rest/api/actualizarDeudor";
 
             var actualizarEmpleado = new
             {
@@ -129,20 +138,34 @@ namespace app_sistemaCreditos.Controllers
             {
                 using (WebResponse response = request.GetResponse())
                 {
-                    ViewBag.SuccessMessage = "La acción se completó satisfactoriamente";
+                    using (var streamReader = new StreamReader(response.GetResponseStream()))
+                    {
+                        var responseText = streamReader.ReadToEnd();
+                        var apiResponse = JsonConvert.DeserializeObject<ApiResponse>(responseText);
+
+                        if (apiResponse.Respuesta == 1)
+                        {
+                            TempData["SuccessMessage"] = "La acción se completó satisfactoriamente";
+                        }
+                        else
+                        {
+                            TempData["ErrorMessage"] = "Error al realizar la acción";
+                        }
+                    }
                 }
+                return RedirectToAction("Deudor");
             }
             catch (Exception ex)
             {
-                ViewBag.ErrorMessage = "Error al realizar la acción";
-            }
+                TempData["ErrorMessage"] = "Error al realizar la acción";
+                return RedirectToAction("Deudor");
 
-            return RedirectToAction("Deudor");
+            }
         }
 
         public ActionResult deleteDeudor(int ID)
         {
-            var url = "http://localhost/api_Creditos/rest/api/eliminarDeudor";
+            var url = "http://localhost/api-sistemaCreditos/rest/api/eliminarDeudor";
 
             var idEmpleado = new
             {
@@ -165,15 +188,28 @@ namespace app_sistemaCreditos.Controllers
             {
                 using (WebResponse response = request.GetResponse())
                 {
-                    ViewBag.SuccessMessage = "La acción se completó satisfactoriamente";
+                    using (var streamReader = new StreamReader(response.GetResponseStream()))
+                    {
+                        var responseText = streamReader.ReadToEnd();
+                        var apiResponse = JsonConvert.DeserializeObject<ApiResponse>(responseText);
+
+                        if (apiResponse.Respuesta == 1)
+                        {
+                            TempData["SuccessMessage"] = "La acción se completó satisfactoriamente";
+                        }
+                        else
+                        {
+                            TempData["ErrorMessage"] = "Error al realizar la acción";
+                        }
+                    }
                 }
+                return RedirectToAction("Deudor");
             }
             catch (Exception ex)
             {
-                ViewBag.ErrorMessage = "Error al realizar la acción";
+                TempData["ErrorMessage"] = "Error al realizar la acción";
+                return RedirectToAction("Deudor");
             }
-
-            return RedirectToAction("Deudor");
         }
     }
 }

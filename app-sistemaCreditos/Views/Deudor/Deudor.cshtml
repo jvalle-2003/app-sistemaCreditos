@@ -4,6 +4,26 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        @TempData["ErrorMessage"]
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+}
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        @TempData["SuccessMessage"]
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+}
+
 <form action="@Url.Action("Deudor", "Deudor")" method="post">
 
     <div class="container">
@@ -96,27 +116,27 @@
                 <div class="modal-body">
                     <div class="mb-3">
                         <label for="NIT" class="form-label">NIT</label>
-                        <input type="number" class="form-control" id="NIT" name="NIT" placeholder="NIT"required>
+                        <input type="number" class="form-control" id="NIT" name="NIT" placeholder="NIT" required>
                     </div>
                     <div class="mb-3">
                         <label for="DPI" class="form-label">DPI</label>
-                        <input type="number" class="form-control" id="DPI" name="DPI" placeholder="DPI"required>
+                        <input type="number" class="form-control" id="DPI" name="DPI" placeholder="DPI" required>
                     </div>
                     <div class="mb-3">
                         <label for="Nombre" class="form-label">Nombre</label>
-                        <input type="text" class="form-control" id="Nombre" name="Nombre" placeholder="Nombre"required>
+                        <input type="text" class="form-control" id="Nombre" name="Nombre" placeholder="Nombre" required>
                     </div>
                     <div class="mb-3">
                         <label for="Apellido" class="form-label">Apellido</label>
-                        <input type="text" class="form-control" id="Apellido" name="Apellido" placeholder="Apellido"required>
+                        <input type="text" class="form-control" id="Apellido" name="Apellido" placeholder="Apellido" required>
                     </div>
                     <div class="mb-3">
                         <label for="Domicilio" class="form-label">Domicilio</label>
-                        <input type="text" class="form-control" id="Domicilio" name="Domicilio" placeholder="Domicilio"required>
+                        <input type="text" class="form-control" id="Domicilio" name="Domicilio" placeholder="Domicilio" required>
                     </div>
                     <div class="mb-3">
                         <label for="Telefono" class="form-label">Teléfono</label>
-                        <input type="number" class="form-control" id="Telefono" name="Telefono" placeholder="Telefono"required>
+                        <input type="number" class="form-control" id="Telefono" name="Telefono" placeholder="Telefono" required>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -168,7 +188,7 @@
 
                 </div>
                 <div class="modal-footer">
-                    <button class="btn btn-outline-primary" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">Cancelar</button>
                     <button type="submit" class="btn btn-outline-primary">Guardar</button>
                 </div>
             </div>
@@ -189,45 +209,47 @@
                     ¿Estás seguro de que deseas eliminar a este deudor?
                 </div>
                 <div class="modal-footer">
-                    <button class="btn btn-outline-secondary" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">Cancelar</button>
                     <button type="submit" class="btn btn-outline-danger" id="confirmDeleteBtn">Eliminar</button>
                 </div>
             </div>
         </div>
     </div>
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
+</form>
 
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $('.edit-btn').on('click', function () {
-                var id = $(this).data('id');
-                var nit= $(this).data('nit');
-                var dpi = $(this).data('dpi');
-                var nombre = $(this).data('nombre');
-                var apellido = $(this).data('apellido');
-                var domicilio = $(this).data('domicilio');
-                var telefono = $(this).data('telefono');
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
 
-                $('#updateModal #UpdateID').val(id);
-                $('#updateModal #UpdateNIT').val(nit);
-                $('#updateModal #UpdateDPI').val(dpi);
-                $('#updateModal #UpdateNombre').val(nombre);
-                $('#updateModal #UpdateApellido').val(apellido);
-                $('#updateModal #UpdateDomicilio').val(domicilio);
-                $('#updateModal #UpdateTelefono').val(telefono);
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.edit-btn').on('click', function () {
+            var id = $(this).data('id');
+            var nit = $(this).data('nit');
+            var dpi = $(this).data('dpi');
+            var nombre = $(this).data('nombre');
+            var apellido = $(this).data('apellido');
+            var domicilio = $(this).data('domicilio');
+            var telefono = $(this).data('telefono');
 
-                $('#updateModal').modal('show');
-            });
+            $('#updateModal #UpdateID').val(id);
+            $('#updateModal #UpdateNIT').val(nit);
+            $('#updateModal #UpdateDPI').val(dpi);
+            $('#updateModal #UpdateNombre').val(nombre);
+            $('#updateModal #UpdateApellido').val(apellido);
+            $('#updateModal #UpdateDomicilio').val(domicilio);
+            $('#updateModal #UpdateTelefono').val(telefono);
+
+            $('#updateModal').modal('show');
         });
+    });
 
-        $(document).ready(function () {
-            $('.delete-btn').on('click', function () {
-                var id = $(this).data('id');
+    $(document).ready(function () {
+        $('.delete-btn').on('click', function () {
+            var id = $(this).data('id');
 
-                $('#confirmDeleteModal #deleteID').val(id);
+            $('#confirmDeleteModal #deleteID').val(id);
 
-                $('#confirmDeleteModal').modal('show');
-            });
+            $('#confirmDeleteModal').modal('show');
         });
-    </script>
+    });
+</script>

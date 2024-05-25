@@ -4,24 +4,21 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
+@if (TempData["ErrorMessage"] != null)
 {
-    <div class="alert alert-warning alert-dismissible fade show" role="alert">
-        @ViewBag.ErrorMessage
-        <button id="myAlert" type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        @TempData["ErrorMessage"]
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
     </div>
 }
 
-@if (!string.IsNullOrEmpty(ViewBag.SuccessMessage))
+@if (TempData["SuccessMessage"] != null)
 {
-    <div class="alert alert-success" role="alert">
-        @ViewBag.SuccessMessage
-    </div>
     <div class="alert alert-success alert-dismissible fade show" role="alert">
-        @ViewBag.SuccessMessage
-        <button id="myAlert" type="button" class="close" data-dismiss="alert" aria-label="Close">
+        @TempData["SuccessMessage"]
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
     </div>

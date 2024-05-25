@@ -5,6 +5,26 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        @TempData["ErrorMessage"]
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+}
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        @TempData["SuccessMessage"]
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+}
+
 <form action="@Url.Action("Usuario", "Usuario")" method="post">
 
     <div class="container">
@@ -130,19 +150,19 @@
                     <input type="hidden" id="UpdateID" name="ID" />
                     <div class="mb-3">
                         <label for="UpdateUsuario" class="form-label">Usuario</label>
-                        <input type="text" class="form-control" id="UpdateUsuario" name="Usuario" placeholder="juan"required>
+                        <input type="text" class="form-control" id="UpdateUsuario" name="Usuario" placeholder="juan" required>
                     </div>
                     <div class="mb-3">
                         <label for="UpdateContraseña" class="form-label">Contraseña</label>
-                        <input type="text" class="form-control" id="UpdateContraseña" name="Contraseña" placeholder="12345"required>
+                        <input type="text" class="form-control" id="UpdateContraseña" name="Contraseña" placeholder="12345" required>
                     </div>
                     <div class="mb-3">
                         <label for="UpdateIdEmpleado" class="form-label">Id de Empleado</label>
-                        <input type="number" class="form-control" id="UpdateIdEmpleado" name="IdEmpleado" placeholder="1"required>
+                        <input type="number" class="form-control" id="UpdateIdEmpleado" name="IdEmpleado" placeholder="1" required>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button class="btn btn-outline-primary" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">Cancelar</button>
                     <button type="submit" class="btn btn-outline-primary">Guardar</button>
                 </div>
             </div>
@@ -160,11 +180,11 @@
                 </div>
                 <div class="modal-body">
                     <input type="hidden" id="deleteID" name="ID" />
-                    ¿Estás seguro de que deseas eliminar este usuario?, 
+                    ¿Estás seguro de que deseas eliminar este usuario?,
                     para que se pueda eliminar es importante que se haya eliminado antes el empleado relacionado.
                 </div>
                 <div class="modal-footer">
-                    <button class="btn btn-outline-secondary" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">Cancelar</button>
                     <button type="submit" class="btn btn-outline-danger" id="confirmDeleteBtn">Eliminar</button>
                 </div>
             </div>

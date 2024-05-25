@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using app_sistemaCreditos.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -20,9 +21,9 @@ namespace app_sistemaCreditos.Controllers
             var url = "";
 
             if (string.IsNullOrEmpty(ID))
-                url = "http://localhost/api_Creditos/rest/api/listarUsuarios";
+                url = "http://localhost/api-sistemaCreditos/rest/api/listarUsuarios";
             else
-                url = "http://localhost/api_Creditos/rest/api/listarUsuarioXID?id=" + ID;
+                url = "http://localhost/api-sistemaCreditos/rest/api/listarUsuarioXID?id=" + ID;
 
 
             var request = (HttpWebRequest)WebRequest.Create(url);
@@ -55,7 +56,7 @@ namespace app_sistemaCreditos.Controllers
 
         public ActionResult newUsuario(string Usuario, string Contraseña, int IdEmpleado)
         {
-            var url = "http://localhost/api_Creditos/rest/api/insertarUsuario";
+            var url = "http://localhost/api-sistemaCreditos/rest/api/insertarUsuario";
 
             var nuevoUsuario = new
             {
@@ -79,19 +80,33 @@ namespace app_sistemaCreditos.Controllers
             {
                 using (WebResponse response = request.GetResponse())
                 {
+                    using (var streamReader = new StreamReader(response.GetResponseStream()))
+                    {
+                        var responseText = streamReader.ReadToEnd();
+                        var apiResponse = JsonConvert.DeserializeObject<ApiResponse>(responseText);
 
+                        if (apiResponse.Respuesta == 1)
+                        {
+                            TempData["SuccessMessage"] = "La acción se completó satisfactoriamente";
+                        }
+                        else
+                        {
+                            TempData["ErrorMessage"] = "Error al realizar la acción";
+                        }
+                    }
                 }
+                return RedirectToAction("Usuario");
             }
             catch (Exception ex)
             {
-                ViewBag.ErrorMessage = "Error al realizar la acción";
+                TempData["ErrorMessage"] = "Error al realizar la acción";
+                return RedirectToAction("Usuario");
             }
-            return RedirectToAction("Usuario");
         }
 
         public ActionResult updateUsuario(int ID, string Usuario, string Contraseña, int IdEmpleado)
         {
-            var url = "http://localhost/api_Creditos/rest/api/actualizarUsuario";
+            var url = "http://localhost/api-sistemaCreditos/rest/api/actualizarUsuario";
 
             var actualizarUsuario = new
             {
@@ -117,20 +132,33 @@ namespace app_sistemaCreditos.Controllers
             {
                 using (WebResponse response = request.GetResponse())
                 {
-                    ViewBag.SuccessMessage = "La acción se completó satisfactoriamente";
+                    using (var streamReader = new StreamReader(response.GetResponseStream()))
+                    {
+                        var responseText = streamReader.ReadToEnd();
+                        var apiResponse = JsonConvert.DeserializeObject<ApiResponse>(responseText);
+
+                        if (apiResponse.Respuesta == 1)
+                        {
+                            TempData["SuccessMessage"] = "La acción se completó satisfactoriamente";
+                        }
+                        else
+                        {
+                            TempData["ErrorMessage"] = "Error al realizar la acción";
+                        }
+                    }
                 }
+                return RedirectToAction("Usuario");
             }
             catch (Exception ex)
             {
-                ViewBag.ErrorMessage = "Error al realizar la acción";
+                TempData["ErrorMessage"] = "Error al realizar la acción";
+                return RedirectToAction("Usuario");
             }
-
-            return RedirectToAction("Usuario");
         }
 
         public ActionResult deleteUsuario(int ID)
         {
-            var url = "http://localhost/api_Creditos/rest/api/eliminarUsuario";
+            var url = "http://localhost/api-sistemaCreditos/rest/api/eliminarUsuario";
 
             var idUsuario = new
             {
@@ -153,15 +181,29 @@ namespace app_sistemaCreditos.Controllers
             {
                 using (WebResponse response = request.GetResponse())
                 {
-                    ViewBag.SuccessMessage = "La acción se completó satisfactoriamente";
+                    using (var streamReader = new StreamReader(response.GetResponseStream()))
+                    {
+                        var responseText = streamReader.ReadToEnd();
+                        var apiResponse = JsonConvert.DeserializeObject<ApiResponse>(responseText);
+
+                        if (apiResponse.Respuesta == 1)
+                        {
+                            TempData["SuccessMessage"] = "La acción se completó satisfactoriamente";
+                        }
+                        else
+                        {
+                            TempData["ErrorMessage"] = "Error al realizar la acción";
+                        }
+                    }
                 }
+                return RedirectToAction("Usuario");
             }
             catch (Exception ex)
             {
-                ViewBag.ErrorMessage = "Error al realizar la acción";
+                TempData["ErrorMessage"] = "Error al realizar la acción";
+                return RedirectToAction("Usuario");
             }
 
-            return RedirectToAction("Usuario");
         }
 
     }
