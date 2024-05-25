@@ -123,6 +123,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AmortizacionController.cs" />
     <Compile Include="Controllers\ArticuloController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\CreditoController.cs" />
     <Compile Include="Controllers\DeudorController.cs" />
     <Compile Include="Controllers\EmpleadoController.cs" />
@@ -198,6 +199,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />

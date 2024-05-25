@@ -1,0 +1,234 @@
+﻿﻿@model System.Data.DataSet
+@{
+    ViewBag.Title = "Credito";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
+{
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        @ViewBag.ErrorMessage
+        <button id="myAlert" type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+}
+
+@if (!string.IsNullOrEmpty(ViewBag.SuccessMessage))
+{
+    <div class="alert alert-success" role="alert">
+        @ViewBag.SuccessMessage
+    </div>
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        @ViewBag.SuccessMessage
+        <button id="myAlert" type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+}
+
+
+<form action="@Url.Action("Credito", "Credito")" method="post">
+
+    <div class="container">
+        <h2>Lista de Creditos</h2>
+        <hr />
+        <div class="row">
+            <div class="col-md-6">
+                <div class="input-group">
+                    <input type="text" id="Id" name="Id" class="form-control" placeholder="Buscar por ID del Credito">
+                    <div class="input-group-append">
+                        <button class="btn btn-primary" type="submit"><i class="fa fa-search"></i></button>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-6">
+                <button type="button" class="btn btn-success" style="margin-bottom: 10px;" data-toggle="modal" data-target="#myModal">
+                    <i class="fa fa-plus"></i> Agregar Nuevo
+                </button>
+            </div>
+        </div>
+
+        <div class="row" style="margin-top: 20px;">
+            <div class="col-md-12">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>IdDeudor</th>
+                            <th>IdArticulo</th>
+                            <th>IdAmortizacion</th>
+                            <th>IdEmpleado</th>
+                            <th>FechaInicio</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model.Tables.Count > 0)
+                        {
+                            if (Model.Tables[0].Rows.Count > 0)
+                            {
+                                for (int x = 0; x < Model.Tables[0].Rows.Count; x++)
+                                {
+                                    <tr>
+                                        <td>@Model.Tables[0].Rows[x]["ID"]</td>
+                                        <td>@Model.Tables[0].Rows[x]["IdDeudor"]</td>
+                                        <td>@Model.Tables[0].Rows[x]["IdArticulo"]</td>
+                                        <td>@Model.Tables[0].Rows[x]["IdAmortizacion"]</td>
+                                        <td>@Model.Tables[0].Rows[x]["IdEmpleado"]</td>
+                                        <td>@Model.Tables[0].Rows[x]["FechaInicio"]</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger btn-sm delete-btn"
+                                                    data-id="@Model.Tables[0].Rows[x]["Id"]">
+                                                <i class="fa fa-trash"></i> Eliminar
+                                            </button>
+                                            <button type="button"
+                                                    class="btn btn-warning btn-sm edit-btn"
+                                                    data-id="@Model.Tables[0].Rows[x]["ID"]"
+                                                    data-iddeudor="@Model.Tables[0].Rows[x]["IdDeudor"]"
+                                                    data-idarticulo="@Model.Tables[0].Rows[x]["IdArticulo"]"
+                                                    data-idamortizacion="@Model.Tables[0].Rows[x]["IdAmortizacion"]"
+                                                    data-idempleado="@Model.Tables[0].Rows[x]["IdEmpleado"]"
+                                                    data-fechainicio="@Model.Tables[0].Rows[x]["FechaInicio"]">
+                                                <i class="fa fa-edit"></i> Editar
+                                            </button>
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</form>
+
+<!-- MODAL PARA AGREGAR CREDITO -->
+<form action="@Url.Action("newCredito", "Credito")" method="post">
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel">Agregar Credito</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="IdDeudor" class="form-label">IdDeudor</label>
+                        <input type="number" class="form-control" id="IdDeudor" name="IdDeudor" placeholder="ID del Deudor"required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="IdArticulo" class="form-label">IdArticulo</label>
+                        <input type="number" class="form-control" id="IdArticulo" name="IdArticulo" placeholder="ID del Articulo"required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="IdAmortizacion" class="form-label">IdAmortizacion</label>
+                        <input type="number" class="form-control" id="IdAmortizacion" name="IdAmortizacion" placeholder="ID de la Amortizacion"required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="IdEmpleado" class="form-label">IdEmpleado</label>
+                        <input type="number" class="form-control" id="IdEmpleado" name="IdEmpleado" placeholder="ID del Empleado"required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-outline-primary">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+<!-- MODAL PARA ACTUALIZAR CREDITO -->
+
+<form action="@Url.Action("updateCredito", "Credito")" method="post">
+    <div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel">Actualizar Credito</h4>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" id="UpdateID" name="ID" />
+                    <div class="mb-3">
+                        <label for="UpdateIdDeudor" class="form-label">IdDeudor</label>
+                        <input type="number" class="form-control" id="UpdateIdDeudor" name="IdDeudor" placeholder="ID del Deudor">
+                    </div>
+                    <div class="mb-3">
+                        <label for="UpdateIdArticulo" class="form-label">IdArticulo</label>
+                        <input type="number" class="form-control" id="UpdateIdArticulo" name="IdArticulo" placeholder="ID del Articulo">
+                    </div>
+                    <div class="mb-3">
+                        <label for="UpdateIdAmortizacion" class="form-label">IdAmortizacion</label>
+                        <input type="number" class="form-control" id="UpdateIdAmortizacion" name="IdAmortizacion" placeholder="ID de la Amortizacion">
+                    </div>
+                    <div class="mb-3">
+                        <label for="UpdateIdEmpleado" class="form-label">IdEmpleado</label>
+                        <input type="number" class="form-control" id="UpdateIdEmpleado" name="IdEmpleado" placeholder="ID del Empleado">
+                    </div>
+
+
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-outline-primary" data-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-outline-primary">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+<!-- Modal de confirmación para eliminar -->
+<form action="@Url.Action("deleteCredito", "Credito")" method="post">
+    <div class="modal fade" id="confirmDeleteModal" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="confirmDeleteModalLabel">Confirmar Eliminación</h5>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" id="deleteID" name="ID" />
+                    ¿Estás seguro de que deseas eliminar este articulo?
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-outline-primary" data-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-outline-danger" id="confirmDeleteBtn">Eliminar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.edit-btn').on('click', function () {
+            var id = $(this).data('id');
+            var iddeudor = $(this).data('iddeudor');
+            var idarticulo = $(this).data('idarticulo');
+            var idamortizacion = $(this).data('idamortizacion');
+            var idempleado = $(this).data('idempleado');
+
+            $('#updateModal #UpdateID').val(id);
+            $('#updateModal #UpdateIdDeudor').val(iddeudor);
+            $('#updateModal #UpdateIdArticulo').val(idarticulo);
+            $('#updateModal #UpdateIdAmortizacion').val(idamortizacion);
+            $('#updateModal #UpdateIdEmpleado').val(idempleado);
+
+            $('#updateModal').modal('show');
+        });
+    });
+
+    $(document).ready(function () {
+        $('.delete-btn').on('click', function () {
+            var id = $(this).data('id');
+
+            $('#confirmDeleteModal #deleteID').val(id);
+
+            $('#confirmDeleteModal').modal('show');
+        });
+    });
+</script>

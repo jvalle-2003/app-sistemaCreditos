@@ -10,6 +10,7 @@ using System.Web.Mvc;
 
 namespace app_sistemaCreditos.Controllers
 {
+    [Authorize]
     public class AmortizacionController : Controller
     {
         public ActionResult Amortizacion(string ID)

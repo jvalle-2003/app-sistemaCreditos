@@ -20,11 +20,12 @@ namespace app_sistemaCreditos.Controllers
             return View();
         }
 
+        [HttpPost]
         public ActionResult Logged(string Usuario, string Contraseña)
         {
             try
             {
-                if (Usuario != "" && Contraseña != "")
+                if (!string.IsNullOrEmpty(Usuario) && !string.IsNullOrEmpty(Contraseña))
                 {
                     var url = "http://localhost/api_Creditos/rest/api/listarUsuarios";
 
@@ -49,6 +50,10 @@ namespace app_sistemaCreditos.Controllers
 
                             // Indicar que el usuario está autenticado
                             HttpContext.User = new GenericPrincipal(new GenericIdentity(Usuario), null);
+
+                            // Guardar el nombre de usuario en la sesión
+                            Session["Username"] = Usuario;
+
                             return RedirectToAction("Index", "Home");
                         }
                     }
@@ -67,5 +72,14 @@ namespace app_sistemaCreditos.Controllers
             }
         }
 
+        public ActionResult Logout()
+        {
+            // Cerrar la sesión del usuario
+            FormsAuthentication.SignOut();
+            Session["Username"] = null;
+
+            // Redirigir al usuario a la página de inicio de sesión
+            return RedirectToAction("Login", "Login");
+        }
     }
 }

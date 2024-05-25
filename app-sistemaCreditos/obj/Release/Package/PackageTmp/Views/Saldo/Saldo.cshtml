@@ -1,0 +1,241 @@
+﻿@model System.Data.DataSet
+@{
+    ViewBag.Title = "Saldo";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
+{
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        @ViewBag.ErrorMessage
+        <button id="myAlert" type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+}
+
+@if (!string.IsNullOrEmpty(ViewBag.SuccessMessage))
+{
+    <div class="alert alert-success" role="alert">
+        @ViewBag.SuccessMessage
+    </div>
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        @ViewBag.SuccessMessage
+        <button id="myAlert" type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+}
+
+
+<form action="@Url.Action("Saldo", "Saldo")" method="post">
+
+    <div class="container">
+        <h2>Lista de Saldos</h2>
+        <hr />
+        <div class="row">
+            <div class="col-md-6">
+                <div class="input-group">
+                    <input type="text" id="ID" name="ID" class="form-control" placeholder="Buscar por ID de Saldos">
+                    <div class="input-group-append">
+                        <button class="btn btn-primary" type="submit"><i class="fa fa-search"></i></button>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-6">
+                <button type="button" class="btn btn-success" style="margin-bottom: 10px;" data-toggle="modal" data-target="#myModal">
+                    <i class="fa fa-plus"></i> Agregar Nuevo
+                </button>
+            </div>
+        </div>
+
+        <div class="row" style="margin-top: 20px;">
+            <div class="col-md-12">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Saldo Inicial</th>
+                            <th>Saldo Actual</th>
+                            <th>Cuota Mensual</th>
+                            <th>Interes Generado</th>
+                            <th>Id Credito</th>
+                            <th>Id Credito</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model.Tables.Count > 0)
+                        {
+                            if (Model.Tables[0].Rows.Count > 0)
+                            {
+                                for (int x = 0; x < Model.Tables[0].Rows.Count; x++)
+                                {
+                                    <tr>
+                                        <td>@Model.Tables[0].Rows[x]["ID"]</td>
+                                        <td>@Model.Tables[0].Rows[x]["SaldoInicial"]</td>
+                                        <td>@Model.Tables[0].Rows[x]["SaldoActual"]</td>
+                                        <td>@Model.Tables[0].Rows[x]["CuotaMensual"]</td>
+                                        <td>@Model.Tables[0].Rows[x]["InteresGenerado"]</td>
+                                        <td>@Model.Tables[0].Rows[x]["IdCredito"]</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger btn-sm delete-btn"
+                                                    data-id="@Model.Tables[0].Rows[x]["ID"]">
+                                                <i class="fa fa-trash"></i> Eliminar
+                                            </button>
+                                            <button type="button"
+                                                    class="btn btn-warning btn-sm edit-btn"
+                                                    data-id="@Model.Tables[0].Rows[x]["ID"]"
+                                                    data-saldoinicial="@Model.Tables[0].Rows[x]["SaldoInicial"]"
+                                                    data-saldoactual="@Model.Tables[0].Rows[x]["SaldoActual"]"
+                                                    data-cuotamensual="@Model.Tables[0].Rows[x]["CuotaMensual"]"
+                                                    data-interesgenerado="@Model.Tables[0].Rows[x]["InteresGenerado"]"
+                                                    data-idcredito="@Model.Tables[0].Rows[x]["IdCredito"]">
+                                                <i class="fa fa-edit"></i> Editar
+                                            </button>
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</form>
+
+<!-- MODAL PARA AGREGAR EMPLEADO -->
+<form action="@Url.Action("newSaldo", "Saldo")" method="post">
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel">Agregar Saldo</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="SaldoInicial" class="form-label">Saldo Inicial</label>
+                        <input type="number" class="form-control" id="SaldoInicial" name="SaldoInicial" placeholder="Ingrese Datos"required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="SaldoActual" class="form-label">Saldo Actual</label>
+                        <input type="number" class="form-control" id="SaldoActual" name="SaldoActual" placeholder="Ingrese Datos"required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="CuotaMensual" class="form-label">Cuota Mensual</label>
+                        <input type="number" class="form-control" id="CuotaMensual" name="CuotaMensual" placeholder="Ingrese Datos"required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="InteresGenerado" class="form-label">Interes Generado</label>
+                        <input type="number" class="form-control" id="InteresGenerado" name="InteresGenerado" placeholder="Ingrese Datos"required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="IdCredito" class="form-label">Id de Crédito</label>
+                        <input type="number" class="form-control" id="IdCredito" name="IdCredito" placeholder="Ingrese Datos"required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-outline-primary">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+<!-- MODAL PARA ACTUALIZAR SALDO -->
+<form action="@Url.Action("updateSaldo", "Saldo")" method="post">
+    <div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel">Actualizar Saldo</h4>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" id="UpdateID" name="ID" />
+                    <div class="mb-3">
+                        <label for="UpdateSaldoInicial" class="form-label">Saldo Inicial</label>
+                        <input type="text" class="form-control" id="UpdateSaldoInicial" name="SaldoInicial" placeholder="Ingrese un Monto">
+                    </div>
+                    <div class="mb-3">
+                        <label for="UpdateSaldoActual" class="form-label">Saldo Actual</label>
+                        <input type="text" class="form-control" id="UpdateSaldoActual" name="SaldoActual" placeholder="Ingrese el Saldo Actual">
+                    </div>
+                    <div class="mb-3">
+                        <label for="UpdateCuotaMensual" class="form-label">Cuota Mensual</label>
+                        <input type="text" class="form-control" id="UpdateCuotaMensual" name="CuotaMensual" placeholder="Ingrese el monto de la cuota">
+                    </div>
+                    <div class="mb-3">
+                        <label for="UpdateInteresGenerado" class="form-label">Interes Generado</label>
+                        <input type="text" class="form-control" id="UpdateInteresGenerado" name="InteresGenerado" placeholder="Ingrese el monto del Interes">
+                    </div>
+                    <div class="mb-3">
+                        <label for="UpdateIdCredito" class="form-label">Id de Crédito</label>
+                        <input type="number" class="form-control" id="UpdateIdCredito" name="IdCredito" placeholder="Ingrese el id del crédito">
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button class="btn btn-outline-primary" data-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-outline-primary">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+<!-- Modal de confirmación para eliminar -->
+<form action="@Url.Action("deleteSaldo", "Saldo")" method="post">
+    <div class="modal fade" id="confirmDeleteModal" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="confirmDeleteModalLabel">Confirmar Eliminación</h5>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" id="deleteID" name="ID" />
+                    ¿Estás seguro de que deseas eliminar este saldo?
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-outline-secondary" data-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-outline-danger" id="confirmDeleteBtn">Eliminar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.edit-btn').on('click', function () {
+            var ID = $(this).data('id');
+            var SaldoInicial = $(this).data('saldoinicial');
+            var SaldoActual = $(this).data('saldoactual');
+            var CuotaMensual = $(this).data('cuotamensual');
+            var InteresGenerado = $(this).data('interesgenerado');
+            var IdCredito = $(this).data('idcredito');
+
+            $('#updateModal #UpdateID').val(ID);
+            $('#updateModal #UpdateSaldoInicial').val(SaldoInicial);
+            $('#updateModal #UpdateSaldoActual').val(SaldoActual);
+            $('#updateModal #UpdateCuotaMensual').val(CuotaMensual);
+            $('#updateModal #UpdateInteresGenerado').val(InteresGenerado);
+            $('#updateModal #UpdateIdCredito').val(IdCredito);
+
+            $('#updateModal').modal('show');
+        });
+    });
+
+
+    $(document).ready(function () {
+        $('.delete-btn').on('click', function () {
+            var ID = $(this).data('id'); // Corregir aquí
+            $('#confirmDeleteModal #deleteID').val(ID);
+            $('#confirmDeleteModal').modal('show');
+        });
+    });
+</script>
