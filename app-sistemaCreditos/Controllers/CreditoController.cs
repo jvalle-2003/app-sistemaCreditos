@@ -6,6 +6,7 @@ using System.Data;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Security.Cryptography;
 using System.Web;
 using System.Web.Mvc;
 
@@ -57,16 +58,15 @@ namespace app_sistemaCreditos.Controllers
             var empleados = GetApiData("http://localhost/api-sistemaCreditos/rest/api/listarEmpleados");
 
             // Pasar los datos a la vista
-            ViewBag.Deudores = deudores;
-            ViewBag.Articulos = articulos;
-            ViewBag.Amortizaciones = amortizaciones;
-            ViewBag.Empleados = empleados;
-
+            ViewBag.Deudores = deudores.Tables[0];
+            ViewBag.Articulos = articulos.Tables[0];
+            ViewBag.Amortizaciones = amortizaciones.Tables[0];
+            ViewBag.Empleados = empleados.Tables[0];
 
             return View(dsi);
         }
 
-        private List<dynamic> GetApiData(string apiUrl)
+        private DataSet GetApiData(string apiUrl)
         {
             var request = (HttpWebRequest)WebRequest.Create(apiUrl);
             request.Method = "GET";
@@ -86,13 +86,12 @@ namespace app_sistemaCreditos.Controllers
                             responseBody = objReader.ReadToEnd();
                         }
                     }
-                    return JsonConvert.DeserializeObject<List<dynamic>>(responseBody);
+                    return JsonConvert.DeserializeObject<DataSet>(responseBody);
                 }
             }
             catch (Exception ex)
             {
-                // Manejo de errores
-                return new List<dynamic>();
+                return new DataSet();
             }
         }
 

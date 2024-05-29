@@ -17,7 +17,7 @@ namespace app_sistemaCreditos.Controllers
         public ActionResult Amortizacion(string ID)
         {
             DataSet dsi = new DataSet();
-            var url = "";,
+            var url = "";
 
             if (string.IsNullOrEmpty(ID))
                 url = "http://localhost/api-sistemaCreditos/rest/api/listarAMortizaciones";

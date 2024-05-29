@@ -54,7 +54,7 @@
                         <tr>
                             <th>ID</th>
                             <th>Tipo</th>
-                            <th>TasaInteres</th>
+                            <th>Tasa Interés</th>
 
                         </tr>
                     </thead>
@@ -68,7 +68,7 @@
                                     <tr>
                                         <td>@Model.Tables[0].Rows[x]["ID"]</td>
                                         <td>@Model.Tables[0].Rows[x]["Tipo"]</td>
-                                        <td>@Model.Tables[0].Rows[x]["TasaInteres"]</td>
+                                        <td>@Model.Tables[0].Rows[x]["TasaInteres"]%</td>
 
                                         <td>
                                             <button type="button" class="btn btn-danger btn-sm delete-btn"
@@ -108,8 +108,8 @@
                         <input type="text" class="form-control" id="Tipo" name="Tipo" placeholder="Tipo de Amortizacion" required>
                     </div>
                     <div class="mb-3">
-                        <label for="TasaInteres" class="form-label">Tasa de Interes</label>
-                        <input type="number" min="0" class="form-control" id="TasaInteres" name="TasaInteres" placeholder="Tasa de Interes" required>
+                        <label for="TasaInteres" class="form-label">Tasa de Interés %</label>
+                        <input type="number" step="0.01" min="0" class="form-control" id="TasaInteres" name="TasaInteres" placeholder="Tasa de Interés %" required>
                     </div>
 
                 </div>
@@ -138,8 +138,8 @@
                         <input type="text" class="form-control" id="UpdateTipo" name="Tipo" placeholder="Tipo de Amortizacion" required>
                     </div>
                     <div class="mb-3">
-                        <label for="UpdateTasaInteres" class="form-label">TasaInteres</label>
-                        <input type="number" min="0" class="form-control" id="UpdateTasaInteres" name="TasaInteres" placeholder="Tasa de Interes" required>
+                        <label for="UpdateTasaInteres" class="form-label">Tasa Interés %</label>
+                        <input type="number" min="0" class="form-control" id="UpdateTasaInteres" name="TasaInteres" placeholder="Tasa de Interés %" required>
                     </div>
                 </div>
                 <div class="modal-footer">

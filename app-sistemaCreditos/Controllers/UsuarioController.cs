@@ -51,7 +51,41 @@ namespace app_sistemaCreditos.Controllers
             {
                 ViewBag.ErrorMessage = "Error al realizar la acción";
             }
+
+            var empleados = GetApiData("http://localhost/api-sistemaCreditos/rest/api/listarEmpleados");
+
+            ViewBag.Empleados = empleados.Tables[0];
+
             return View(dsi);
+        }
+
+        private DataSet GetApiData(string apiUrl)
+        {
+            var request = (HttpWebRequest)WebRequest.Create(apiUrl);
+            request.Method = "GET";
+            request.ContentType = "application/json";
+            request.Accept = "application/json";
+
+            string responseBody;
+
+            try
+            {
+                using (WebResponse response = request.GetResponse())
+                {
+                    using (Stream strReader = response.GetResponseStream())
+                    {
+                        using (StreamReader objReader = new StreamReader(strReader))
+                        {
+                            responseBody = objReader.ReadToEnd();
+                        }
+                    }
+                    return JsonConvert.DeserializeObject<DataSet>(responseBody);
+                }
+            }
+            catch (Exception ex)
+            {
+                return new DataSet();
+            }
         }
 
         public ActionResult newUsuario(string Usuario, string Contraseña, int IdEmpleado)

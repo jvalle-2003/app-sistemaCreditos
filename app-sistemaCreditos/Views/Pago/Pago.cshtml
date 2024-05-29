@@ -1,4 +1,6 @@
 ﻿﻿@model System.Data.DataSet
+@using System.Data
+
 @{
     ViewBag.Title = "Pago";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -52,10 +54,10 @@
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>IdCredito</th>
+                            <th>Id Crédito</th>
                             <th>MontoPago</th>
                             <th>FechaPago</th>
-                            <th>IdEmpleado</th>
+                            <th>Empleado</th>
 
                         </tr>
                     </thead>
@@ -109,16 +111,42 @@
                 </div>
                 <div class="modal-body">
                     <div class="mb-3">
-                        <label for="IdCredito" class="form-label">IdCredito</label>
-                        <input type="number" class="form-control" id="IdCredito" name="IdCredito" placeholder="Id del Credito" required>
+                        <label for="IdCredito" class="form-label">Id Crédito</label>
+                        <select class="form-control" id="IdCredito" name="IdCredito" required>
+                            <option value="" selected disabled>Seleccione un Crédito</option>
+                            @if (ViewBag.Creditos != null)
+                            {
+                                foreach (DataRow row in ViewBag.Creditos.Rows)
+                                {
+                                    <option value="@row["Id"]">@row["ID"] </option>
+                                }
+                            }
+                            else
+                            {
+                                <option>No se encontraron creditos</option>
+                            }
+                        </select>
                     </div>
                     <div class="mb-3">
-                        <label for="MontoPago" class="form-label">MontoPago</label>
+                        <label for="MontoPago" class="form-label">Monto a Pagar</label>
                         <input type="number" class="form-control" id="MontoPago" name="MontoPago" placeholder="Monto del Pago a Realizar" required>
                     </div>
                     <div class="mb-3">
-                        <label for="IdEmpleado" class="form-label">IdEmpleado</label>
-                        <input type="number" class="form-control" id="IdEmpleado" name="IdEmpleado" placeholder="ID del Empleado" required>
+                        <label for="IdEmpleado" class="form-label">Empleado</label>
+                        <select class="form-control" id="IdEmpleado" name="IdEmpleado" required>
+                            <option value="" selected disabled>Seleccione un Empleado</option>
+                            @if (ViewBag.Empleados != null)
+                            {
+                                foreach (DataRow row in ViewBag.Empleados.Rows)
+                                {
+                                    <option value="@row["Id"]">@row["ID"] | @row["Nombres"] @row["Apellidos"]  </option>
+                                }
+                            }
+                            else
+                            {
+                                <option>No se encontraron empleados</option>
+                            }
+                        </select>
                     </div>
 
                 </div>
@@ -143,20 +171,43 @@
                 <div class="modal-body">
                     <input type="hidden" id="UpdateID" name="ID" />
                     <div class="mb-3">
-                        <label for="UpdateIdCredito" class="form-label">IdCredito</label>
-                        <input type="number" class="form-control" id="UpdateIdCredito" name="IdCredito" placeholder="ID del Credito" required>
+                        <label for="UpdateIdCredito" class="form-label">Id Crédito</label>
+                        <select class="form-control" id="UpdateIdCredito" name="IdCredito" required>
+                            <option value="" selected disabled>Seleccione un Crédito</option>
+                            @if (ViewBag.Creditos != null)
+                            {
+                                foreach (DataRow row in ViewBag.Creditos.Rows)
+                                {
+                                    <option value="@row["Id"]">@row["ID"] </option>
+                                }
+                            }
+                            else
+                            {
+                                <option>No se encontraron creditos</option>
+                            }
+                        </select>
                     </div>
                     <div class="mb-3">
-                        <label for="UpdateMontoPago" class="form-label">MontoPago</label>
+                        <label for="UpdateMontoPago" class="form-label">Monto a Pagar</label>
                         <input type="number" class="form-control" id="UpdateMontoPago" name="MontoPago" placeholder="Monto del Pago" required>
                     </div>
                     <div class="mb-3">
-                        <label for="UpdateIdEmpleado" class="form-label">IdEmpleado</label>
-                        <input type="number" class="form-control" id="UpdateIdEmpleado" name="IdEmpleado" placeholder="ID del Empleado" required>
+                        <label for="UpdateIdEmpleado" class="form-label">Empleado</label>
+                        <select class="form-control" id="UpdateIdEmpleado" name="IdEmpleado" required>
+                            <option value="" selected disabled>Seleccione un Empleado</option>
+                            @if (ViewBag.Empleados != null)
+                            {
+                                foreach (DataRow row in ViewBag.Empleados.Rows)
+                                {
+                                    <option value="@row["Id"]">@row["ID"] | @row["Nombres"] @row["Apellidos"]  </option>
+                                }
+                            }
+                            else
+                            {
+                                <option>No se encontraron empleados</option>
+                            }
+                        </select>
                     </div>
-
-
-
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">Cancelar</button>

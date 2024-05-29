@@ -1,4 +1,6 @@
 ﻿@model System.Data.DataSet
+@using System.Data
+
 @{
     ViewBag.Title = "Saldo";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -6,12 +8,12 @@
 
 @if (TempData["ErrorMessage"] != null)
 {
-<div class="alert alert-danger alert-dismissible fade show" role="alert">
-    @TempData["ErrorMessage"]
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-    </button>
-</div>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        @TempData["ErrorMessage"]
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
 }
 
 @if (TempData["SuccessMessage"] != null)
@@ -57,8 +59,8 @@
                             <th>Saldo Actual</th>
                             <th>Cuota Mensual</th>
                             <th>Interes Generado</th>
-                            <th>Id Credito</th>
-                            <th>Id Credito</th>
+                            <th>Id Crédito</th>
+                            <th>Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -129,7 +131,20 @@
                     </div>
                     <div class="mb-3">
                         <label for="IdCredito" class="form-label">Id de Crédito</label>
-                        <input type="number" class="form-control" id="IdCredito" name="IdCredito" placeholder="Ingrese Datos" required>
+                        <select class="form-control" id="IdCredito" name="IdCredito" required>
+                            <option value="" selected disabled>Seleccione un Crédito</option>
+                            @if (ViewBag.Creditos != null)
+                            {
+                                foreach (DataRow row in ViewBag.Creditos.Rows)
+                                {
+                                    <option value="@row["Id"]">@row["ID"]</option>
+                                }
+                            }
+                            else
+                            {
+                                <option>No se encontraron creditos</option>
+                            }
+                        </select>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -169,7 +184,20 @@
                     </div>
                     <div class="mb-3">
                         <label for="UpdateIdCredito" class="form-label">Id de Crédito</label>
-                        <input type="number" class="form-control" id="UpdateIdCredito" name="IdCredito" placeholder="Ingrese el id del crédito" required>
+                        <select class="form-control" id="UpdateIdCredito" name="IdCredito" required>
+                            <option value="" selected disabled>Seleccione un Crédito</option>
+                            @if (ViewBag.Creditos != null)
+                            {
+                                foreach (DataRow row in ViewBag.Creditos.Rows)
+                                {
+                                    <option value="@row["Id"]">@row["ID"]</option>
+                                }
+                            }
+                            else
+                            {
+                                <option>No se encontraron creditos</option>
+                            }
+                        </select>
                     </div>
                 </div>
 
