@@ -59,6 +59,12 @@
                             <th>Amortización</th>
                             <th>Empleado Creador</th>
                             <th>Fecha de Crédito</th>
+                            <th>Monto Total</th>
+                            <th>Saldo Pagado</th>
+                            <th>Cuotas</th>
+                            <th>Cuota</th>
+                            <th>Acciones</th>
+
                         </tr>
                     </thead>
                     <tbody>
@@ -75,9 +81,15 @@
                                         <td>@Model.Tables[0].Rows[x]["IdAmortizacion"]</td>
                                         <td>@Model.Tables[0].Rows[x]["IdEmpleado"]</td>
                                         <td>@Model.Tables[0].Rows[x]["FechaInicio"]</td>
+                                        <td>Q.@string.Format("{0:N}", Convert.ToDecimal(@Model.Tables[0].Rows[x]["SaldoAmortizacion"]))</td>
+                                        <td>Q.@string.Format("{0:N}", Convert.ToDecimal(@Model.Tables[0].Rows[x]["SaldoActual"]))</td>
+                                        <td>@Model.Tables[0].Rows[x]["NoCuotas"]</td>
+                                        <td>Q.@string.Format("{0:N}", Convert.ToDecimal(@Model.Tables[0].Rows[x]["Cuota"]))</td>
+
                                         <td>
                                             <button type="button" class="btn btn-danger btn-sm delete-btn"
-                                                    data-id="@Model.Tables[0].Rows[x]["Id"]">
+                                                    data-id="@Model.Tables[0].Rows[x]["Id"]"
+                                                    data-idarticulo="@Model.Tables[0].Rows[x]["IdArticulo"]">
                                                 <i class="fa fa-trash"></i> Eliminar
                                             </button>
                                             <button type="button"
@@ -87,7 +99,8 @@
                                                     data-idarticulo="@Model.Tables[0].Rows[x]["IdArticulo"]"
                                                     data-idamortizacion="@Model.Tables[0].Rows[x]["IdAmortizacion"]"
                                                     data-idempleado="@Model.Tables[0].Rows[x]["IdEmpleado"]"
-                                                    data-fechainicio="@Model.Tables[0].Rows[x]["FechaInicio"]">
+                                                    data-fechainicio="@Model.Tables[0].Rows[x]["FechaInicio"]"
+                                                    data-nocuotas="@Model.Tables[0].Rows[x]["NoCuotas"]">
                                                 <i class="fa fa-edit"></i> Editar
                                             </button>
                                         </td>
@@ -179,6 +192,17 @@
                             }
                         </select>
                     </div>
+                    <div class="mb-3">
+                        <label for="NoCuotas" class="form-label">Número de Cuotas</label>
+                        <select class="form-control" id="NoCuotas" name="NoCuotas" required>
+                            <option value="" selected disabled>Seleccione una cuota</option>
+                            <option value="3">3</option>
+                            <option value="6">6</option>
+                            <option value="12">12</option>
+                            <option value="18">18</option>
+                            <option value="24">24</option>
+                        </select>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancelar</button>
@@ -200,6 +224,7 @@
                 </div>
                 <div class="modal-body">
                     <input type="hidden" id="UpdateID" name="ID" />
+                    <input type="hidden" id="UpdateIdArticuloAnterior" name="IdArticuloAnterior" />
                     <div class="mb-3">
                         <label for="UpdateIdDeudor" class="form-label">Deudor</label>
                         <select class="form-control" id="UpdateIdDeudor" name="IdDeudor" required>
@@ -215,7 +240,7 @@
                             {
                                 <option>No se encontraron deudores</option>
                             }
-                        </select>                    
+                        </select>
                     </div>
                     <div class="mb-3">
                         <label for="UpdateIdArticulo" class="form-label">Articulo</label>
@@ -249,7 +274,7 @@
                             {
                                 <option>No se encontraron amortizaciones</option>
                             }
-                        </select>                    
+                        </select>
                     </div>
                     <div class="mb-3">
                         <label for="UpdateIdEmpleado" class="form-label">Empleado</label>
@@ -266,9 +291,19 @@
                             {
                                 <option>No se encontraron empleados</option>
                             }
-                        </select>                    
+                        </select>
                     </div>
-
+                    <div class="mb-3">
+                        <label for="NoCuotas" class="form-label">Número de Cuotas</label>
+                        <select class="form-control" id="UpdateNoCuotas" name="NoCuotas" required>
+                            <option value="" selected disabled>Seleccione una cuota</option>
+                            <option value="3">3</option>
+                            <option value="6">6</option>
+                            <option value="12">12</option>
+                            <option value="18">18</option>
+                            <option value="24">24</option>
+                        </select>
+                    </div>
 
                 </div>
                 <div class="modal-footer">
@@ -290,6 +325,7 @@
                 </div>
                 <div class="modal-body">
                     <input type="hidden" id="deleteID" name="ID" />
+                    <input type="hidden" id="IdArticulo" name="IdArticulo" />
                     ¿Estás seguro de que deseas eliminar este crédito?
                 </div>
                 <div class="modal-footer">
@@ -313,13 +349,15 @@
             var idarticulo = $(this).data('idarticulo');
             var idamortizacion = $(this).data('idamortizacion');
             var idempleado = $(this).data('idempleado');
+            var nocuotas = $(this).data('nocuotas');
 
             $('#updateModal #UpdateID').val(id);
             $('#updateModal #UpdateIdDeudor').val(iddeudor);
             $('#updateModal #UpdateIdArticulo').val(idarticulo);
+            $('#updateModal #UpdateIdArticuloAnterior').val(idarticulo);
             $('#updateModal #UpdateIdAmortizacion').val(idamortizacion);
             $('#updateModal #UpdateIdEmpleado').val(idempleado);
-
+            $('#updateModal #UpdateNoCuotas').val(nocuotas);
             $('#updateModal').modal('show');
         });
     });
@@ -327,8 +365,11 @@
     $(document).ready(function () {
         $('.delete-btn').on('click', function () {
             var id = $(this).data('id');
+            var idArticulo = $(this).data('idarticulo');
 
             $('#confirmDeleteModal #deleteID').val(id);
+            $('#confirmDeleteModal #IdArticulo').val(idArticulo);
+
 
             $('#confirmDeleteModal').modal('show');
         });

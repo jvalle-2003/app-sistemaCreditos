@@ -77,7 +77,8 @@
 
                                         <td>
                                             <button type="button" class="btn btn-danger btn-sm delete-btn"
-                                                    data-id="@Model.Tables[0].Rows[x]["ID"]">
+                                                    data-id="@Model.Tables[0].Rows[x]["ID"]"
+                                                    data-idcredito="@Model.Tables[0].Rows[x]["IdCredito"]">
                                                 <i class="fa fa-trash"></i> Eliminar
                                             </button>
                                             <button type="button"
@@ -118,7 +119,7 @@
                             {
                                 foreach (DataRow row in ViewBag.Creditos.Rows)
                                 {
-                                    <option value="@row["Id"]">@row["ID"] </option>
+                                    <option value="@row["Id"]">@row["ID"] | @row["Cuota"] </option>
                                 }
                             }
                             else
@@ -129,7 +130,9 @@
                     </div>
                     <div class="mb-3">
                         <label for="MontoPago" class="form-label">Monto a Pagar</label>
-                        <input type="number" class="form-control" id="MontoPago" name="MontoPago" placeholder="Monto del Pago a Realizar" required>
+                        <input type="hidden" class="form-control" id="MontoPago" name="MontoPago" placeholder="Seleccione credito primero" >
+                        <input   type="text" class="form-control" id="MontoPagoDesactivado" name="MontoPagoDesactivado" placeholder="Seleccione credito primero" disabled>
+
                     </div>
                     <div class="mb-3">
                         <label for="IdEmpleado" class="form-label">Empleado</label>
@@ -170,15 +173,16 @@
                 </div>
                 <div class="modal-body">
                     <input type="hidden" id="UpdateID" name="ID" />
+                    <input type="hidden" id="UpdateIDCreditoAnterior" name="IDCreditoAnterior" />
                     <div class="mb-3">
                         <label for="UpdateIdCredito" class="form-label">Id Crédito</label>
                         <select class="form-control" id="UpdateIdCredito" name="IdCredito" required>
                             <option value="" selected disabled>Seleccione un Crédito</option>
-                            @if (ViewBag.Creditos != null)
+                            @if (ViewBag.TodosCreditos != null)
                             {
-                                foreach (DataRow row in ViewBag.Creditos.Rows)
+                                foreach (DataRow row in ViewBag.TodosCreditos.Rows)
                                 {
-                                    <option value="@row["Id"]">@row["ID"] </option>
+                                    <option value="@row["Id"]">@row["ID"] | @row["Cuota"] </option>
                                 }
                             }
                             else
@@ -189,7 +193,8 @@
                     </div>
                     <div class="mb-3">
                         <label for="UpdateMontoPago" class="form-label">Monto a Pagar</label>
-                        <input type="number" class="form-control" id="UpdateMontoPago" name="MontoPago" placeholder="Monto del Pago" required>
+                        <input type="hidden" class="form-control" id="UpdateMontoPago" name="MontoPago" placeholder="Seleccione credito primero">
+                        <input type="text" class="form-control" id="UpdateMontoPagoDesactivado" name="MontoPagoDesactivado" placeholder="Seleccione credito primero" disabled>
                     </div>
                     <div class="mb-3">
                         <label for="UpdateIdEmpleado" class="form-label">Empleado</label>
@@ -228,7 +233,8 @@
                 </div>
                 <div class="modal-body">
                     <input type="hidden" id="deleteID" name="ID" />
-                    ¿Estás seguro de que deseas eliminar este articulo?
+                    <input type="hidden" id="deleteIDCredito" name="IdCredito" />
+                    ¿Estás seguro de que deseas eliminar este Pago?
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">Cancelar</button>
@@ -254,7 +260,9 @@
 
             $('#updateModal #UpdateID').val(id);
             $('#updateModal #UpdateIdCredito').val(idcredito);
+            $('#updateModal #UpdateIDCreditoAnterior').val(idcredito);
             $('#updateModal #UpdateMontoPago').val(montopago);
+            $('#updateModal #UpdateMontoPagoDesactivado').val(montopago);
             $('#updateModal #UpdateIdEmpleado').val(idempleado);
 
             $('#updateModal').modal('show');
@@ -264,10 +272,31 @@
     $(document).ready(function () {
         $('.delete-btn').on('click', function () {
             var id = $(this).data('id');
+            var idcredito = $(this).data('idcredito');
 
             $('#confirmDeleteModal #deleteID').val(id);
+            $('#confirmDeleteModal #deleteIDCredito').val(idcredito);
 
             $('#confirmDeleteModal').modal('show');
         });
     });
+
+    $(document).ready(function () {
+        $('#IdCredito').change(function () {
+            var selectedCuota = $(this).find(':selected').text().split('|')[1].trim();
+            $('#MontoPago').val(selectedCuota);
+            $('#MontoPagoDesactivado').val(selectedCuota);
+        });
+    });
+
+    $(document).ready(function () {
+        $('#UpdateIdCredito').change(function () {
+            var selectedCuota = $(this).find(':selected').text().split('|')[1].trim();
+            $('#UpdateMontoPago').val(selectedCuota);
+            $('#UpdateMontoPagoDesactivado').val(selectedCuota);
+        });
+    });
 </script>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+

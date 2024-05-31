@@ -70,7 +70,7 @@
                                         <td>@Model.Tables[0].Rows[x]["Id"]</td>
                                         <td>@Model.Tables[0].Rows[x]["Nombre"]</td>
                                         <td>@Model.Tables[0].Rows[x]["Descripcion"]</td>
-                                        <td>@Model.Tables[0].Rows[x]["Precio"]</td>
+                                        <td>Q.@string.Format("{0:N}", Convert.ToDecimal(@Model.Tables[0].Rows[x]["Precio"]))</td>
                                         <td>@Model.Tables[0].Rows[x]["Stock"]</td>
                                         <td>
                                             <button type="button" class="btn btn-danger btn-sm delete-btn"
@@ -121,7 +121,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="Stock" class="form-label">Stock</label>
-                        <input type="number" class="form-control" id="Stock" name="Stock" placeholder="Stock del Articulo" required>
+                        <input type="number" min="0" class="form-control" id="Stock" name="Stock" placeholder="Stock del Articulo" required>
                     </div>
 
 
@@ -160,7 +160,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="UpdateStock" class="form-label">Stock</label>
-                        <input type="number" class="form-control" id="UpdateStock" name="Stock" placeholder="Stock del Articulo" required>
+                        <input type="number" min="0" class="form-control" id="UpdateStock" name="Stock" placeholder="Stock del Articulo" required>
                     </div>
 
 
