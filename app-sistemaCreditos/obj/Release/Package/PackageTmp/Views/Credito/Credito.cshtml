@@ -1,32 +1,30 @@
-﻿﻿@model System.Data.DataSet
+﻿@model System.Data.DataSet
+@using System.Data
+
 @{
     ViewBag.Title = "Credito";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
+@if (TempData["ErrorMessage"] != null)
 {
-    <div class="alert alert-warning alert-dismissible fade show" role="alert">
-        @ViewBag.ErrorMessage
-        <button id="myAlert" type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        @TempData["ErrorMessage"]
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
     </div>
 }
 
-@if (!string.IsNullOrEmpty(ViewBag.SuccessMessage))
+@if (TempData["SuccessMessage"] != null)
 {
-    <div class="alert alert-success" role="alert">
-        @ViewBag.SuccessMessage
-    </div>
     <div class="alert alert-success alert-dismissible fade show" role="alert">
-        @ViewBag.SuccessMessage
-        <button id="myAlert" type="button" class="close" data-dismiss="alert" aria-label="Close">
+        @TempData["SuccessMessage"]
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
     </div>
 }
-
 
 <form action="@Url.Action("Credito", "Credito")" method="post">
 
@@ -44,10 +42,15 @@
 
             </div>
             <div class="col-md-6">
-                <button type="button" class="btn btn-success" style="margin-bottom: 10px;" data-toggle="modal" data-target="#myModal">
+                <button type="button" class="btn btn-success" style="margin-bottom: 10px;"
+                        data-toggle="modal" data-target="#createUserModal">
                     <i class="fa fa-plus"></i> Agregar Nuevo
                 </button>
+                <a href="@Url.Action("GenerateReport", "Credito")" class="btn btn-secondary" style="margin-bottom: 10px; background-color: gray; border-color: gray;">
+                    <i class="fa fa-print" style="color: white;"></i> Generar Reporte
+                </a>
             </div>
+            
         </div>
 
         <div class="row" style="margin-top: 20px;">
@@ -56,11 +59,17 @@
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>IdDeudor</th>
-                            <th>IdArticulo</th>
-                            <th>IdAmortizacion</th>
-                            <th>IdEmpleado</th>
-                            <th>FechaInicio</th>
+                            <th>Deudor</th>
+                            <th>Articulo</th>
+                            <th>Amortización</th>
+                            <th>Empleado Creador</th>
+                            <th>Fecha de Crédito</th>
+                            <th>Monto Total</th>
+                            <th>Saldo Pagado</th>
+                            <th>Cuotas</th>
+                            <th>Cuota</th>
+                            <th>Acciones</th>
+
                         </tr>
                     </thead>
                     <tbody>
@@ -77,9 +86,15 @@
                                         <td>@Model.Tables[0].Rows[x]["IdAmortizacion"]</td>
                                         <td>@Model.Tables[0].Rows[x]["IdEmpleado"]</td>
                                         <td>@Model.Tables[0].Rows[x]["FechaInicio"]</td>
+                                        <td>Q.@string.Format("{0:N}", Convert.ToDecimal(@Model.Tables[0].Rows[x]["SaldoAmortizacion"]))</td>
+                                        <td>Q.@string.Format("{0:N}", Convert.ToDecimal(@Model.Tables[0].Rows[x]["SaldoActual"]))</td>
+                                        <td>@Model.Tables[0].Rows[x]["NoCuotas"]</td>
+                                        <td>Q.@string.Format("{0:N}", Convert.ToDecimal(@Model.Tables[0].Rows[x]["Cuota"]))</td>
+
                                         <td>
                                             <button type="button" class="btn btn-danger btn-sm delete-btn"
-                                                    data-id="@Model.Tables[0].Rows[x]["Id"]">
+                                                    data-id="@Model.Tables[0].Rows[x]["Id"]"
+                                                    data-idarticulo="@Model.Tables[0].Rows[x]["IdArticulo"]">
                                                 <i class="fa fa-trash"></i> Eliminar
                                             </button>
                                             <button type="button"
@@ -89,7 +104,8 @@
                                                     data-idarticulo="@Model.Tables[0].Rows[x]["IdArticulo"]"
                                                     data-idamortizacion="@Model.Tables[0].Rows[x]["IdAmortizacion"]"
                                                     data-idempleado="@Model.Tables[0].Rows[x]["IdEmpleado"]"
-                                                    data-fechainicio="@Model.Tables[0].Rows[x]["FechaInicio"]">
+                                                    data-fechainicio="@Model.Tables[0].Rows[x]["FechaInicio"]"
+                                                    data-nocuotas="@Model.Tables[0].Rows[x]["NoCuotas"]">
                                                 <i class="fa fa-edit"></i> Editar
                                             </button>
                                         </td>
@@ -114,20 +130,83 @@
                 </div>
                 <div class="modal-body">
                     <div class="mb-3">
-                        <label for="IdDeudor" class="form-label">IdDeudor</label>
-                        <input type="number" class="form-control" id="IdDeudor" name="IdDeudor" placeholder="ID del Deudor"required>
+                        <label for="IdDeudor" class="form-label">Deudor</label>
+                        <select class="form-control" id="IdDeudor" name="IdDeudor" required>
+                            <option value="" selected disabled>Seleccione un Deudor</option>
+                            @if (ViewBag.Deudores != null)
+                            {
+                                foreach (DataRow row in ViewBag.Deudores.Rows)
+                                {
+                                    <option value="@row["Id"]">@row["ID"] | @row["Nombre"]</option>
+                                }
+                            }
+                            else
+                            {
+                                <option>No se encontraron deudores</option>
+                            }
+                        </select>
                     </div>
                     <div class="mb-3">
-                        <label for="IdArticulo" class="form-label">IdArticulo</label>
-                        <input type="number" class="form-control" id="IdArticulo" name="IdArticulo" placeholder="ID del Articulo"required>
+                        <label for="IdArticulo" class="form-label">Articulo</label>
+                        <select class="form-control" id="IdArticulo" name="IdArticulo" required>
+                            <option value="" selected disabled>Seleccione un Articulo</option>
+                            @if (ViewBag.Articulos != null)
+                            {
+                                foreach (DataRow row in ViewBag.Articulos.Rows)
+                                {
+                                    <option value="@row["Id"]">@row["ID"] | @row["Nombre"]</option>
+                                }
+                            }
+                            else
+                            {
+                                <option>No se encontraron articulos</option>
+                            }
+                        </select>
                     </div>
                     <div class="mb-3">
-                        <label for="IdAmortizacion" class="form-label">IdAmortizacion</label>
-                        <input type="number" class="form-control" id="IdAmortizacion" name="IdAmortizacion" placeholder="ID de la Amortizacion"required>
+                        <label for="IdAmortizacion" class="form-label">Amortización</label>
+                        <select class="form-control" id="IdAmortizacion" name="IdAmortizacion" required>
+                            <option value="" selected disabled>Seleccione una Amortización</option>
+                            @if (ViewBag.Amortizaciones != null)
+                            {
+                                foreach (DataRow row in ViewBag.Amortizaciones.Rows)
+                                {
+                                    <option value="@row["Id"]">@row["ID"] | @row["Tipo"] | @row["tasaInteres"]  </option>
+                                }
+                            }
+                            else
+                            {
+                                <option>No se encontraron amortizaciones</option>
+                            }
+                        </select>
                     </div>
                     <div class="mb-3">
-                        <label for="IdEmpleado" class="form-label">IdEmpleado</label>
-                        <input type="number" class="form-control" id="IdEmpleado" name="IdEmpleado" placeholder="ID del Empleado"required>
+                        <label for="IdEmpleado" class="form-label">Empleado</label>
+                        <select class="form-control" id="IdEmpleado" name="IdEmpleado" required>
+                            <option value="" selected disabled>Seleccione un Empleado</option>
+                            @if (ViewBag.Empleados != null)
+                            {
+                                foreach (DataRow row in ViewBag.Empleados.Rows)
+                                {
+                                    <option value="@row["Id"]">@row["ID"] | @row["Nombres"] @row["Apellidos"]</option>
+                                }
+                            }
+                            else
+                            {
+                                <option>No se encontraron empleados</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="NoCuotas" class="form-label">Número de Cuotas</label>
+                        <select class="form-control" id="NoCuotas" name="NoCuotas" required>
+                            <option value="" selected disabled>Seleccione una cuota</option>
+                            <option value="3">3</option>
+                            <option value="6">6</option>
+                            <option value="12">12</option>
+                            <option value="18">18</option>
+                            <option value="24">24</option>
+                        </select>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -150,27 +229,90 @@
                 </div>
                 <div class="modal-body">
                     <input type="hidden" id="UpdateID" name="ID" />
+                    <input type="hidden" id="UpdateIdArticuloAnterior" name="IdArticuloAnterior" />
                     <div class="mb-3">
-                        <label for="UpdateIdDeudor" class="form-label">IdDeudor</label>
-                        <input type="number" class="form-control" id="UpdateIdDeudor" name="IdDeudor" placeholder="ID del Deudor">
+                        <label for="UpdateIdDeudor" class="form-label">Deudor</label>
+                        <select class="form-control" id="UpdateIdDeudor" name="IdDeudor" required>
+                            <option value="" selected disabled>Seleccione un Deudor</option>
+                            @if (ViewBag.Deudores != null)
+                            {
+                                foreach (DataRow row in ViewBag.Deudores.Rows)
+                                {
+                                    <option value="@row["Id"]">@row["ID"] | @row["Nombre"]</option>
+                                }
+                            }
+                            else
+                            {
+                                <option>No se encontraron deudores</option>
+                            }
+                        </select>
                     </div>
                     <div class="mb-3">
-                        <label for="UpdateIdArticulo" class="form-label">IdArticulo</label>
-                        <input type="number" class="form-control" id="UpdateIdArticulo" name="IdArticulo" placeholder="ID del Articulo">
+                        <label for="UpdateIdArticulo" class="form-label">Articulo</label>
+                        <select class="form-control" id="UpdateIdArticulo" name="IdArticulo" required>
+                            <option value="" selected disabled>Seleccione un Articulo</option>
+                            @if (ViewBag.Articulos != null)
+                            {
+                                foreach (DataRow row in ViewBag.Articulos.Rows)
+                                {
+                                    <option value="@row["Id"]">@row["ID"] | @row["Nombre"]</option>
+                                }
+                            }
+                            else
+                            {
+                                <option>No se encontraron articulos</option>
+                            }
+                        </select>
                     </div>
                     <div class="mb-3">
-                        <label for="UpdateIdAmortizacion" class="form-label">IdAmortizacion</label>
-                        <input type="number" class="form-control" id="UpdateIdAmortizacion" name="IdAmortizacion" placeholder="ID de la Amortizacion">
+                        <label for="UpdateIdAmortizacion" class="form-label">Amortización</label>
+                        <select class="form-control" id="UpdateIdAmortizacion" name="IdAmortizacion" required>
+                            <option value="" selected disabled>Seleccione una Amortización</option>
+                            @if (ViewBag.Amortizaciones != null)
+                            {
+                                foreach (DataRow row in ViewBag.Amortizaciones.Rows)
+                                {
+                                    <option value="@row["Id"]">@row["ID"] | @row["Tipo"] | @row["tasaInteres"]</option>
+                                }
+                            }
+                            else
+                            {
+                                <option>No se encontraron amortizaciones</option>
+                            }
+                        </select>
                     </div>
                     <div class="mb-3">
-                        <label for="UpdateIdEmpleado" class="form-label">IdEmpleado</label>
-                        <input type="number" class="form-control" id="UpdateIdEmpleado" name="IdEmpleado" placeholder="ID del Empleado">
+                        <label for="UpdateIdEmpleado" class="form-label">Empleado</label>
+                        <select class="form-control" id="UpdateIdEmpleado" name="IdEmpleado" required>
+                            <option value="" selected disabled>Seleccione un Empleado</option>
+                            @if (ViewBag.Empleados != null)
+                            {
+                                foreach (DataRow row in ViewBag.Empleados.Rows)
+                                {
+                                    <option value="@row["Id"]">@row["ID"] | @row["Nombres"] @row["Apellidos"]</option>
+                                }
+                            }
+                            else
+                            {
+                                <option>No se encontraron empleados</option>
+                            }
+                        </select>
                     </div>
-
+                    <div class="mb-3">
+                        <label for="NoCuotas" class="form-label">Número de Cuotas</label>
+                        <select class="form-control" id="UpdateNoCuotas" name="NoCuotas" required>
+                            <option value="" selected disabled>Seleccione una cuota</option>
+                            <option value="3">3</option>
+                            <option value="6">6</option>
+                            <option value="12">12</option>
+                            <option value="18">18</option>
+                            <option value="24">24</option>
+                        </select>
+                    </div>
 
                 </div>
                 <div class="modal-footer">
-                    <button class="btn btn-outline-primary" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">Cancelar</button>
                     <button type="submit" class="btn btn-outline-primary">Guardar</button>
                 </div>
             </div>
@@ -188,10 +330,11 @@
                 </div>
                 <div class="modal-body">
                     <input type="hidden" id="deleteID" name="ID" />
-                    ¿Estás seguro de que deseas eliminar este articulo?
+                    <input type="hidden" id="IdArticulo" name="IdArticulo" />
+                    ¿Estás seguro de que deseas eliminar este crédito?
                 </div>
                 <div class="modal-footer">
-                    <button class="btn btn-outline-primary" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">Cancelar</button>
                     <button type="submit" class="btn btn-outline-danger" id="confirmDeleteBtn">Eliminar</button>
                 </div>
             </div>
@@ -211,13 +354,15 @@
             var idarticulo = $(this).data('idarticulo');
             var idamortizacion = $(this).data('idamortizacion');
             var idempleado = $(this).data('idempleado');
+            var nocuotas = $(this).data('nocuotas');
 
             $('#updateModal #UpdateID').val(id);
             $('#updateModal #UpdateIdDeudor').val(iddeudor);
             $('#updateModal #UpdateIdArticulo').val(idarticulo);
+            $('#updateModal #UpdateIdArticuloAnterior').val(idarticulo);
             $('#updateModal #UpdateIdAmortizacion').val(idamortizacion);
             $('#updateModal #UpdateIdEmpleado').val(idempleado);
-
+            $('#updateModal #UpdateNoCuotas').val(nocuotas);
             $('#updateModal').modal('show');
         });
     });
@@ -225,8 +370,11 @@
     $(document).ready(function () {
         $('.delete-btn').on('click', function () {
             var id = $(this).data('id');
+            var idArticulo = $(this).data('idarticulo');
 
             $('#confirmDeleteModal #deleteID').val(id);
+            $('#confirmDeleteModal #IdArticulo').val(idArticulo);
+
 
             $('#confirmDeleteModal').modal('show');
         });

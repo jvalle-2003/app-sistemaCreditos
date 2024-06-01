@@ -1,27 +1,26 @@
 ﻿@model System.Data.DataSet
+@using System.Data
+
 @{
     ViewBag.Title = "Saldo";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
+@if (TempData["ErrorMessage"] != null)
 {
-    <div class="alert alert-warning alert-dismissible fade show" role="alert">
-        @ViewBag.ErrorMessage
-        <button id="myAlert" type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        @TempData["ErrorMessage"]
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
     </div>
 }
 
-@if (!string.IsNullOrEmpty(ViewBag.SuccessMessage))
+@if (TempData["SuccessMessage"] != null)
 {
-    <div class="alert alert-success" role="alert">
-        @ViewBag.SuccessMessage
-    </div>
     <div class="alert alert-success alert-dismissible fade show" role="alert">
-        @ViewBag.SuccessMessage
-        <button id="myAlert" type="button" class="close" data-dismiss="alert" aria-label="Close">
+        @TempData["SuccessMessage"]
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
     </div>
@@ -60,8 +59,8 @@
                             <th>Saldo Actual</th>
                             <th>Cuota Mensual</th>
                             <th>Interes Generado</th>
-                            <th>Id Credito</th>
-                            <th>Id Credito</th>
+                            <th>Id Crédito</th>
+                            <th>Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -116,23 +115,36 @@
                 <div class="modal-body">
                     <div class="mb-3">
                         <label for="SaldoInicial" class="form-label">Saldo Inicial</label>
-                        <input type="number" class="form-control" id="SaldoInicial" name="SaldoInicial" placeholder="Ingrese Datos"required>
+                        <input type="number" class="form-control" id="SaldoInicial" name="SaldoInicial" placeholder="Ingrese Datos" required>
                     </div>
                     <div class="mb-3">
                         <label for="SaldoActual" class="form-label">Saldo Actual</label>
-                        <input type="number" class="form-control" id="SaldoActual" name="SaldoActual" placeholder="Ingrese Datos"required>
+                        <input type="number" class="form-control" id="SaldoActual" name="SaldoActual" placeholder="Ingrese Datos" required>
                     </div>
                     <div class="mb-3">
                         <label for="CuotaMensual" class="form-label">Cuota Mensual</label>
-                        <input type="number" class="form-control" id="CuotaMensual" name="CuotaMensual" placeholder="Ingrese Datos"required>
+                        <input type="number" class="form-control" id="CuotaMensual" name="CuotaMensual" placeholder="Ingrese Datos" required>
                     </div>
                     <div class="mb-3">
                         <label for="InteresGenerado" class="form-label">Interes Generado</label>
-                        <input type="number" class="form-control" id="InteresGenerado" name="InteresGenerado" placeholder="Ingrese Datos"required>
+                        <input type="number" class="form-control" id="InteresGenerado" name="InteresGenerado" placeholder="Ingrese Datos" required>
                     </div>
                     <div class="mb-3">
                         <label for="IdCredito" class="form-label">Id de Crédito</label>
-                        <input type="number" class="form-control" id="IdCredito" name="IdCredito" placeholder="Ingrese Datos"required>
+                        <select class="form-control" id="IdCredito" name="IdCredito" required>
+                            <option value="" selected disabled>Seleccione un Crédito</option>
+                            @if (ViewBag.Creditos != null)
+                            {
+                                foreach (DataRow row in ViewBag.Creditos.Rows)
+                                {
+                                    <option value="@row["Id"]">@row["ID"]</option>
+                                }
+                            }
+                            else
+                            {
+                                <option>No se encontraron creditos</option>
+                            }
+                        </select>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -156,28 +168,41 @@
                     <input type="hidden" id="UpdateID" name="ID" />
                     <div class="mb-3">
                         <label for="UpdateSaldoInicial" class="form-label">Saldo Inicial</label>
-                        <input type="text" class="form-control" id="UpdateSaldoInicial" name="SaldoInicial" placeholder="Ingrese un Monto">
+                        <input type="text" class="form-control" id="UpdateSaldoInicial" name="SaldoInicial" placeholder="Ingrese un Monto" required>
                     </div>
                     <div class="mb-3">
                         <label for="UpdateSaldoActual" class="form-label">Saldo Actual</label>
-                        <input type="text" class="form-control" id="UpdateSaldoActual" name="SaldoActual" placeholder="Ingrese el Saldo Actual">
+                        <input type="text" class="form-control" id="UpdateSaldoActual" name="SaldoActual" placeholder="Ingrese el Saldo Actual" required>
                     </div>
                     <div class="mb-3">
                         <label for="UpdateCuotaMensual" class="form-label">Cuota Mensual</label>
-                        <input type="text" class="form-control" id="UpdateCuotaMensual" name="CuotaMensual" placeholder="Ingrese el monto de la cuota">
+                        <input type="text" class="form-control" id="UpdateCuotaMensual" name="CuotaMensual" placeholder="Ingrese el monto de la cuota" required>
                     </div>
                     <div class="mb-3">
                         <label for="UpdateInteresGenerado" class="form-label">Interes Generado</label>
-                        <input type="text" class="form-control" id="UpdateInteresGenerado" name="InteresGenerado" placeholder="Ingrese el monto del Interes">
+                        <input type="text" class="form-control" id="UpdateInteresGenerado" name="InteresGenerado" placeholder="Ingrese el monto del Interes" required>
                     </div>
                     <div class="mb-3">
                         <label for="UpdateIdCredito" class="form-label">Id de Crédito</label>
-                        <input type="number" class="form-control" id="UpdateIdCredito" name="IdCredito" placeholder="Ingrese el id del crédito">
+                        <select class="form-control" id="UpdateIdCredito" name="IdCredito" required>
+                            <option value="" selected disabled>Seleccione un Crédito</option>
+                            @if (ViewBag.Creditos != null)
+                            {
+                                foreach (DataRow row in ViewBag.Creditos.Rows)
+                                {
+                                    <option value="@row["Id"]">@row["ID"]</option>
+                                }
+                            }
+                            else
+                            {
+                                <option>No se encontraron creditos</option>
+                            }
+                        </select>
                     </div>
                 </div>
 
                 <div class="modal-footer">
-                    <button class="btn btn-outline-primary" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">Cancelar</button>
                     <button type="submit" class="btn btn-outline-primary">Guardar</button>
                 </div>
             </div>
@@ -198,7 +223,7 @@
                     ¿Estás seguro de que deseas eliminar este saldo?
                 </div>
                 <div class="modal-footer">
-                    <button class="btn btn-outline-secondary" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">Cancelar</button>
                     <button type="submit" class="btn btn-outline-danger" id="confirmDeleteBtn">Eliminar</button>
                 </div>
             </div>

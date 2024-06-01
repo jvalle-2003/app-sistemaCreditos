@@ -1,0 +1,157 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Dell\\source\\repos\\app-sistemaCreditoss\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{B5E693F6-3DB3-4177-8988-9E06CE3D71C8}|app-sistemaCreditos\\app-sistemaCreditos.csproj|c:\\users\\dell\\source\\repos\\app-sistemacreditoss\\app-sistemacreditos\\controllers\\amortizacioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B5E693F6-3DB3-4177-8988-9E06CE3D71C8}|app-sistemaCreditos\\app-sistemaCreditos.csproj|solutionrelative:app-sistemacreditos\\controllers\\amortizacioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B5E693F6-3DB3-4177-8988-9E06CE3D71C8}|app-sistemaCreditos\\app-sistemaCreditos.csproj|c:\\users\\dell\\source\\repos\\app-sistemacreditoss\\app-sistemacreditos\\views\\amortizacion\\amortizacion.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B5E693F6-3DB3-4177-8988-9E06CE3D71C8}|app-sistemaCreditos\\app-sistemaCreditos.csproj|solutionrelative:app-sistemacreditos\\views\\amortizacion\\amortizacion.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B5E693F6-3DB3-4177-8988-9E06CE3D71C8}|app-sistemaCreditos\\app-sistemaCreditos.csproj|c:\\users\\dell\\source\\repos\\app-sistemacreditoss\\app-sistemacreditos\\views\\deudor\\deudor.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B5E693F6-3DB3-4177-8988-9E06CE3D71C8}|app-sistemaCreditos\\app-sistemaCreditos.csproj|solutionrelative:app-sistemacreditos\\views\\deudor\\deudor.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B5E693F6-3DB3-4177-8988-9E06CE3D71C8}|app-sistemaCreditos\\app-sistemaCreditos.csproj|c:\\users\\dell\\source\\repos\\app-sistemacreditoss\\app-sistemacreditos\\views\\pago\\pago.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B5E693F6-3DB3-4177-8988-9E06CE3D71C8}|app-sistemaCreditos\\app-sistemaCreditos.csproj|solutionrelative:app-sistemacreditos\\views\\pago\\pago.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B5E693F6-3DB3-4177-8988-9E06CE3D71C8}|app-sistemaCreditos\\app-sistemaCreditos.csproj|c:\\users\\dell\\source\\repos\\app-sistemacreditoss\\app-sistemacreditos\\views\\empleado\\empleado.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B5E693F6-3DB3-4177-8988-9E06CE3D71C8}|app-sistemaCreditos\\app-sistemaCreditos.csproj|solutionrelative:app-sistemacreditos\\views\\empleado\\empleado.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B5E693F6-3DB3-4177-8988-9E06CE3D71C8}|app-sistemaCreditos\\app-sistemaCreditos.csproj|c:\\users\\dell\\source\\repos\\app-sistemacreditoss\\app-sistemacreditos\\views\\credito\\credito.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B5E693F6-3DB3-4177-8988-9E06CE3D71C8}|app-sistemaCreditos\\app-sistemaCreditos.csproj|solutionrelative:app-sistemacreditos\\views\\credito\\credito.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B5E693F6-3DB3-4177-8988-9E06CE3D71C8}|app-sistemaCreditos\\app-sistemaCreditos.csproj|c:\\users\\dell\\source\\repos\\app-sistemacreditoss\\app-sistemacreditos\\views\\articulo\\articulo.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B5E693F6-3DB3-4177-8988-9E06CE3D71C8}|app-sistemaCreditos\\app-sistemaCreditos.csproj|solutionrelative:app-sistemacreditos\\views\\articulo\\articulo.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 319,
+          "SelectedChildIndex": 6,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Pago.cshtml",
+              "DocumentMoniker": "C:\\Users\\Dell\\source\\repos\\app-sistemaCreditoss\\app-sistemaCreditos\\Views\\Pago\\Pago.cshtml",
+              "RelativeDocumentMoniker": "app-sistemaCreditos\\Views\\Pago\\Pago.cshtml",
+              "ToolTip": "C:\\Users\\Dell\\source\\repos\\app-sistemaCreditoss\\app-sistemaCreditos\\Views\\Pago\\Pago.cshtml",
+              "RelativeToolTip": "app-sistemaCreditos\\Views\\Pago\\Pago.cshtml",
+              "ViewState": "AQIAABUAAAAAAAAAAAAAAC0AAABBAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-06-01T13:01:03.6Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Empleado.cshtml",
+              "DocumentMoniker": "C:\\Users\\Dell\\source\\repos\\app-sistemaCreditoss\\app-sistemaCreditos\\Views\\Empleado\\Empleado.cshtml",
+              "RelativeDocumentMoniker": "app-sistemaCreditos\\Views\\Empleado\\Empleado.cshtml",
+              "ToolTip": "C:\\Users\\Dell\\source\\repos\\app-sistemaCreditoss\\app-sistemaCreditos\\Views\\Empleado\\Empleado.cshtml",
+              "RelativeToolTip": "app-sistemaCreditos\\Views\\Empleado\\Empleado.cshtml",
+              "ViewState": "AQIAABsAAAAAAAAAAAAAADMAAABBAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-06-01T13:00:41.043Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Deudor.cshtml",
+              "DocumentMoniker": "C:\\Users\\Dell\\source\\repos\\app-sistemaCreditoss\\app-sistemaCreditos\\Views\\Deudor\\Deudor.cshtml",
+              "RelativeDocumentMoniker": "app-sistemaCreditos\\Views\\Deudor\\Deudor.cshtml",
+              "ToolTip": "C:\\Users\\Dell\\source\\repos\\app-sistemaCreditoss\\app-sistemaCreditos\\Views\\Deudor\\Deudor.cshtml",
+              "RelativeToolTip": "app-sistemaCreditos\\Views\\Deudor\\Deudor.cshtml",
+              "ViewState": "AQIAABIAAAAAAAAAAAAAACsAAABAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-06-01T13:00:27.277Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Credito.cshtml",
+              "DocumentMoniker": "C:\\Users\\Dell\\source\\repos\\app-sistemaCreditoss\\app-sistemaCreditos\\Views\\Credito\\Credito.cshtml",
+              "RelativeDocumentMoniker": "app-sistemaCreditos\\Views\\Credito\\Credito.cshtml",
+              "ToolTip": "C:\\Users\\Dell\\source\\repos\\app-sistemaCreditoss\\app-sistemaCreditos\\Views\\Credito\\Credito.cshtml",
+              "RelativeToolTip": "app-sistemaCreditos\\Views\\Credito\\Credito.cshtml",
+              "ViewState": "AQIAACEAAAAAAAAAAAAAAC0AAABBAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-06-01T13:00:14.746Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AmortizacionController.cs",
+              "DocumentMoniker": "C:\\Users\\Dell\\source\\repos\\app-sistemaCreditoss\\app-sistemaCreditos\\Controllers\\AmortizacionController.cs",
+              "RelativeDocumentMoniker": "app-sistemaCreditos\\Controllers\\AmortizacionController.cs",
+              "ToolTip": "C:\\Users\\Dell\\source\\repos\\app-sistemaCreditoss\\app-sistemaCreditos\\Controllers\\AmortizacionController.cs",
+              "RelativeToolTip": "app-sistemaCreditos\\Controllers\\AmortizacionController.cs",
+              "ViewState": "AQIAADwAAAAAAAAAAAAYwFAAAABEAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-01T12:40:01.303Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Amortizacion.cshtml",
+              "DocumentMoniker": "C:\\Users\\Dell\\source\\repos\\app-sistemaCreditoss\\app-sistemaCreditos\\Views\\Amortizacion\\Amortizacion.cshtml",
+              "RelativeDocumentMoniker": "app-sistemaCreditos\\Views\\Amortizacion\\Amortizacion.cshtml",
+              "ToolTip": "C:\\Users\\Dell\\source\\repos\\app-sistemaCreditoss\\app-sistemaCreditos\\Views\\Amortizacion\\Amortizacion.cshtml",
+              "RelativeToolTip": "app-sistemaCreditos\\Views\\Amortizacion\\Amortizacion.cshtml",
+              "ViewState": "AQIAAGAAAAAAAAAAAADwv38AAAAHAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-06-01T12:39:57.348Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Articulo.cshtml",
+              "DocumentMoniker": "C:\\Users\\Dell\\source\\repos\\app-sistemaCreditoss\\app-sistemaCreditos\\Views\\Articulo\\Articulo.cshtml",
+              "RelativeDocumentMoniker": "app-sistemaCreditos\\Views\\Articulo\\Articulo.cshtml",
+              "ToolTip": "C:\\Users\\Dell\\source\\repos\\app-sistemaCreditoss\\app-sistemaCreditos\\Views\\Articulo\\Articulo.cshtml",
+              "RelativeToolTip": "app-sistemaCreditos\\Views\\Articulo\\Articulo.cshtml",
+              "ViewState": "AQIAACEAAAAAAAAAAAAAACsAAAA6AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-06-01T12:16:27.18Z",
+              "EditorCaption": ""
+            }
+          ]
+        },
+        {
+          "DockedWidth": 81,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

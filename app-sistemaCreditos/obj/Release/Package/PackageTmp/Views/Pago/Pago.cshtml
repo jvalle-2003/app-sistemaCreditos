@@ -1,32 +1,30 @@
-﻿﻿@model System.Data.DataSet
+﻿@model System.Data.DataSet
+@using System.Data
+
 @{
     ViewBag.Title = "Pago";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
+@if (TempData["ErrorMessage"] != null)
 {
-    <div class="alert alert-warning alert-dismissible fade show" role="alert">
-        @ViewBag.ErrorMessage
-        <button id="myAlert" type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        @TempData["ErrorMessage"]
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
     </div>
 }
 
-@if (!string.IsNullOrEmpty(ViewBag.SuccessMessage))
+@if (TempData["SuccessMessage"] != null)
 {
-    <div class="alert alert-success" role="alert">
-        @ViewBag.SuccessMessage
-    </div>
     <div class="alert alert-success alert-dismissible fade show" role="alert">
-        @ViewBag.SuccessMessage
-        <button id="myAlert" type="button" class="close" data-dismiss="alert" aria-label="Close">
+        @TempData["SuccessMessage"]
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
     </div>
 }
-
 
 <form action="@Url.Action("Pago", "Pago")" method="post">
 
@@ -44,10 +42,15 @@
 
             </div>
             <div class="col-md-6">
-                <button type="button" class="btn btn-success" style="margin-bottom: 10px;" data-toggle="modal" data-target="#myModal">
+                <button type="button" class="btn btn-success" style="margin-bottom: 10px;"
+                        data-toggle="modal" data-target="#createUserModal">
                     <i class="fa fa-plus"></i> Agregar Nuevo
                 </button>
+                <a href="@Url.Action("GenerateReport", "Pago")" class="btn btn-secondary" style="margin-bottom: 10px; background-color: gray; border-color: gray;">
+                    <i class="fa fa-print" style="color: white;"></i> Generar Reporte
+                </a>
             </div>
+            
         </div>
 
         <div class="row" style="margin-top: 20px;">
@@ -56,10 +59,10 @@
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>IdCredito</th>
+                            <th>Id Crédito</th>
                             <th>MontoPago</th>
                             <th>FechaPago</th>
-                            <th>IdEmpleado</th>
+                            <th>Empleado</th>
 
                         </tr>
                     </thead>
@@ -79,7 +82,8 @@
 
                                         <td>
                                             <button type="button" class="btn btn-danger btn-sm delete-btn"
-                                                    data-id="@Model.Tables[0].Rows[x]["ID"]">
+                                                    data-id="@Model.Tables[0].Rows[x]["ID"]"
+                                                    data-idcredito="@Model.Tables[0].Rows[x]["IdCredito"]">
                                                 <i class="fa fa-trash"></i> Eliminar
                                             </button>
                                             <button type="button"
@@ -113,21 +117,49 @@
                 </div>
                 <div class="modal-body">
                     <div class="mb-3">
-                        <label for="IdCredito" class="form-label">IdCredito</label>
-                        <input type="number" class="form-control" id="IdCredito" name="IdCredito" placeholder="Id del Credito" required>
+                        <label for="IdCredito" class="form-label">Id Crédito</label>
+                        <select class="form-control" id="IdCredito" name="IdCredito" required>
+                            <option value="" selected disabled>Seleccione un Crédito</option>
+                            @if (ViewBag.Creditos != null)
+                            {
+                                foreach (DataRow row in ViewBag.Creditos.Rows)
+                                {
+                                    <option value="@row["Id"]">@row["ID"] | @row["Cuota"] </option>
+                                }
+                            }
+                            else
+                            {
+                                <option>No se encontraron creditos</option>
+                            }
+                        </select>
                     </div>
                     <div class="mb-3">
-                        <label for="MontoPago" class="form-label">MontoPago</label>
-                        <input type="number" class="form-control" id="MontoPago" name="MontoPago" placeholder="Monto del Pago a Realizar" required>
+                        <label for="MontoPago" class="form-label">Monto a Pagar</label>
+                        <input type="hidden" class="form-control" id="MontoPago" name="MontoPago" placeholder="Seleccione credito primero">
+                        <input type="text" class="form-control" id="MontoPagoDesactivado" name="MontoPagoDesactivado" placeholder="Seleccione credito primero" disabled>
+
                     </div>
                     <div class="mb-3">
-                        <label for="IdEmpleado" class="form-label">IdEmpleado</label>
-                        <input type="number" class="form-control" id="IdEmpleado" name="IdEmpleado" placeholder="ID del Empleado" required>
+                        <label for="IdEmpleado" class="form-label">Empleado</label>
+                        <select class="form-control" id="IdEmpleado" name="IdEmpleado" required>
+                            <option value="" selected disabled>Seleccione un Empleado</option>
+                            @if (ViewBag.Empleados != null)
+                            {
+                                foreach (DataRow row in ViewBag.Empleados.Rows)
+                                {
+                                    <option value="@row["Id"]">@row["ID"] | @row["Nombres"] @row["Apellidos"]  </option>
+                                }
+                            }
+                            else
+                            {
+                                <option>No se encontraron empleados</option>
+                            }
+                        </select>
                     </div>
 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancelar</button>
                     <button type="submit" class="btn btn-outline-primary">Guardar</button>
                 </div>
             </div>
@@ -146,24 +178,49 @@
                 </div>
                 <div class="modal-body">
                     <input type="hidden" id="UpdateID" name="ID" />
+                    <input type="hidden" id="UpdateIDCreditoAnterior" name="IDCreditoAnterior" />
                     <div class="mb-3">
-                        <label for="UpdateIdCredito" class="form-label">IdCredito</label>
-                        <input type="number" class="form-control" id="UpdateIdCredito" name="IdCredito" placeholder="ID del Credito" required>
+                        <label for="UpdateIdCredito" class="form-label">Id Crédito</label>
+                        <select class="form-control" id="UpdateIdCredito" name="IdCredito" required>
+                            <option value="" selected disabled>Seleccione un Crédito</option>
+                            @if (ViewBag.TodosCreditos != null)
+                            {
+                                foreach (DataRow row in ViewBag.TodosCreditos.Rows)
+                                {
+                                    <option value="@row["Id"]">@row["ID"] | @row["Cuota"] </option>
+                                }
+                            }
+                            else
+                            {
+                                <option>No se encontraron creditos</option>
+                            }
+                        </select>
                     </div>
                     <div class="mb-3">
-                        <label for="UpdateMontoPago" class="form-label">MontoPago</label>
-                        <input type="number" class="form-control" id="UpdateMontoPago" name="MontoPago" placeholder="Monto del Pago" required>
+                        <label for="UpdateMontoPago" class="form-label">Monto a Pagar</label>
+                        <input type="hidden" class="form-control" id="UpdateMontoPago" name="MontoPago" placeholder="Seleccione credito primero">
+                        <input type="text" class="form-control" id="UpdateMontoPagoDesactivado" name="MontoPagoDesactivado" placeholder="Seleccione credito primero" disabled>
                     </div>
                     <div class="mb-3">
-                        <label for="UpdateIdEmpleado" class="form-label">IdEmpleado</label>
-                        <input type="number" class="form-control" id="UpdateIdEmpleado" name="IdEmpleado" placeholder="ID del Empleado" required>
+                        <label for="UpdateIdEmpleado" class="form-label">Empleado</label>
+                        <select class="form-control" id="UpdateIdEmpleado" name="IdEmpleado" required>
+                            <option value="" selected disabled>Seleccione un Empleado</option>
+                            @if (ViewBag.Empleados != null)
+                            {
+                                foreach (DataRow row in ViewBag.Empleados.Rows)
+                                {
+                                    <option value="@row["Id"]">@row["ID"] | @row["Nombres"] @row["Apellidos"]  </option>
+                                }
+                            }
+                            else
+                            {
+                                <option>No se encontraron empleados</option>
+                            }
+                        </select>
                     </div>
-
-
-
                 </div>
                 <div class="modal-footer">
-                    <button  type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">Cancelar</button>
                     <button type="submit" class="btn btn-outline-primary">Guardar</button>
                 </div>
             </div>
@@ -181,7 +238,8 @@
                 </div>
                 <div class="modal-body">
                     <input type="hidden" id="deleteID" name="ID" />
-                    ¿Estás seguro de que deseas eliminar este articulo?
+                    <input type="hidden" id="deleteIDCredito" name="IdCredito" />
+                    ¿Estás seguro de que deseas eliminar este Pago?
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">Cancelar</button>
@@ -202,12 +260,14 @@
             var id = $(this).data('id');
             var idcredito = $(this).data('idcredito')
             var montopago = $(this).data('montopago');
-            var idempleado = $(this).data('idempleado'); 
+            var idempleado = $(this).data('idempleado');
 
 
             $('#updateModal #UpdateID').val(id);
             $('#updateModal #UpdateIdCredito').val(idcredito);
+            $('#updateModal #UpdateIDCreditoAnterior').val(idcredito);
             $('#updateModal #UpdateMontoPago').val(montopago);
+            $('#updateModal #UpdateMontoPagoDesactivado').val(montopago);
             $('#updateModal #UpdateIdEmpleado').val(idempleado);
 
             $('#updateModal').modal('show');
@@ -217,10 +277,30 @@
     $(document).ready(function () {
         $('.delete-btn').on('click', function () {
             var id = $(this).data('id');
+            var idcredito = $(this).data('idcredito');
 
             $('#confirmDeleteModal #deleteID').val(id);
+            $('#confirmDeleteModal #deleteIDCredito').val(idcredito);
 
             $('#confirmDeleteModal').modal('show');
         });
     });
+
+    $(document).ready(function () {
+        $('#IdCredito').change(function () {
+            var selectedCuota = $(this).find(':selected').text().split('|')[1].trim();
+            $('#MontoPago').val(selectedCuota);
+            $('#MontoPagoDesactivado').val(selectedCuota);
+        });
+    });
+
+    $(document).ready(function () {
+        $('#UpdateIdCredito').change(function () {
+            var selectedCuota = $(this).find(':selected').text().split('|')[1].trim();
+            $('#UpdateMontoPago').val(selectedCuota);
+            $('#UpdateMontoPagoDesactivado').val(selectedCuota);
+        });
+    });
 </script>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

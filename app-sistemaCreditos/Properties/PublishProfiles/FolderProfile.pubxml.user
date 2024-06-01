@@ -5,441 +5,678 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
 <Project>
   <PropertyGroup>
     <_PublishTargetUrl>C:\inetpub\wwwroot\app_creditos</_PublishTargetUrl>
-    <History>True|2024-05-19T16:56:35.7864602Z;False|2024-05-19T10:56:07.8681186-06:00;True|2024-05-18T22:16:58.8132082-06:00;True|2024-05-18T22:13:54.5306577-06:00;True|2024-05-18T21:45:17.9168287-06:00;True|2024-05-18T21:38:25.1555913-06:00;</History>
+    <History>True|2024-06-01T12:26:33.7098611Z;True|2024-05-19T10:56:35.7864602-06:00;False|2024-05-19T10:56:07.8681186-06:00;True|2024-05-18T22:16:58.8132082-06:00;True|2024-05-18T22:13:54.5306577-06:00;True|2024-05-18T21:45:17.9168287-06:00;True|2024-05-18T21:38:25.1555913-06:00;</History>
     <LastFailureDetails />
   </PropertyGroup>
   <ItemGroup>
     <File Include="bin/Antlr3.Runtime.dll">
-      <publishTime>05/17/2024 19:38:01</publishTime>
+      <publishTime>05/29/2024 22:48:39</publishTime>
     </File>
     <File Include="bin/Antlr3.Runtime.pdb">
-      <publishTime>05/17/2024 19:38:01</publishTime>
+      <publishTime>05/29/2024 22:48:39</publishTime>
     </File>
     <File Include="bin/app-sistemaCreditos.dll">
-      <publishTime>05/19/2024 10:56:35</publishTime>
+      <publishTime>06/01/2024 06:26:31</publishTime>
     </File>
     <File Include="bin/app-sistemaCreditos.pdb">
-      <publishTime>05/19/2024 10:56:35</publishTime>
+      <publishTime>06/01/2024 06:26:31</publishTime>
+    </File>
+    <File Include="bin/de/Microsoft.ReportViewer.Common.resources.dll">
+      <publishTime>05/31/2024 23:15:09</publishTime>
+    </File>
+    <File Include="bin/de/Microsoft.ReportViewer.DataVisualization.resources.dll">
+      <publishTime>05/31/2024 23:15:09</publishTime>
+    </File>
+    <File Include="bin/de/Microsoft.ReportViewer.Design.resources.dll">
+      <publishTime>05/31/2024 23:15:09</publishTime>
+    </File>
+    <File Include="bin/de/Microsoft.ReportViewer.WebDesign.resources.dll">
+      <publishTime>05/31/2024 23:15:09</publishTime>
+    </File>
+    <File Include="bin/de/Microsoft.ReportViewer.WebForms.resources.dll">
+      <publishTime>05/31/2024 23:15:09</publishTime>
+    </File>
+    <File Include="bin/de/Microsoft.ReportViewer.WinForms.resources.dll">
+      <publishTime>05/31/2024 23:15:09</publishTime>
+    </File>
+    <File Include="bin/EnvDTE.dll">
+      <publishTime>01/11/2024 11:02:28</publishTime>
+    </File>
+    <File Include="bin/es/Microsoft.ReportViewer.Common.resources.dll">
+      <publishTime>05/31/2024 23:15:09</publishTime>
+    </File>
+    <File Include="bin/es/Microsoft.ReportViewer.DataVisualization.resources.dll">
+      <publishTime>05/31/2024 23:15:09</publishTime>
+    </File>
+    <File Include="bin/es/Microsoft.ReportViewer.Design.resources.dll">
+      <publishTime>05/31/2024 23:15:09</publishTime>
+    </File>
+    <File Include="bin/es/Microsoft.ReportViewer.WebDesign.resources.dll">
+      <publishTime>05/31/2024 23:15:09</publishTime>
+    </File>
+    <File Include="bin/es/Microsoft.ReportViewer.WebForms.resources.dll">
+      <publishTime>05/31/2024 23:15:09</publishTime>
+    </File>
+    <File Include="bin/es/Microsoft.ReportViewer.WinForms.resources.dll">
+      <publishTime>05/31/2024 23:15:09</publishTime>
     </File>
     <File Include="bin/es/System.Web.Helpers.resources.dll">
-      <publishTime>05/17/2024 19:38:01</publishTime>
+      <publishTime>05/27/2022 17:36:16</publishTime>
     </File>
     <File Include="bin/es/System.Web.Mvc.resources.dll">
-      <publishTime>05/17/2024 19:38:01</publishTime>
+      <publishTime>05/27/2022 17:36:26</publishTime>
     </File>
     <File Include="bin/es/System.Web.Optimization.resources.dll">
-      <publishTime>05/17/2024 19:38:01</publishTime>
+      <publishTime>02/11/2014 09:28:40</publishTime>
     </File>
     <File Include="bin/es/System.Web.Razor.resources.dll">
-      <publishTime>05/17/2024 19:38:01</publishTime>
+      <publishTime>05/27/2022 17:36:58</publishTime>
     </File>
     <File Include="bin/es/System.Web.WebPages.Deployment.resources.dll">
-      <publishTime>05/17/2024 19:38:01</publishTime>
+      <publishTime>05/27/2022 17:36:18</publishTime>
     </File>
     <File Include="bin/es/System.Web.WebPages.Razor.resources.dll">
-      <publishTime>05/17/2024 19:38:01</publishTime>
+      <publishTime>05/27/2022 17:36:38</publishTime>
     </File>
     <File Include="bin/es/System.Web.WebPages.resources.dll">
-      <publishTime>05/17/2024 19:38:01</publishTime>
+      <publishTime>05/27/2022 17:36:26</publishTime>
+    </File>
+    <File Include="bin/fr/Microsoft.ReportViewer.Common.resources.dll">
+      <publishTime>05/31/2024 23:15:09</publishTime>
+    </File>
+    <File Include="bin/fr/Microsoft.ReportViewer.DataVisualization.resources.dll">
+      <publishTime>05/31/2024 23:15:09</publishTime>
+    </File>
+    <File Include="bin/fr/Microsoft.ReportViewer.Design.resources.dll">
+      <publishTime>05/31/2024 23:15:09</publishTime>
+    </File>
+    <File Include="bin/fr/Microsoft.ReportViewer.WebDesign.resources.dll">
+      <publishTime>05/31/2024 23:15:09</publishTime>
+    </File>
+    <File Include="bin/fr/Microsoft.ReportViewer.WebForms.resources.dll">
+      <publishTime>05/31/2024 23:15:09</publishTime>
+    </File>
+    <File Include="bin/fr/Microsoft.ReportViewer.WinForms.resources.dll">
+      <publishTime>05/31/2024 23:15:09</publishTime>
+    </File>
+    <File Include="bin/it/Microsoft.ReportViewer.Common.resources.dll">
+      <publishTime>05/31/2024 23:15:09</publishTime>
+    </File>
+    <File Include="bin/it/Microsoft.ReportViewer.DataVisualization.resources.dll">
+      <publishTime>05/31/2024 23:15:09</publishTime>
+    </File>
+    <File Include="bin/it/Microsoft.ReportViewer.Design.resources.dll">
+      <publishTime>05/31/2024 23:15:09</publishTime>
+    </File>
+    <File Include="bin/it/Microsoft.ReportViewer.WebDesign.resources.dll">
+      <publishTime>05/31/2024 23:15:09</publishTime>
+    </File>
+    <File Include="bin/it/Microsoft.ReportViewer.WebForms.resources.dll">
+      <publishTime>05/31/2024 23:15:09</publishTime>
+    </File>
+    <File Include="bin/it/Microsoft.ReportViewer.WinForms.resources.dll">
+      <publishTime>05/31/2024 23:15:09</publishTime>
+    </File>
+    <File Include="bin/ja/Microsoft.ReportViewer.Common.resources.dll">
+      <publishTime>05/31/2024 23:15:09</publishTime>
+    </File>
+    <File Include="bin/ja/Microsoft.ReportViewer.DataVisualization.resources.dll">
+      <publishTime>05/31/2024 23:15:09</publishTime>
+    </File>
+    <File Include="bin/ja/Microsoft.ReportViewer.Design.resources.dll">
+      <publishTime>05/31/2024 23:15:09</publishTime>
+    </File>
+    <File Include="bin/ja/Microsoft.ReportViewer.WebDesign.resources.dll">
+      <publishTime>05/31/2024 23:15:09</publishTime>
+    </File>
+    <File Include="bin/ja/Microsoft.ReportViewer.WebForms.resources.dll">
+      <publishTime>05/31/2024 23:15:09</publishTime>
+    </File>
+    <File Include="bin/ja/Microsoft.ReportViewer.WinForms.resources.dll">
+      <publishTime>05/31/2024 23:15:09</publishTime>
+    </File>
+    <File Include="bin/ko/Microsoft.ReportViewer.Common.resources.dll">
+      <publishTime>05/31/2024 23:15:09</publishTime>
+    </File>
+    <File Include="bin/ko/Microsoft.ReportViewer.DataVisualization.resources.dll">
+      <publishTime>05/31/2024 23:15:09</publishTime>
+    </File>
+    <File Include="bin/ko/Microsoft.ReportViewer.Design.resources.dll">
+      <publishTime>05/31/2024 23:15:09</publishTime>
+    </File>
+    <File Include="bin/ko/Microsoft.ReportViewer.WebDesign.resources.dll">
+      <publishTime>05/31/2024 23:15:09</publishTime>
+    </File>
+    <File Include="bin/ko/Microsoft.ReportViewer.WebForms.resources.dll">
+      <publishTime>05/31/2024 23:15:09</publishTime>
+    </File>
+    <File Include="bin/ko/Microsoft.ReportViewer.WinForms.resources.dll">
+      <publishTime>05/31/2024 23:15:09</publishTime>
     </File>
     <File Include="bin/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll">
-      <publishTime>05/17/2024 19:38:01</publishTime>
+      <publishTime>05/29/2024 22:48:39</publishTime>
+    </File>
+    <File Include="bin/Microsoft.ReportViewer.Common.dll">
+      <publishTime>05/31/2024 23:15:09</publishTime>
+    </File>
+    <File Include="bin/Microsoft.ReportViewer.DataVisualization.dll">
+      <publishTime>05/31/2024 23:15:09</publishTime>
+    </File>
+    <File Include="bin/Microsoft.ReportViewer.Design.dll">
+      <publishTime>05/31/2024 23:15:09</publishTime>
+    </File>
+    <File Include="bin/Microsoft.ReportViewer.ProcessingObjectModel.dll">
+      <publishTime>05/31/2024 23:15:09</publishTime>
+    </File>
+    <File Include="bin/Microsoft.ReportViewer.WebDesign.dll">
+      <publishTime>05/31/2024 23:15:09</publishTime>
+    </File>
+    <File Include="bin/Microsoft.ReportViewer.WebForms.dll">
+      <publishTime>05/31/2024 23:15:09</publishTime>
+    </File>
+    <File Include="bin/Microsoft.ReportViewer.WinForms.dll">
+      <publishTime>05/31/2024 23:15:09</publishTime>
+    </File>
+    <File Include="bin/Microsoft.SqlServer.Types.dll">
+      <publishTime>05/31/2024 23:15:09</publishTime>
     </File>
     <File Include="bin/Microsoft.Web.Infrastructure.dll">
-      <publishTime>05/17/2024 19:38:01</publishTime>
+      <publishTime>05/29/2024 22:48:39</publishTime>
     </File>
     <File Include="bin/Newtonsoft.Json.dll">
-      <publishTime>05/17/2024 19:38:01</publishTime>
+      <publishTime>05/29/2024 22:48:39</publishTime>
+    </File>
+    <File Include="bin/pt/Microsoft.ReportViewer.Common.resources.dll">
+      <publishTime>05/31/2024 23:15:09</publishTime>
+    </File>
+    <File Include="bin/pt/Microsoft.ReportViewer.DataVisualization.resources.dll">
+      <publishTime>05/31/2024 23:15:09</publishTime>
+    </File>
+    <File Include="bin/pt/Microsoft.ReportViewer.Design.resources.dll">
+      <publishTime>05/31/2024 23:15:09</publishTime>
+    </File>
+    <File Include="bin/pt/Microsoft.ReportViewer.WebDesign.resources.dll">
+      <publishTime>05/31/2024 23:15:09</publishTime>
+    </File>
+    <File Include="bin/pt/Microsoft.ReportViewer.WebForms.resources.dll">
+      <publishTime>05/31/2024 23:15:09</publishTime>
+    </File>
+    <File Include="bin/pt/Microsoft.ReportViewer.WinForms.resources.dll">
+      <publishTime>05/31/2024 23:15:09</publishTime>
     </File>
     <File Include="bin/roslyn/csc.exe">
-      <publishTime>05/17/2024 19:38:01</publishTime>
+      <publishTime>05/29/2024 22:48:39</publishTime>
     </File>
     <File Include="bin/roslyn/csc.exe.config">
-      <publishTime>05/17/2024 19:38:01</publishTime>
+      <publishTime>05/29/2024 22:48:39</publishTime>
     </File>
     <File Include="bin/roslyn/csc.rsp">
-      <publishTime>05/17/2024 19:38:01</publishTime>
+      <publishTime>05/29/2024 22:48:39</publishTime>
     </File>
     <File Include="bin/roslyn/csi.exe">
-      <publishTime>05/17/2024 19:38:01</publishTime>
+      <publishTime>05/29/2024 22:48:39</publishTime>
     </File>
     <File Include="bin/roslyn/csi.exe.config">
-      <publishTime>05/17/2024 19:38:01</publishTime>
+      <publishTime>05/29/2024 22:48:39</publishTime>
     </File>
     <File Include="bin/roslyn/csi.rsp">
-      <publishTime>05/17/2024 19:38:01</publishTime>
+      <publishTime>05/29/2024 22:48:39</publishTime>
     </File>
     <File Include="bin/roslyn/Microsoft.Build.Tasks.CodeAnalysis.dll">
-      <publishTime>05/17/2024 19:38:01</publishTime>
+      <publishTime>05/29/2024 22:48:39</publishTime>
     </File>
     <File Include="bin/roslyn/Microsoft.CodeAnalysis.CSharp.dll">
-      <publishTime>05/17/2024 19:38:01</publishTime>
+      <publishTime>05/29/2024 22:48:39</publishTime>
     </File>
     <File Include="bin/roslyn/Microsoft.CodeAnalysis.CSharp.Scripting.dll">
-      <publishTime>05/17/2024 19:38:01</publishTime>
+      <publishTime>05/29/2024 22:48:39</publishTime>
     </File>
     <File Include="bin/roslyn/Microsoft.CodeAnalysis.dll">
-      <publishTime>05/17/2024 19:38:01</publishTime>
+      <publishTime>05/29/2024 22:48:39</publishTime>
     </File>
     <File Include="bin/roslyn/Microsoft.CodeAnalysis.Scripting.dll">
-      <publishTime>05/17/2024 19:38:01</publishTime>
+      <publishTime>05/29/2024 22:48:39</publishTime>
     </File>
     <File Include="bin/roslyn/Microsoft.CodeAnalysis.VisualBasic.dll">
-      <publishTime>05/17/2024 19:38:01</publishTime>
+      <publishTime>05/29/2024 22:48:39</publishTime>
     </File>
     <File Include="bin/roslyn/Microsoft.CSharp.Core.targets">
-      <publishTime>05/17/2024 19:38:01</publishTime>
+      <publishTime>05/29/2024 22:48:39</publishTime>
     </File>
     <File Include="bin/roslyn/Microsoft.DiaSymReader.Native.amd64.dll">
-      <publishTime>05/17/2024 19:38:01</publishTime>
+      <publishTime>05/29/2024 22:48:39</publishTime>
     </File>
     <File Include="bin/roslyn/Microsoft.DiaSymReader.Native.x86.dll">
-      <publishTime>05/17/2024 19:38:01</publishTime>
+      <publishTime>05/29/2024 22:48:39</publishTime>
     </File>
     <File Include="bin/roslyn/Microsoft.Managed.Core.targets">
-      <publishTime>05/17/2024 19:38:01</publishTime>
+      <publishTime>05/29/2024 22:48:39</publishTime>
     </File>
     <File Include="bin/roslyn/Microsoft.VisualBasic.Core.targets">
-      <publishTime>05/17/2024 19:38:01</publishTime>
+      <publishTime>05/29/2024 22:48:39</publishTime>
     </File>
     <File Include="bin/roslyn/Microsoft.Win32.Primitives.dll">
-      <publishTime>05/17/2024 19:38:01</publishTime>
+      <publishTime>05/29/2024 22:48:39</publishTime>
     </File>
     <File Include="bin/roslyn/System.AppContext.dll">
-      <publishTime>05/17/2024 19:38:01</publishTime>
+      <publishTime>05/29/2024 22:48:39</publishTime>
     </File>
     <File Include="bin/roslyn/System.Collections.Immutable.dll">
-      <publishTime>05/17/2024 19:38:01</publishTime>
+      <publishTime>05/29/2024 22:48:39</publishTime>
     </File>
     <File Include="bin/roslyn/System.Console.dll">
-      <publishTime>05/17/2024 19:38:01</publishTime>
+      <publishTime>05/29/2024 22:48:39</publishTime>
     </File>
     <File Include="bin/roslyn/System.Diagnostics.DiagnosticSource.dll">
-      <publishTime>05/17/2024 19:38:01</publishTime>
+      <publishTime>05/29/2024 22:48:39</publishTime>
     </File>
     <File Include="bin/roslyn/System.Diagnostics.FileVersionInfo.dll">
-      <publishTime>05/17/2024 19:38:01</publishTime>
+      <publishTime>05/29/2024 22:48:39</publishTime>
     </File>
     <File Include="bin/roslyn/System.Diagnostics.StackTrace.dll">
-      <publishTime>05/17/2024 19:38:01</publishTime>
+      <publishTime>05/29/2024 22:48:39</publishTime>
     </File>
     <File Include="bin/roslyn/System.Globalization.Calendars.dll">
-      <publishTime>05/17/2024 19:38:01</publishTime>
+      <publishTime>05/29/2024 22:48:39</publishTime>
     </File>
     <File Include="bin/roslyn/System.IO.Compression.dll">
-      <publishTime>05/17/2024 19:38:01</publishTime>
+      <publishTime>05/29/2024 22:48:39</publishTime>
     </File>
     <File Include="bin/roslyn/System.IO.Compression.ZipFile.dll">
-      <publishTime>05/17/2024 19:38:01</publishTime>
+      <publishTime>05/29/2024 22:48:39</publishTime>
     </File>
     <File Include="bin/roslyn/System.IO.FileSystem.dll">
-      <publishTime>05/17/2024 19:38:01</publishTime>
+      <publishTime>05/29/2024 22:48:39</publishTime>
     </File>
     <File Include="bin/roslyn/System.IO.FileSystem.Primitives.dll">
-      <publishTime>05/17/2024 19:38:01</publishTime>
+      <publishTime>05/29/2024 22:48:39</publishTime>
     </File>
     <File Include="bin/roslyn/System.Net.Http.dll">
-      <publishTime>05/17/2024 19:38:01</publishTime>
+      <publishTime>05/29/2024 22:48:39</publishTime>
     </File>
     <File Include="bin/roslyn/System.Net.Sockets.dll">
-      <publishTime>05/17/2024 19:38:01</publishTime>
+      <publishTime>05/29/2024 22:48:39</publishTime>
     </File>
     <File Include="bin/roslyn/System.Reflection.Metadata.dll">
-      <publishTime>05/17/2024 19:38:01</publishTime>
+      <publishTime>05/29/2024 22:48:39</publishTime>
     </File>
     <File Include="bin/roslyn/System.Runtime.InteropServices.RuntimeInformation.dll">
-      <publishTime>05/17/2024 19:38:01</publishTime>
+      <publishTime>05/29/2024 22:48:39</publishTime>
     </File>
     <File Include="bin/roslyn/System.Security.Cryptography.Algorithms.dll">
-      <publishTime>05/17/2024 19:38:01</publishTime>
+      <publishTime>05/29/2024 22:48:39</publishTime>
     </File>
     <File Include="bin/roslyn/System.Security.Cryptography.Encoding.dll">
-      <publishTime>05/17/2024 19:38:01</publishTime>
+      <publishTime>05/29/2024 22:48:39</publishTime>
     </File>
     <File Include="bin/roslyn/System.Security.Cryptography.Primitives.dll">
-      <publishTime>05/17/2024 19:38:01</publishTime>
+      <publishTime>05/29/2024 22:48:39</publishTime>
     </File>
     <File Include="bin/roslyn/System.Security.Cryptography.X509Certificates.dll">
-      <publishTime>05/17/2024 19:38:01</publishTime>
+      <publishTime>05/29/2024 22:48:39</publishTime>
     </File>
     <File Include="bin/roslyn/System.Text.Encoding.CodePages.dll">
-      <publishTime>05/17/2024 19:38:01</publishTime>
+      <publishTime>05/29/2024 22:48:39</publishTime>
     </File>
     <File Include="bin/roslyn/System.Threading.Tasks.Extensions.dll">
-      <publishTime>05/17/2024 19:38:01</publishTime>
+      <publishTime>05/29/2024 22:48:39</publishTime>
     </File>
     <File Include="bin/roslyn/System.ValueTuple.dll">
-      <publishTime>05/17/2024 19:38:01</publishTime>
+      <publishTime>05/29/2024 22:48:39</publishTime>
     </File>
     <File Include="bin/roslyn/System.Xml.ReaderWriter.dll">
-      <publishTime>05/17/2024 19:38:01</publishTime>
+      <publishTime>05/29/2024 22:48:39</publishTime>
     </File>
     <File Include="bin/roslyn/System.Xml.XmlDocument.dll">
-      <publishTime>05/17/2024 19:38:01</publishTime>
+      <publishTime>05/29/2024 22:48:39</publishTime>
     </File>
     <File Include="bin/roslyn/System.Xml.XPath.dll">
-      <publishTime>05/17/2024 19:38:01</publishTime>
+      <publishTime>05/29/2024 22:48:39</publishTime>
     </File>
     <File Include="bin/roslyn/System.Xml.XPath.XDocument.dll">
-      <publishTime>05/17/2024 19:38:01</publishTime>
+      <publishTime>05/29/2024 22:48:39</publishTime>
     </File>
     <File Include="bin/roslyn/vbc.exe">
-      <publishTime>05/17/2024 19:38:01</publishTime>
+      <publishTime>05/29/2024 22:48:39</publishTime>
     </File>
     <File Include="bin/roslyn/vbc.exe.config">
-      <publishTime>05/17/2024 19:38:01</publishTime>
+      <publishTime>05/29/2024 22:48:39</publishTime>
     </File>
     <File Include="bin/roslyn/vbc.rsp">
-      <publishTime>05/17/2024 19:38:01</publishTime>
+      <publishTime>05/29/2024 22:48:39</publishTime>
     </File>
     <File Include="bin/roslyn/VBCSCompiler.exe">
-      <publishTime>05/17/2024 19:38:01</publishTime>
+      <publishTime>05/29/2024 22:48:39</publishTime>
     </File>
     <File Include="bin/roslyn/VBCSCompiler.exe.config">
-      <publishTime>05/17/2024 19:38:01</publishTime>
+      <publishTime>05/29/2024 22:48:39</publishTime>
+    </File>
+    <File Include="bin/ru/Microsoft.ReportViewer.Common.resources.dll">
+      <publishTime>05/31/2024 23:15:09</publishTime>
+    </File>
+    <File Include="bin/ru/Microsoft.ReportViewer.DataVisualization.resources.dll">
+      <publishTime>05/31/2024 23:15:09</publishTime>
+    </File>
+    <File Include="bin/ru/Microsoft.ReportViewer.Design.resources.dll">
+      <publishTime>05/31/2024 23:15:09</publishTime>
+    </File>
+    <File Include="bin/ru/Microsoft.ReportViewer.WebDesign.resources.dll">
+      <publishTime>05/31/2024 23:15:09</publishTime>
+    </File>
+    <File Include="bin/ru/Microsoft.ReportViewer.WebForms.resources.dll">
+      <publishTime>05/31/2024 23:15:09</publishTime>
+    </File>
+    <File Include="bin/ru/Microsoft.ReportViewer.WinForms.resources.dll">
+      <publishTime>05/31/2024 23:15:09</publishTime>
+    </File>
+    <File Include="bin/SqlServerTypes/x64/msvcr120.dll">
+      <publishTime>05/31/2024 23:15:08</publishTime>
+    </File>
+    <File Include="bin/SqlServerTypes/x64/SqlServerSpatial140.dll">
+      <publishTime>05/31/2024 23:15:08</publishTime>
+    </File>
+    <File Include="bin/SqlServerTypes/x86/msvcr120.dll">
+      <publishTime>05/31/2024 23:15:08</publishTime>
+    </File>
+    <File Include="bin/SqlServerTypes/x86/SqlServerSpatial140.dll">
+      <publishTime>05/31/2024 23:15:08</publishTime>
+    </File>
+    <File Include="bin/stdole.dll">
+      <publishTime>02/01/2002 19:02:02</publishTime>
     </File>
     <File Include="bin/System.Web.Helpers.dll">
-      <publishTime>05/17/2024 19:38:01</publishTime>
+      <publishTime>05/29/2024 22:48:39</publishTime>
     </File>
     <File Include="bin/System.Web.Mvc.dll">
-      <publishTime>05/17/2024 19:38:01</publishTime>
+      <publishTime>05/29/2024 22:48:39</publishTime>
     </File>
     <File Include="bin/System.Web.Optimization.dll">
-      <publishTime>05/17/2024 19:38:01</publishTime>
+      <publishTime>05/29/2024 22:48:39</publishTime>
     </File>
     <File Include="bin/System.Web.Razor.dll">
-      <publishTime>05/17/2024 19:38:01</publishTime>
+      <publishTime>05/29/2024 22:48:39</publishTime>
     </File>
     <File Include="bin/System.Web.WebPages.Deployment.dll">
-      <publishTime>05/17/2024 19:38:01</publishTime>
+      <publishTime>05/29/2024 22:48:39</publishTime>
     </File>
     <File Include="bin/System.Web.WebPages.dll">
-      <publishTime>05/17/2024 19:38:01</publishTime>
+      <publishTime>05/29/2024 22:48:39</publishTime>
     </File>
     <File Include="bin/System.Web.WebPages.Razor.dll">
-      <publishTime>05/17/2024 19:38:01</publishTime>
+      <publishTime>05/29/2024 22:48:39</publishTime>
     </File>
     <File Include="bin/WebGrease.dll">
-      <publishTime>05/17/2024 19:38:01</publishTime>
+      <publishTime>05/29/2024 22:48:39</publishTime>
+    </File>
+    <File Include="bin/zh-CHS/Microsoft.ReportViewer.Common.resources.dll">
+      <publishTime>05/31/2024 23:15:09</publishTime>
+    </File>
+    <File Include="bin/zh-CHS/Microsoft.ReportViewer.DataVisualization.resources.dll">
+      <publishTime>05/31/2024 23:15:09</publishTime>
+    </File>
+    <File Include="bin/zh-CHS/Microsoft.ReportViewer.Design.resources.dll">
+      <publishTime>05/31/2024 23:15:09</publishTime>
+    </File>
+    <File Include="bin/zh-CHS/Microsoft.ReportViewer.WebDesign.resources.dll">
+      <publishTime>05/31/2024 23:15:09</publishTime>
+    </File>
+    <File Include="bin/zh-CHS/Microsoft.ReportViewer.WebForms.resources.dll">
+      <publishTime>05/31/2024 23:15:09</publishTime>
+    </File>
+    <File Include="bin/zh-CHS/Microsoft.ReportViewer.WinForms.resources.dll">
+      <publishTime>05/31/2024 23:15:09</publishTime>
+    </File>
+    <File Include="bin/zh-CHT/Microsoft.ReportViewer.Common.resources.dll">
+      <publishTime>05/31/2024 23:15:09</publishTime>
+    </File>
+    <File Include="bin/zh-CHT/Microsoft.ReportViewer.DataVisualization.resources.dll">
+      <publishTime>05/31/2024 23:15:09</publishTime>
+    </File>
+    <File Include="bin/zh-CHT/Microsoft.ReportViewer.Design.resources.dll">
+      <publishTime>05/31/2024 23:15:09</publishTime>
+    </File>
+    <File Include="bin/zh-CHT/Microsoft.ReportViewer.WebDesign.resources.dll">
+      <publishTime>05/31/2024 23:15:09</publishTime>
+    </File>
+    <File Include="bin/zh-CHT/Microsoft.ReportViewer.WebForms.resources.dll">
+      <publishTime>05/31/2024 23:15:09</publishTime>
+    </File>
+    <File Include="bin/zh-CHT/Microsoft.ReportViewer.WinForms.resources.dll">
+      <publishTime>05/31/2024 23:15:09</publishTime>
     </File>
     <File Include="Content/bootstrap-grid.css">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>05/29/2024 22:48:38</publishTime>
     </File>
     <File Include="Content/bootstrap-grid.css.map">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>05/29/2024 22:48:38</publishTime>
     </File>
     <File Include="Content/bootstrap-grid.min.css">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>05/29/2024 22:48:38</publishTime>
     </File>
     <File Include="Content/bootstrap-grid.min.css.map">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>05/29/2024 22:48:38</publishTime>
     </File>
     <File Include="Content/bootstrap-grid.rtl.css">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>05/29/2024 22:48:38</publishTime>
     </File>
     <File Include="Content/bootstrap-grid.rtl.css.map">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>05/29/2024 22:48:38</publishTime>
     </File>
     <File Include="Content/bootstrap-grid.rtl.min.css">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>05/29/2024 22:48:38</publishTime>
     </File>
     <File Include="Content/bootstrap-grid.rtl.min.css.map">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>05/29/2024 22:48:38</publishTime>
     </File>
     <File Include="Content/bootstrap-reboot.css">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>05/29/2024 22:48:38</publishTime>
     </File>
     <File Include="Content/bootstrap-reboot.css.map">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>05/29/2024 22:48:38</publishTime>
     </File>
     <File Include="Content/bootstrap-reboot.min.css">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>05/29/2024 22:48:38</publishTime>
     </File>
     <File Include="Content/bootstrap-reboot.min.css.map">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>05/29/2024 22:48:38</publishTime>
     </File>
     <File Include="Content/bootstrap-reboot.rtl.css">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>05/29/2024 22:48:38</publishTime>
     </File>
     <File Include="Content/bootstrap-reboot.rtl.css.map">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>05/29/2024 22:48:38</publishTime>
     </File>
     <File Include="Content/bootstrap-reboot.rtl.min.css">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>05/29/2024 22:48:38</publishTime>
     </File>
     <File Include="Content/bootstrap-reboot.rtl.min.css.map">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>05/29/2024 22:48:38</publishTime>
     </File>
     <File Include="Content/bootstrap-utilities.css">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>05/29/2024 22:48:38</publishTime>
     </File>
     <File Include="Content/bootstrap-utilities.css.map">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>05/29/2024 22:48:38</publishTime>
     </File>
     <File Include="Content/bootstrap-utilities.min.css">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>05/29/2024 22:48:38</publishTime>
     </File>
     <File Include="Content/bootstrap-utilities.min.css.map">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>05/29/2024 22:48:38</publishTime>
     </File>
     <File Include="Content/bootstrap-utilities.rtl.css">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>05/29/2024 22:48:38</publishTime>
     </File>
     <File Include="Content/bootstrap-utilities.rtl.css.map">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>05/29/2024 22:48:38</publishTime>
     </File>
     <File Include="Content/bootstrap-utilities.rtl.min.css">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>05/29/2024 22:48:38</publishTime>
     </File>
     <File Include="Content/bootstrap-utilities.rtl.min.css.map">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>05/29/2024 22:48:38</publishTime>
     </File>
     <File Include="Content/bootstrap.css">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>05/29/2024 22:48:38</publishTime>
     </File>
     <File Include="Content/bootstrap.css.map">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>05/29/2024 22:48:38</publishTime>
     </File>
     <File Include="Content/bootstrap.min.css">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>05/29/2024 22:48:38</publishTime>
     </File>
     <File Include="Content/bootstrap.min.css.map">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>05/29/2024 22:48:38</publishTime>
     </File>
     <File Include="Content/bootstrap.rtl.css">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>05/29/2024 22:48:38</publishTime>
     </File>
     <File Include="Content/bootstrap.rtl.css.map">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>05/29/2024 22:48:38</publishTime>
     </File>
     <File Include="Content/bootstrap.rtl.min.css">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>05/29/2024 22:48:38</publishTime>
     </File>
     <File Include="Content/bootstrap.rtl.min.css.map">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>05/29/2024 22:48:38</publishTime>
     </File>
     <File Include="Content/Site.css">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>05/29/2024 22:48:38</publishTime>
     </File>
     <File Include="favicon.ico">
-      <publishTime>05/17/2024 19:38:01</publishTime>
+      <publishTime>05/29/2024 22:48:39</publishTime>
     </File>
     <File Include="Global.asax">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>05/29/2024 22:48:38</publishTime>
     </File>
     <File Include="Scripts/bootstrap.bundle.js">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>05/29/2024 22:48:38</publishTime>
     </File>
     <File Include="Scripts/bootstrap.bundle.js.map">
-      <publishTime>05/17/2024 19:38:01</publishTime>
+      <publishTime>05/29/2024 22:48:38</publishTime>
     </File>
     <File Include="Scripts/bootstrap.bundle.min.js">
-      <publishTime>05/17/2024 19:38:01</publishTime>
+      <publishTime>05/29/2024 22:48:38</publishTime>
     </File>
     <File Include="Scripts/bootstrap.bundle.min.js.map">
-      <publishTime>05/17/2024 19:38:01</publishTime>
+      <publishTime>05/29/2024 22:48:38</publishTime>
     </File>
     <File Include="Scripts/bootstrap.esm.js">
-      <publishTime>05/17/2024 19:38:01</publishTime>
+      <publishTime>05/29/2024 22:48:38</publishTime>
     </File>
     <File Include="Scripts/bootstrap.esm.js.map">
-      <publishTime>05/17/2024 19:38:01</publishTime>
+      <publishTime>05/29/2024 22:48:38</publishTime>
     </File>
     <File Include="Scripts/bootstrap.esm.min.js">
-      <publishTime>05/17/2024 19:38:01</publishTime>
+      <publishTime>05/29/2024 22:48:38</publishTime>
     </File>
     <File Include="Scripts/bootstrap.esm.min.js.map">
-      <publishTime>05/17/2024 19:38:01</publishTime>
+      <publishTime>05/29/2024 22:48:39</publishTime>
     </File>
     <File Include="Scripts/bootstrap.js">
-      <publishTime>05/17/2024 19:38:01</publishTime>
+      <publishTime>05/29/2024 22:48:39</publishTime>
     </File>
     <File Include="Scripts/bootstrap.js.map">
-      <publishTime>05/17/2024 19:38:01</publishTime>
+      <publishTime>05/29/2024 22:48:39</publishTime>
     </File>
     <File Include="Scripts/bootstrap.min.js">
-      <publishTime>05/17/2024 19:38:01</publishTime>
+      <publishTime>05/29/2024 22:48:39</publishTime>
     </File>
     <File Include="Scripts/bootstrap.min.js.map">
-      <publishTime>05/17/2024 19:38:01</publishTime>
+      <publishTime>05/29/2024 22:48:39</publishTime>
     </File>
     <File Include="Scripts/jquery-3.4.1.js">
-      <publishTime>05/17/2024 19:38:01</publishTime>
+      <publishTime>05/29/2024 22:48:39</publishTime>
     </File>
     <File Include="Scripts/jquery-3.4.1.min.js">
-      <publishTime>05/17/2024 19:38:01</publishTime>
+      <publishTime>05/29/2024 22:48:39</publishTime>
     </File>
     <File Include="Scripts/jquery-3.4.1.min.map">
-      <publishTime>05/17/2024 19:38:01</publishTime>
+      <publishTime>05/29/2024 22:48:39</publishTime>
     </File>
     <File Include="Scripts/jquery-3.4.1.slim.js">
-      <publishTime>05/17/2024 19:38:01</publishTime>
+      <publishTime>05/29/2024 22:48:39</publishTime>
     </File>
     <File Include="Scripts/jquery-3.4.1.slim.min.js">
-      <publishTime>05/17/2024 19:38:01</publishTime>
+      <publishTime>05/29/2024 22:48:39</publishTime>
     </File>
     <File Include="Scripts/jquery-3.4.1.slim.min.map">
-      <publishTime>05/17/2024 19:38:01</publishTime>
+      <publishTime>05/29/2024 22:48:39</publishTime>
     </File>
     <File Include="Scripts/jquery.validate.js">
-      <publishTime>05/17/2024 19:38:01</publishTime>
+      <publishTime>05/29/2024 22:48:39</publishTime>
     </File>
     <File Include="Scripts/jquery.validate.min.js">
-      <publishTime>05/17/2024 19:38:01</publishTime>
+      <publishTime>05/29/2024 22:48:39</publishTime>
     </File>
     <File Include="Scripts/jquery.validate.unobtrusive.js">
-      <publishTime>05/17/2024 19:38:01</publishTime>
+      <publishTime>05/29/2024 22:48:39</publishTime>
     </File>
     <File Include="Scripts/jquery.validate.unobtrusive.min.js">
-      <publishTime>05/17/2024 19:38:01</publishTime>
+      <publishTime>05/29/2024 22:48:39</publishTime>
     </File>
     <File Include="Scripts/modernizr-2.8.3.js">
-      <publishTime>05/17/2024 19:38:01</publishTime>
+      <publishTime>05/29/2024 22:48:39</publishTime>
+    </File>
+    <File Include="SqlServerTypes/readme.htm">
+      <publishTime>05/31/2024 23:15:08</publishTime>
+    </File>
+    <File Include="SqlServerTypes/x64/msvcr120.dll">
+      <publishTime>05/31/2024 23:15:08</publishTime>
+    </File>
+    <File Include="SqlServerTypes/x64/SqlServerSpatial140.dll">
+      <publishTime>05/31/2024 23:15:08</publishTime>
+    </File>
+    <File Include="SqlServerTypes/x86/msvcr120.dll">
+      <publishTime>05/31/2024 23:15:08</publishTime>
+    </File>
+    <File Include="SqlServerTypes/x86/SqlServerSpatial140.dll">
+      <publishTime>05/31/2024 23:15:08</publishTime>
     </File>
     <File Include="Views/Amortizacion/Amortizacion.cshtml">
-      <publishTime>05/17/2024 19:38:01</publishTime>
+      <publishTime>06/01/2024 06:17:46</publishTime>
     </File>
     <File Include="Views/Articulo/Articulo.cshtml">
-      <publishTime>05/17/2024 22:38:56</publishTime>
+      <publishTime>06/01/2024 06:17:46</publishTime>
     </File>
     <File Include="Views/Credito/Credito.cshtml">
-      <publishTime>05/18/2024 06:09:58</publishTime>
+      <publishTime>06/01/2024 06:17:46</publishTime>
     </File>
     <File Include="Views/Deudor/Deudor.cshtml">
-      <publishTime>05/18/2024 08:56:40</publishTime>
+      <publishTime>06/01/2024 06:17:46</publishTime>
     </File>
     <File Include="Views/Empleado/Empleado.cshtml">
-      <publishTime>05/18/2024 06:09:58</publishTime>
+      <publishTime>06/01/2024 06:17:46</publishTime>
     </File>
     <File Include="Views/Home/Index.cshtml">
-      <publishTime>05/19/2024 10:51:22</publishTime>
+      <publishTime>05/29/2024 22:56:44</publishTime>
     </File>
     <File Include="Views/Login/Login.cshtml">
-      <publishTime>05/18/2024 22:13:20</publishTime>
+      <publishTime>06/01/2024 06:22:21</publishTime>
     </File>
     <File Include="Views/Pago/Pago.cshtml">
-      <publishTime>05/17/2024 19:38:01</publishTime>
+      <publishTime>05/31/2024 23:45:13</publishTime>
     </File>
     <File Include="Views/Saldo/Saldo.cshtml">
-      <publishTime>05/18/2024 06:09:58</publishTime>
+      <publishTime>05/29/2024 22:56:44</publishTime>
     </File>
     <File Include="Views/Shared/Error.cshtml">
-      <publishTime>05/17/2024 19:38:01</publishTime>
+      <publishTime>05/29/2024 22:48:39</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>05/19/2024 10:51:22</publishTime>
+      <publishTime>05/30/2024 23:02:56</publishTime>
     </File>
     <File Include="Views/Usuario/Usuario.cshtml">
-      <publishTime>05/18/2024 06:09:58</publishTime>
+      <publishTime>06/01/2024 06:17:49</publishTime>
     </File>
     <File Include="Views/Web.config">
-      <publishTime>05/17/2024 19:38:01</publishTime>
+      <publishTime>05/29/2024 22:48:39</publishTime>
     </File>
     <File Include="Views/_ViewStart.cshtml">
-      <publishTime>05/17/2024 19:38:01</publishTime>
+      <publishTime>05/29/2024 22:48:39</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>05/18/2024 21:38:24</publishTime>
+      <publishTime>06/01/2024 06:26:32</publishTime>
     </File>
   </ItemGroup>
 </Project>

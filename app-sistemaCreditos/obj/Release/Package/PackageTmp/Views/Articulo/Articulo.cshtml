@@ -4,29 +4,25 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
+@if (TempData["ErrorMessage"] != null)
 {
-    <div class="alert alert-warning alert-dismissible fade show" role="alert">
-        @ViewBag.ErrorMessage
-        <button id="myAlert" type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        @TempData["ErrorMessage"]
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
     </div>
 }
 
-@if (!string.IsNullOrEmpty(ViewBag.SuccessMessage))
+@if (TempData["SuccessMessage"] != null)
 {
-    <div class="alert alert-success" role="alert">
-        @ViewBag.SuccessMessage
-    </div>
     <div class="alert alert-success alert-dismissible fade show" role="alert">
-        @ViewBag.SuccessMessage
-        <button id="myAlert" type="button" class="close" data-dismiss="alert" aria-label="Close">
+        @TempData["SuccessMessage"]
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
     </div>
 }
-
 
 <form action="@Url.Action("Articulo", "Articulo")" method="post">
 
@@ -44,10 +40,15 @@
 
             </div>
             <div class="col-md-6">
-                <button type="button" class="btn btn-success" style="margin-bottom: 10px;" data-toggle="modal" data-target="#myModal">
+                <button type="button" class="btn btn-success" style="margin-bottom: 10px;"
+                        data-toggle="modal" data-target="#createUserModal">
                     <i class="fa fa-plus"></i> Agregar Nuevo
                 </button>
+                <a href="@Url.Action("GenerateReport", "Articulo")" class="btn btn-secondary" style="margin-bottom: 10px; background-color: gray; border-color: gray;">
+                    <i class="fa fa-print" style="color: white;"></i> Generar Reporte
+                </a>
             </div>
+            
         </div>
 
         <div class="row" style="margin-top: 20px;">
@@ -74,7 +75,7 @@
                                         <td>@Model.Tables[0].Rows[x]["Id"]</td>
                                         <td>@Model.Tables[0].Rows[x]["Nombre"]</td>
                                         <td>@Model.Tables[0].Rows[x]["Descripcion"]</td>
-                                        <td>@Model.Tables[0].Rows[x]["Precio"]</td>
+                                        <td>Q.@string.Format("{0:N}", Convert.ToDecimal(@Model.Tables[0].Rows[x]["Precio"]))</td>
                                         <td>@Model.Tables[0].Rows[x]["Stock"]</td>
                                         <td>
                                             <button type="button" class="btn btn-danger btn-sm delete-btn"
@@ -117,15 +118,15 @@
                     </div>
                     <div class="mb-3">
                         <label for="Descripcion" class="form-label">Descripcion</label>
-                        <input type="text" class="form-control" id="Descripcion" name="Descripcion" placeholder="Descripcion del Articulo."required>
+                        <input type="text" class="form-control" id="Descripcion" name="Descripcion" placeholder="Descripcion del Articulo." required>
                     </div>
                     <div class="mb-3">
                         <label for="Precio" class="form-label">Precio</label>
-                        <input type="number" class="form-control" id="Precio" name="Precio" placeholder="Precio del Articulo"required>
+                        <input type="number" class="form-control" id="Precio" name="Precio" placeholder="Precio del Articulo" required>
                     </div>
                     <div class="mb-3">
                         <label for="Stock" class="form-label">Stock</label>
-                        <input type="number" class="form-control" id="Stock" name="Stock" placeholder="Stock del Articulo"required>
+                        <input type="number" min="0" class="form-control" id="Stock" name="Stock" placeholder="Stock del Articulo" required>
                     </div>
 
 
@@ -152,25 +153,25 @@
                     <input type="hidden" id="UpdateId" name="Id" />
                     <div class="mb-3">
                         <label for="UpdateNombre" class="form-label">Nombre</label>
-                        <input type="text" class="form-control" id="UpdateNombre" name="Nombre" placeholder="Nombre del Articulo">
+                        <input type="text" class="form-control" id="UpdateNombre" name="Nombre" placeholder="Nombre del Articulo" required>
                     </div>
                     <div class="mb-3">
                         <label for="UpdateDescripcion" class="form-label">Descripcion</label>
-                        <input type="text" class="form-control" id="UpdateDescripcion" name="Descripcion" placeholder="Descripcion del Articulo.">
+                        <input type="text" class="form-control" id="UpdateDescripcion" name="Descripcion" placeholder="Descripcion del Articulo." required>
                     </div>
                     <div class="mb-3">
                         <label for="UpdatePrecio" class="form-label">Precio</label>
-                        <input type="number" class="form-control" id="UpdatePrecio" name="Precio" placeholder="Precio del Articulo">
+                        <input type="number" class="form-control" id="UpdatePrecio" name="Precio" placeholder="Precio del Articulo" required>
                     </div>
                     <div class="mb-3">
                         <label for="UpdateStock" class="form-label">Stock</label>
-                        <input type="number" class="form-control" id="UpdateStock" name="Stock" placeholder="Stock del Articulo">
+                        <input type="number" min="0" class="form-control" id="UpdateStock" name="Stock" placeholder="Stock del Articulo" required>
                     </div>
 
 
                 </div>
                 <div class="modal-footer">
-                    <button class="btn btn-outline-primary" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">Cancelar</button>
                     <button type="submit" class="btn btn-outline-primary">Guardar</button>
                 </div>
             </div>
@@ -191,7 +192,7 @@
                     ¿Estás seguro de que deseas eliminar este articulo?
                 </div>
                 <div class="modal-footer">
-                    <button class="btn btn-outline-primary" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">Cancelar</button>
                     <button type="submit" class="btn btn-outline-danger" id="confirmDeleteBtn">Eliminar</button>
                 </div>
             </div>
@@ -231,4 +232,5 @@
             $('#confirmDeleteModal').modal('show');
         });
     });
+
 </script>

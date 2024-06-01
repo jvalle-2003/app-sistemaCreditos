@@ -4,6 +4,26 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        @TempData["ErrorMessage"]
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+}
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        @TempData["SuccessMessage"]
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+}
+
 <form action="@Url.Action("Empleado", "Empleado")" method="post">
 
     <div class="container">
@@ -27,11 +47,16 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4">
-                <button type="button" class="btn btn-success" style="margin-bottom: 10px;" data-toggle="modal" data-target="#myModal">
+            <div class="col-md-6">
+                <button type="button" class="btn btn-success" style="margin-bottom: 10px;"
+                        data-toggle="modal" data-target="#createUserModal">
                     <i class="fa fa-plus"></i> Agregar Nuevo
                 </button>
+                <a href="@Url.Action("GenerateReport", "Empleado")" class="btn btn-secondary" style="margin-bottom: 10px; background-color: gray; border-color: gray;">
+                    <i class="fa fa-print" style="color: white;"></i> Generar Reporte
+                </a>
             </div>
+            
         </div>
 
         <div class="row" style="margin-top: 20px;">
@@ -94,15 +119,15 @@
                 <div class="modal-body">
                     <div class="mb-3">
                         <label for="Nombres" class="form-label">Nombres</label>
-                        <input type="text" class="form-control" id="Nombres" name="Nombres" placeholder="Juan"required>
+                        <input type="text" class="form-control" id="Nombres" name="Nombres" placeholder="Juan" required>
                     </div>
                     <div class="mb-3">
                         <label for="Apellidos" class="form-label">Apellidos</label>
-                        <input type="text" class="form-control" id="Apellidos" name="Apellidos" placeholder="Pérez"required>
+                        <input type="text" class="form-control" id="Apellidos" name="Apellidos" placeholder="Pérez" required>
                     </div>
                     <div class="mb-3">
                         <label for="Puesto" class="form-label">Puesto</label>
-                        <input type="text" class="form-control" id="Puesto" name="Puesto" placeholder="Administrador"required>
+                        <input type="text" class="form-control" id="Puesto" name="Puesto" placeholder="Administrador" required>
                     </div>
 
 
@@ -128,21 +153,21 @@
                     <input type="hidden" id="UpdateID" name="ID" />
                     <div class="mb-3">
                         <label for="UpdateNombres" class="form-label">Nombres</label>
-                        <input type="text" class="form-control" id="UpdateNombres" name="Nombres" placeholder="Juan">
+                        <input type="text" class="form-control" id="UpdateNombres" name="Nombres" placeholder="Juan" required>
                     </div>
                     <div class="mb-3">
                         <label for="UpdateApellidos" class="form-label">Apellidos</label>
-                        <input type="text" class="form-control" id="UpdateApellidos" name="Apellidos" placeholder="Pérez">
+                        <input type="text" class="form-control" id="UpdateApellidos" name="Apellidos" placeholder="Pérez"required>
                     </div>
                     <div class="mb-3">
                         <label for="UpdatePuesto" class="form-label">Puesto</label>
-                        <input type="text" class="form-control" id="UpdatePuesto" name="Puesto" placeholder="Administrador">
+                        <input type="text" class="form-control" id="UpdatePuesto" name="Puesto" placeholder="Administrador" required>
                     </div>
 
 
                 </div>
                 <div class="modal-footer">
-                    <button class="btn btn-outline-primary" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">Cancelar</button>
                     <button type="submit" class="btn btn-outline-primary">Guardar</button>
                 </div>
             </div>
@@ -161,9 +186,10 @@
                 <div class="modal-body">
                     <input type="hidden" id="deleteID" name="ID" />
                     ¿Estás seguro de que deseas eliminar este empleado?
+                    Para que se pueda eliminar este empleado es importante verificar que el empleado no este relacionado a un usuario.
                 </div>
                 <div class="modal-footer">
-                    <button class="btn btn-outline-secondary" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">Cancelar</button>
                     <button type="submit" class="btn btn-outline-danger" id="confirmDeleteBtn">Eliminar</button>
                 </div>
             </div>

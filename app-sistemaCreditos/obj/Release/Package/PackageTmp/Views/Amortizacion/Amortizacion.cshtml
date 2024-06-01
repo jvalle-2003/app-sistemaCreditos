@@ -4,24 +4,21 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
+@if (TempData["ErrorMessage"] != null)
 {
-    <div class="alert alert-warning alert-dismissible fade show" role="alert">
-        @ViewBag.ErrorMessage
-        <button id="myAlert" type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        @TempData["ErrorMessage"]
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
     </div>
 }
 
-@if (!string.IsNullOrEmpty(ViewBag.SuccessMessage))
+@if (TempData["SuccessMessage"] != null)
 {
-    <div class="alert alert-success" role="alert">
-        @ViewBag.SuccessMessage
-    </div>
     <div class="alert alert-success alert-dismissible fade show" role="alert">
-        @ViewBag.SuccessMessage
-        <button id="myAlert" type="button" class="close" data-dismiss="alert" aria-label="Close">
+        @TempData["SuccessMessage"]
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
     </div>
@@ -44,10 +41,15 @@
 
             </div>
             <div class="col-md-6">
-                <button type="button" class="btn btn-success" style="margin-bottom: 10px;" data-toggle="modal" data-target="#myModal">
+                <button type="button" class="btn btn-success" style="margin-bottom: 10px;"
+                        data-toggle="modal" data-target="#createUserModal">
                     <i class="fa fa-plus"></i> Agregar Nuevo
                 </button>
+                <a href="@Url.Action("GenerateReport", "Amortizacion")" class="btn btn-secondary" style="margin-bottom: 10px; background-color: gray; border-color: gray;">
+                    <i class="fa fa-print" style="color: white;"></i> Generar Reporte
+                </a>
             </div>
+           
         </div>
 
         <div class="row" style="margin-top: 20px;">
@@ -57,7 +59,7 @@
                         <tr>
                             <th>ID</th>
                             <th>Tipo</th>
-                            <th>TasaInteres</th>
+                            <th>Tasa Interés</th>
 
                         </tr>
                     </thead>
@@ -71,7 +73,7 @@
                                     <tr>
                                         <td>@Model.Tables[0].Rows[x]["ID"]</td>
                                         <td>@Model.Tables[0].Rows[x]["Tipo"]</td>
-                                        <td>@Model.Tables[0].Rows[x]["TasaInteres"]</td>
+                                        <td>@Model.Tables[0].Rows[x]["TasaInteres"]%</td>
 
                                         <td>
                                             <button type="button" class="btn btn-danger btn-sm delete-btn"
@@ -111,8 +113,8 @@
                         <input type="text" class="form-control" id="Tipo" name="Tipo" placeholder="Tipo de Amortizacion" required>
                     </div>
                     <div class="mb-3">
-                        <label for="TasaInteres" class="form-label">Tasa de Interes</label>
-                        <input type="number" min="0" class="form-control" id="TasaInteres" name="TasaInteres" placeholder="Tasa de Interes" required>
+                        <label for="TasaInteres" class="form-label">Tasa de Interés %</label>
+                        <input type="number" step="0.01" min="0" class="form-control" id="TasaInteres" name="TasaInteres" placeholder="Tasa de Interés %" required>
                     </div>
 
                 </div>
@@ -141,8 +143,8 @@
                         <input type="text" class="form-control" id="UpdateTipo" name="Tipo" placeholder="Tipo de Amortizacion" required>
                     </div>
                     <div class="mb-3">
-                        <label for="UpdateTasaInteres" class="form-label">TasaInteres</label>
-                        <input type="number" min="0" class="form-control" id="UpdateTasaInteres" name="TasaInteres" placeholder="Tasa de Interes" required>
+                        <label for="UpdateTasaInteres" class="form-label">Tasa Interés %</label>
+                        <input type="number" min="0" class="form-control" id="UpdateTasaInteres" name="TasaInteres" placeholder="Tasa de Interés %" required>
                     </div>
                 </div>
                 <div class="modal-footer">
