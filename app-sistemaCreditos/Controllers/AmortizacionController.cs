@@ -1,4 +1,5 @@
 ﻿using app_sistemaCreditos.Models;
+using Microsoft.Reporting.WebForms;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -20,9 +21,9 @@ namespace app_sistemaCreditos.Controllers
             var url = "";
 
             if (string.IsNullOrEmpty(ID))
-                url = "http://localhost/api-sistemaCreditos/rest/api/listarAMortizaciones";
+                url = "http://localhost/api_Creditos/rest/api/listarAMortizaciones";
             else
-                url = "http://localhost/api-sistemaCreditos/rest/api/listarAmortizacionesXID?ID=" + ID;
+                url = "http://localhost/api_Creditos/rest/api/listarAmortizacionesXID?ID=" + ID;
 
 
             var request = (HttpWebRequest)WebRequest.Create(url);
@@ -55,7 +56,7 @@ namespace app_sistemaCreditos.Controllers
 
         public ActionResult newAmortizacion(string Tipo, int TasaInteres)
         {
-            var url = "http://localhost/api-sistemaCreditos/rest/api/insertarAmortizacion";
+            var url = "http://localhost/api_Creditos/rest/api/insertarAmortizacion";
 
             var nuevoAmortizacion = new
             {
@@ -108,7 +109,7 @@ namespace app_sistemaCreditos.Controllers
 
         public ActionResult updateAmortizacion(int ID, string Tipo, int TasaInteres)
         {
-            var url = "http://localhost/api-sistemaCreditos/rest/api/actualizarAmortizacion";
+            var url = "http://localhost/api_Creditos/rest/api/actualizarAmortizacion";
 
             var actualizarAmortizacion = new
             {
@@ -161,7 +162,7 @@ namespace app_sistemaCreditos.Controllers
 
         public ActionResult deleteAmortizacion(int ID)
         {
-            var url = "http://localhost/api-sistemaCreditos/rest/api/eliminarAmortizacion";
+            var url = "http://localhost/api_Creditos/rest/api/eliminarAmortizacion";
 
             var idAmortizacion = new
             {
@@ -209,6 +210,66 @@ namespace app_sistemaCreditos.Controllers
 
             }
 
+        }
+
+        private DataSet GetApiData(string apiUrl)
+        {
+            var request = (HttpWebRequest)WebRequest.Create(apiUrl);
+            request.Method = "GET";
+            request.ContentType = "application/json";
+            request.Accept = "application/json";
+
+            string responseBody;
+
+            try
+            {
+                using (WebResponse response = request.GetResponse())
+                {
+                    using (Stream strReader = response.GetResponseStream())
+                    {
+                        using (StreamReader objReader = new StreamReader(strReader))
+                        {
+                            responseBody = objReader.ReadToEnd();
+                        }
+                    }
+                    return JsonConvert.DeserializeObject<DataSet>(responseBody);
+                }
+            }
+            catch (Exception ex)
+            {
+                return new DataSet();
+            }
+        }
+
+        public ActionResult GenerateReport()
+        {
+            LocalReport localReport = new LocalReport();
+            localReport.ReportPath = Server.MapPath("~/Reports/AmortizacionesReport.rdl");
+
+            DataSet ds = GetApiData("http://localhost/api_Creditos/rest/api/listarAmortizaciones");
+
+            ReportDataSource reportDataSource = new ReportDataSource("AmortizacionDataSet", ds.Tables[0]);
+            localReport.DataSources.Add(reportDataSource);
+
+            string reportType = "PDF";
+            string mimeType;
+            string encoding;
+            string fileNameExtension;
+
+            string[] streams;
+            Warning[] warnings;
+            byte[] renderedBytes;
+
+            renderedBytes = localReport.Render(
+                reportType,
+                null,
+                out mimeType,
+                out encoding,
+                out fileNameExtension,
+                out streams,
+                out warnings);
+
+            return File(renderedBytes, mimeType, "AmortizacionesReport.pdf");
         }
 
 

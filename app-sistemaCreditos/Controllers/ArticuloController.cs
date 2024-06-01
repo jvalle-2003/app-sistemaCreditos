@@ -1,4 +1,5 @@
 ﻿using app_sistemaCreditos.Models;
+using Microsoft.Reporting.WebForms;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -20,9 +21,9 @@ namespace app_sistemaCreditos.Controllers
             var url = "";
 
             if (string.IsNullOrEmpty(Id))
-                url = "http://localhost/api-sistemaCreditos/rest/api/listarArticulos";
+                url = "http://localhost/api_Creditos/rest/api/listarArticulos";
             else
-                url = "http://localhost/api-sistemaCreditos/rest/api/listarArticuloXID?ID=" + Id;
+                url = "http://localhost/api_Creditos/rest/api/listarArticuloXID?ID=" + Id;
 
 
             var request = (HttpWebRequest)WebRequest.Create(url);
@@ -55,7 +56,7 @@ namespace app_sistemaCreditos.Controllers
 
         public ActionResult newArticulo(string Nombre, string Descripcion, double Precio, int Stock)
         {
-            var url = "http://localhost/api-sistemaCreditos/rest/api/insertarArticulo";
+            var url = "http://localhost/api_Creditos/rest/api/insertarArticulo";
 
             var nuevoArticulo = new
             {
@@ -110,7 +111,7 @@ namespace app_sistemaCreditos.Controllers
 
         public ActionResult updateArticulo(int Id, string Nombre, string Descripcion, double Precio, int Stock)
         {
-            var url = "http://localhost/api-sistemaCreditos/rest/api/actualizarArticulo";
+            var url = "http://localhost/api_Creditos/rest/api/actualizarArticulo";
 
             var actualizarArticulo = new
             {
@@ -163,7 +164,7 @@ namespace app_sistemaCreditos.Controllers
 
         public ActionResult deleteArticulo(int Id)
         {
-            var url = "http://localhost/api-sistemaCreditos/rest/api/eliminarArticulo";
+            var url = "http://localhost/api_Creditos/rest/api/eliminarArticulo";
 
             var idArticulo = new
             {
@@ -211,6 +212,65 @@ namespace app_sistemaCreditos.Controllers
 
             }
 
+        }
+        private DataSet GetApiData(string apiUrl)
+        {
+            var request = (HttpWebRequest)WebRequest.Create(apiUrl);
+            request.Method = "GET";
+            request.ContentType = "application/json";
+            request.Accept = "application/json";
+
+            string responseBody;
+
+            try
+            {
+                using (WebResponse response = request.GetResponse())
+                {
+                    using (Stream strReader = response.GetResponseStream())
+                    {
+                        using (StreamReader objReader = new StreamReader(strReader))
+                        {
+                            responseBody = objReader.ReadToEnd();
+                        }
+                    }
+                    return JsonConvert.DeserializeObject<DataSet>(responseBody);
+                }
+            }
+            catch (Exception ex)
+            {
+                return new DataSet();
+            }
+        }
+
+        public ActionResult GenerateReport()
+        {
+            LocalReport localReport = new LocalReport();
+            localReport.ReportPath = Server.MapPath("~/Reports/ArticulosReport.rdl");
+
+            DataSet ds = GetApiData("http://localhost/api_Creditos/rest/api/listarArticulos");
+
+            ReportDataSource reportDataSource = new ReportDataSource("ArticuloDataSet", ds.Tables[0]);
+            localReport.DataSources.Add(reportDataSource);
+
+            string reportType = "PDF";
+            string mimeType;
+            string encoding;
+            string fileNameExtension;
+
+            string[] streams;
+            Warning[] warnings;
+            byte[] renderedBytes;
+
+            renderedBytes = localReport.Render(
+                reportType,
+                null,
+                out mimeType,
+                out encoding,
+                out fileNameExtension,
+                out streams,
+                out warnings);
+
+            return File(renderedBytes, mimeType, "ArticuloReport.pdf");
         }
     }
 }

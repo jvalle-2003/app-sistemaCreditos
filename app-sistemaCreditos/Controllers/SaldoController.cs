@@ -20,9 +20,9 @@ namespace app_sistemaCreditos.Controllers
             var url = "";
 
             if (string.IsNullOrEmpty(ID))
-                url = "http://localhost/api-sistemaCreditos/rest/api/listarSaldos";
+                url = "http://localhost/api_Creditos/rest/api/listarSaldos";
             else
-                url = "http://localhost/api-sistemaCreditos/rest/api/listarSaldoXID?ID=" + ID;
+                url = "http://localhost/api_Creditos/rest/api/listarSaldoXID?ID=" + ID;
 
 
             var request = (HttpWebRequest)WebRequest.Create(url);
@@ -51,7 +51,7 @@ namespace app_sistemaCreditos.Controllers
                 ViewBag.ErrorMessage = "Error al realizar la acción";
             }
 
-            var creditos = GetApiData("http://localhost/api-sistemaCreditos/rest/api/listarCreditos");
+            var creditos = GetApiData("http://localhost/api_Creditos/rest/api/listarCreditos");
             ViewBag.Creditos = creditos.Tables[0];
 
             return View(dsi);
@@ -88,7 +88,7 @@ namespace app_sistemaCreditos.Controllers
 
         public ActionResult newSaldo(double SaldoInicial, double SaldoActual, double CuotaMensual, double InteresGenerado, int IdCredito)
         {
-            var url = "http://localhost/api-sistemaCreditos/rest/api/insertarSaldo";
+            var url = "http://localhost/api_Creditos/rest/api/insertarSaldo";
 
             var nuevoSaldo = new
             {
@@ -143,7 +143,7 @@ namespace app_sistemaCreditos.Controllers
 
         public ActionResult updateSaldo(int ID, double SaldoInicial, double SaldoActual, double CuotaMensual, double InteresGenerado, int IdCredito)
         {
-            var url = "http://localhost/api-sistemaCreditos/rest/api/actualizarSaldo";
+            var url = "http://localhost/api_Creditos/rest/api/actualizarSaldo";
 
             var actualizarSaldo = new
             {
@@ -199,7 +199,7 @@ namespace app_sistemaCreditos.Controllers
 
         public ActionResult deleteSaldo(int ID)
         {
-            var url = "http://localhost/api-sistemaCreditos/rest/api/eliminarSaldo";
+            var url = "http://localhost/api_Creditos/rest/api/eliminarSaldo";
 
             var idSaldo = new
             {

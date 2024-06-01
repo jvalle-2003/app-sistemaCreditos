@@ -1,4 +1,5 @@
 ﻿using app_sistemaCreditos.Models;
+using Microsoft.Reporting.WebForms;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -21,9 +22,9 @@ namespace app_sistemaCreditos.Controllers
             var url = "";
 
             if (string.IsNullOrEmpty(ID))
-                url = "http://localhost/api-sistemaCreditos/rest/api/listarUsuarios";
+                url = "http://localhost/api_Creditos/rest/api/listarUsuarios";
             else
-                url = "http://localhost/api-sistemaCreditos/rest/api/listarUsuarioXID?id=" + ID;
+                url = "http://localhost/api_Creditos/rest/api/listarUsuarioXID?id=" + ID;
 
 
             var request = (HttpWebRequest)WebRequest.Create(url);
@@ -52,7 +53,7 @@ namespace app_sistemaCreditos.Controllers
                 ViewBag.ErrorMessage = "Error al realizar la acción";
             }
 
-            var empleados = GetApiData("http://localhost/api-sistemaCreditos/rest/api/listarEmpleados");
+            var empleados = GetApiData("http://localhost/api_Creditos/rest/api/listarEmpleados");
 
             ViewBag.Empleados = empleados.Tables[0];
 
@@ -90,7 +91,7 @@ namespace app_sistemaCreditos.Controllers
 
         public ActionResult newUsuario(string Usuario, string Contraseña, int IdEmpleado)
         {
-            var url = "http://localhost/api-sistemaCreditos/rest/api/insertarUsuario";
+            var url = "http://localhost/api_Creditos/rest/api/insertarUsuario";
 
             var nuevoUsuario = new
             {
@@ -140,7 +141,7 @@ namespace app_sistemaCreditos.Controllers
 
         public ActionResult updateUsuario(int ID, string Usuario, string Contraseña, int IdEmpleado)
         {
-            var url = "http://localhost/api-sistemaCreditos/rest/api/actualizarUsuario";
+            var url = "http://localhost/api_Creditos/rest/api/actualizarUsuario";
 
             var actualizarUsuario = new
             {
@@ -192,7 +193,7 @@ namespace app_sistemaCreditos.Controllers
 
         public ActionResult deleteUsuario(int ID)
         {
-            var url = "http://localhost/api-sistemaCreditos/rest/api/eliminarUsuario";
+            var url = "http://localhost/api_Creditos/rest/api/eliminarUsuario";
 
             var idUsuario = new
             {
@@ -238,6 +239,37 @@ namespace app_sistemaCreditos.Controllers
                 return RedirectToAction("Usuario");
             }
 
+        }
+
+        public ActionResult GenerateReport()
+        {
+            LocalReport localReport = new LocalReport();
+            localReport.ReportPath = Server.MapPath("~/Reports/UsuariosReport.rdl");
+
+            DataSet ds = GetApiData("http://localhost/api_Creditos/rest/api/listarUsuarios");
+
+            ReportDataSource reportDataSource = new ReportDataSource("UsuarioDataSet", ds.Tables[0]);
+            localReport.DataSources.Add(reportDataSource);
+
+            string reportType = "PDF";
+            string mimeType;
+            string encoding;
+            string fileNameExtension;
+
+            string[] streams;
+            Warning[] warnings;
+            byte[] renderedBytes;
+
+            renderedBytes = localReport.Render(
+                reportType,
+                null,
+                out mimeType,
+                out encoding,
+                out fileNameExtension,
+                out streams,
+                out warnings);
+
+            return File(renderedBytes, mimeType, "UsuarioReport.pdf");
         }
 
     }

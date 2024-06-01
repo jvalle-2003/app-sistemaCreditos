@@ -1,4 +1,5 @@
 ﻿using app_sistemaCreditos.Models;
+using Microsoft.Reporting.WebForms;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -20,9 +21,9 @@ namespace app_sistemaCreditos.Controllers
             var url = "";
 
             if (string.IsNullOrEmpty(ID))
-                url = "http://localhost/api-sistemaCreditos/rest/api/listarEmpleados";
+                url = "http://localhost/api_Creditos/rest/api/listarEmpleados";
             else
-                url = "http://localhost/api-sistemaCreditos/rest/api/listarEmpleadoById?ID=" + ID;
+                url = "http://localhost/api_Creditos/rest/api/listarEmpleadoById?ID=" + ID;
 
 
             var request = (HttpWebRequest)WebRequest.Create(url);
@@ -55,7 +56,7 @@ namespace app_sistemaCreditos.Controllers
 
         public ActionResult newEmpleado(string Nombres, string Apellidos, string Puesto)
         {
-            var url = "http://localhost/api-sistemaCreditos/rest/api/insertarEmpleado";
+            var url = "http://localhost/api_Creditos/rest/api/insertarEmpleado";
 
             var nuevoEmpleado = new
             {
@@ -106,7 +107,7 @@ namespace app_sistemaCreditos.Controllers
 
         public ActionResult updateEmpleado(int ID, string Nombres, string Apellidos, string Puesto)
         {
-            var url = "http://localhost/api-sistemaCreditos/rest/api/actualizarEmpleado";
+            var url = "http://localhost/api_Creditos/rest/api/actualizarEmpleado";
 
             var actualizarEmpleado = new
             {
@@ -159,7 +160,7 @@ namespace app_sistemaCreditos.Controllers
 
         public ActionResult deleteEmpleado(int ID)
         {
-            var url = "http://localhost/api-sistemaCreditos/rest/api/eliminarEmpleado";
+            var url = "http://localhost/api_Creditos/rest/api/eliminarEmpleado";
 
             var idEmpleado = new
             {
@@ -205,6 +206,66 @@ namespace app_sistemaCreditos.Controllers
                 return RedirectToAction("Empleado");
 
             }
+        }
+
+        private DataSet GetApiData(string apiUrl)
+        {
+            var request = (HttpWebRequest)WebRequest.Create(apiUrl);
+            request.Method = "GET";
+            request.ContentType = "application/json";
+            request.Accept = "application/json";
+
+            string responseBody;
+
+            try
+            {
+                using (WebResponse response = request.GetResponse())
+                {
+                    using (Stream strReader = response.GetResponseStream())
+                    {
+                        using (StreamReader objReader = new StreamReader(strReader))
+                        {
+                            responseBody = objReader.ReadToEnd();
+                        }
+                    }
+                    return JsonConvert.DeserializeObject<DataSet>(responseBody);
+                }
+            }
+            catch (Exception ex)
+            {
+                return new DataSet();
+            }
+        }
+
+        public ActionResult GenerateReport()
+        {
+            LocalReport localReport = new LocalReport();
+            localReport.ReportPath = Server.MapPath("~/Reports/EmpleadosReport.rdl");
+
+            DataSet ds = GetApiData("http://localhost/api_Creditos/rest/api/listarEmpleados");
+
+            ReportDataSource reportDataSource = new ReportDataSource("EmpleadoDataSet", ds.Tables[0]);
+            localReport.DataSources.Add(reportDataSource);
+
+            string reportType = "PDF";
+            string mimeType;
+            string encoding;
+            string fileNameExtension;
+
+            string[] streams;
+            Warning[] warnings;
+            byte[] renderedBytes;
+
+            renderedBytes = localReport.Render(
+                reportType,
+                null,
+                out mimeType,
+                out encoding,
+                out fileNameExtension,
+                out streams,
+                out warnings);
+
+            return File(renderedBytes, mimeType, "EmpleadoReport.pdf");
         }
     }
 }

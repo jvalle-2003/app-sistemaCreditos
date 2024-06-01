@@ -1,4 +1,5 @@
 ﻿using app_sistemaCreditos.Models;
+using Microsoft.Reporting.WebForms;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -21,9 +22,9 @@ namespace app_sistemaCreditos.Controllers
             var url = "";
 
             if (string.IsNullOrEmpty(ID))
-                url = "http://localhost/api-sistemaCreditos/rest/api/listarCreditos";
+                url = "http://localhost/api_Creditos/rest/api/listarCreditos";
             else
-                url = "http://localhost/api-sistemaCreditos/rest/api/listarCreditoXID?ID=" + ID;
+                url = "http://localhost/api_Creditos/rest/api/listarCreditoXID?ID=" + ID;
 
 
             var request = (HttpWebRequest)WebRequest.Create(url);
@@ -52,10 +53,10 @@ namespace app_sistemaCreditos.Controllers
 
             }
 
-            var deudores = GetApiData("http://localhost/api-sistemaCreditos/rest/api/listarDeudores");
-            var articulos = GetApiData("http://localhost/api-sistemaCreditos/rest/api/listarArticulos");
-            var amortizaciones = GetApiData("http://localhost/api-sistemaCreditos/rest/api/listarAMortizaciones");
-            var empleados = GetApiData("http://localhost/api-sistemaCreditos/rest/api/listarEmpleados");
+            var deudores = GetApiData("http://localhost/api_Creditos/rest/api/listarDeudores");
+            var articulos = GetApiData("http://localhost/api_Creditos/rest/api/listarArticulos");
+            var amortizaciones = GetApiData("http://localhost/api_Creditos/rest/api/listarAMortizaciones");
+            var empleados = GetApiData("http://localhost/api_Creditos/rest/api/listarEmpleados");
 
             // Pasar los datos a la vista
             ViewBag.Deudores = deudores.Tables[0];
@@ -97,9 +98,9 @@ namespace app_sistemaCreditos.Controllers
 
         public ActionResult newCredito(int IdDeudor, int IdArticulo, int IdAmortizacion, int IdEmpleado, int NoCuotas)
         {
-            var url = "http://localhost/api-sistemaCreditos/rest/api/insertarCredito";
-            var articuloUrl = "http://localhost/api-sistemaCreditos/rest/api/listarArticuloXID?ID=" + IdArticulo;
-            var amortizacionUrl = "http://localhost/api-sistemaCreditos/rest/api/listarAmortizacionesXID?ID=" + IdAmortizacion;
+            var url = "http://localhost/api_Creditos/rest/api/insertarCredito";
+            var articuloUrl = "http://localhost/api_Creditos/rest/api/listarArticuloXID?ID=" + IdArticulo;
+            var amortizacionUrl = "http://localhost/api_Creditos/rest/api/listarAmortizacionesXID?ID=" + IdAmortizacion;
 
             dynamic articuloInfo;
             try
@@ -219,7 +220,7 @@ namespace app_sistemaCreditos.Controllers
 
         public Boolean updateArticulo(int Id, string Nombre, string Descripcion, decimal Precio, int Stock)
         {
-            var url = "http://localhost/api-sistemaCreditos/rest/api/actualizarArticulo";
+            var url = "http://localhost/api_Creditos/rest/api/actualizarArticulo";
 
             var actualizarArticulo = new
             {
@@ -264,9 +265,9 @@ namespace app_sistemaCreditos.Controllers
 
         public ActionResult updateCredito(int ID, int IdDeudor, int IdArticulo, string IdArticuloAnterior, int IdAmortizacion, int IdEmpleado, int NoCuotas)
         {
-            var url = "http://localhost/api-sistemaCreditos/rest/api/actualizarCredito";
-            var articuloUrl = "http://localhost/api-sistemaCreditos/rest/api/listarArticuloXID?ID=" + IdArticulo;
-            var amortizacionUrl = "http://localhost/api-sistemaCreditos/rest/api/listarAmortizacionesXID?ID=" + IdAmortizacion;
+            var url = "http://localhost/api_Creditos/rest/api/actualizarCredito";
+            var articuloUrl = "http://localhost/api_Creditos/rest/api/listarArticuloXID?ID=" + IdArticulo;
+            var amortizacionUrl = "http://localhost/api_Creditos/rest/api/listarAmortizacionesXID?ID=" + IdAmortizacion;
             GetArticulo(IdArticuloAnterior);
 
             dynamic articuloInfo;
@@ -391,7 +392,7 @@ namespace app_sistemaCreditos.Controllers
         public void GetArticulo(string Id)
         {
             DataSet dsi = new DataSet();
-            var url = "http://localhost/api-sistemaCreditos/rest/api/listarArticuloXID?ID=" + Id;
+            var url = "http://localhost/api_Creditos/rest/api/listarArticuloXID?ID=" + Id;
 
 
             var request = (HttpWebRequest)WebRequest.Create(url);
@@ -437,7 +438,7 @@ namespace app_sistemaCreditos.Controllers
 
         public ActionResult deleteCredito(int ID, string IdArticulo)
         {
-            var url = "http://localhost/api-sistemaCreditos/rest/api/eliminarCredito";
+            var url = "http://localhost/api_Creditos/rest/api/eliminarCredito";
 
             var idCredito = new
             {
@@ -468,7 +469,8 @@ namespace app_sistemaCreditos.Controllers
                         if (apiResponse.Respuesta == 1)
                         {
                             TempData["SuccessMessage"] = "La acción se completó satisfactoriamente";
-                            GetArticulo(IdArticulo);                        }
+                            GetArticulo(IdArticulo);
+                        }
                         else
                         {
                             TempData["ErrorMessage"] = "Error al realizar la acción";
@@ -484,6 +486,38 @@ namespace app_sistemaCreditos.Controllers
                 return RedirectToAction("Credito");
             }
 
+        }
+
+        
+        public ActionResult GenerateReport()
+        {
+            LocalReport localReport = new LocalReport();
+            localReport.ReportPath = Server.MapPath("~/Reports/CreditosReport.rdl");
+
+            DataSet ds = GetApiData("http://localhost/api_Creditos/rest/api/listarCreditos");
+
+            ReportDataSource reportDataSource = new ReportDataSource("CreditoDataSet", ds.Tables[0]);
+            localReport.DataSources.Add(reportDataSource);
+
+            string reportType = "PDF";
+            string mimeType;
+            string encoding;
+            string fileNameExtension;
+
+            string[] streams;
+            Warning[] warnings;
+            byte[] renderedBytes;
+
+            renderedBytes = localReport.Render(
+                reportType,
+                null,
+                out mimeType,
+                out encoding,
+                out fileNameExtension,
+                out streams,
+                out warnings);
+
+            return File(renderedBytes, mimeType, "CreditosReport.pdf");
         }
     }
 }

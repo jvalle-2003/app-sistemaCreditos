@@ -1,4 +1,5 @@
 ﻿using app_sistemaCreditos.Models;
+using Microsoft.Reporting.WebForms;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -20,9 +21,9 @@ namespace app_sistemaCreditos.Controllers
             var url = "";
 
             if (string.IsNullOrEmpty(ID))
-                url = "http://localhost/api-sistemaCreditos/rest/api/listarDeudores";
+                url = "http://localhost/api_Creditos/rest/api/listarDeudores";
             else
-                url = "http://localhost/api-sistemaCreditos/rest/api/listarDeudorXID?ID=" + ID;
+                url = "http://localhost/api_Creditos/rest/api/listarDeudorXID?ID=" + ID;
 
 
             var request = (HttpWebRequest)WebRequest.Create(url);
@@ -54,7 +55,7 @@ namespace app_sistemaCreditos.Controllers
 
         public ActionResult NuevoDeudor(int NIT, int DPI, string Nombre, string Apellido, string Domicilio, string Telefono)
         {
-            var url = "http://localhost/api-sistemaCreditos/rest/api/insertarDeudor";
+            var url = "http://localhost/api_Creditos/rest/api/insertarDeudor";
 
             // Crear un objeto con los datos del nuevo deudor
             var nuevoDeudor = new
@@ -109,7 +110,7 @@ namespace app_sistemaCreditos.Controllers
 
         public ActionResult updateDeudor(int ID, int NIT, int DPI, string Nombre, string Apellido, string Domicilio, string Telefono)
         {
-            var url = "http://localhost/api-sistemaCreditos/rest/api/actualizarDeudor";
+            var url = "http://localhost/api_Creditos/rest/api/actualizarDeudor";
 
             var actualizarEmpleado = new
             {
@@ -165,7 +166,7 @@ namespace app_sistemaCreditos.Controllers
 
         public ActionResult deleteDeudor(int ID)
         {
-            var url = "http://localhost/api-sistemaCreditos/rest/api/eliminarDeudor";
+            var url = "http://localhost/api_Creditos/rest/api/eliminarDeudor";
 
             var idEmpleado = new
             {
@@ -210,6 +211,65 @@ namespace app_sistemaCreditos.Controllers
                 TempData["ErrorMessage"] = "Error al realizar la acción";
                 return RedirectToAction("Deudor");
             }
+        }
+        private DataSet GetApiData(string apiUrl)
+        {
+            var request = (HttpWebRequest)WebRequest.Create(apiUrl);
+            request.Method = "GET";
+            request.ContentType = "application/json";
+            request.Accept = "application/json";
+
+            string responseBody;
+
+            try
+            {
+                using (WebResponse response = request.GetResponse())
+                {
+                    using (Stream strReader = response.GetResponseStream())
+                    {
+                        using (StreamReader objReader = new StreamReader(strReader))
+                        {
+                            responseBody = objReader.ReadToEnd();
+                        }
+                    }
+                    return JsonConvert.DeserializeObject<DataSet>(responseBody);
+                }
+            }
+            catch (Exception ex)
+            {
+                return new DataSet();
+            }
+        }
+
+        public ActionResult GenerateReport()
+        {
+            LocalReport localReport = new LocalReport();
+            localReport.ReportPath = Server.MapPath("~/Reports/DeudoresReport.rdl");
+
+            DataSet ds = GetApiData("http://localhost/api_Creditos/rest/api/listarDeudores");
+
+            ReportDataSource reportDataSource = new ReportDataSource("DeudorDataSet", ds.Tables[0]);
+            localReport.DataSources.Add(reportDataSource);
+
+            string reportType = "PDF";
+            string mimeType;
+            string encoding;
+            string fileNameExtension;
+
+            string[] streams;
+            Warning[] warnings;
+            byte[] renderedBytes;
+
+            renderedBytes = localReport.Render(
+                reportType,
+                null,
+                out mimeType,
+                out encoding,
+                out fileNameExtension,
+                out streams,
+                out warnings);
+
+            return File(renderedBytes, mimeType, "DeudoresReport.pdf");
         }
     }
 }

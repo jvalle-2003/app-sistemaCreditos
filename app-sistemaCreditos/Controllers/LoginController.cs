@@ -27,7 +27,7 @@ namespace app_sistemaCreditos.Controllers
             {
                 if (!string.IsNullOrEmpty(Usuario) && !string.IsNullOrEmpty(Contraseña))
                 {
-                    var url = "http://localhost/api-sistemaCreditos/rest/api/listarUsuarios";
+                    var url = "http://localhost/api_Creditos/rest/api/listarUsuarios";
 
                     var request = (HttpWebRequest)WebRequest.Create(url);
                     request.Method = "GET";

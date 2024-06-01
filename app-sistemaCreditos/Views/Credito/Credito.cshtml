@@ -1,4 +1,4 @@
-﻿﻿@model System.Data.DataSet
+﻿@model System.Data.DataSet
 @using System.Data
 
 @{
@@ -40,6 +40,15 @@
                     </div>
                 </div>
 
+            </div>
+            <div class="col-md-6">
+                <button type="button" class="btn btn-success" style="margin-bottom: 10px;"
+                        data-toggle="modal" data-target="#createUserModal">
+                    <i class="fa fa-plus"></i> Agregar Nuevo
+                </button>
+                <a href="@Url.Action("GenerateReport", "Credito")" class="btn btn-secondary" style="margin-bottom: 10px; background-color: gray; border-color: gray;">
+                    <i class="fa fa-print" style="color: white;"></i> Generar Reporte
+                </a>
             </div>
             <div class="col-md-6">
                 <button type="button" class="btn btn-success" style="margin-bottom: 10px;" data-toggle="modal" data-target="#myModal">

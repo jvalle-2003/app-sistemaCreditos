@@ -1,4 +1,5 @@
 ﻿using app_sistemaCreditos.Models;
+using Microsoft.Reporting.WebForms;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -20,9 +21,9 @@ namespace app_sistemaCreditos.Controllers
             var url = "";
 
             if (string.IsNullOrEmpty(ID))
-                url = "http://localhost/api-sistemaCreditos/rest/api/listarPagos";
+                url = "http://localhost/api_Creditos/rest/api/listarPagos";
             else
-                url = "http://localhost/api-sistemaCreditos/rest/api/listarPagoXID?ID=" + ID;
+                url = "http://localhost/api_Creditos/rest/api/listarPagoXID?ID=" + ID;
 
 
             var request = (HttpWebRequest)WebRequest.Create(url);
@@ -51,9 +52,9 @@ namespace app_sistemaCreditos.Controllers
 
             }
 
-            var empleados = GetApiData("http://localhost/api-sistemaCreditos/rest/api/listarEmpleados");
-            var creditos = GetApiData("http://localhost/api-sistemaCreditos/rest/api/listarCreditos");
-            var todoCreditos = GetApiData("http://localhost/api-sistemaCreditos/rest/api/listarTodosCreditos");  
+            var empleados = GetApiData("http://localhost/api_Creditos/rest/api/listarEmpleados");
+            var creditos = GetApiData("http://localhost/api_Creditos/rest/api/listarCreditos");
+            var todoCreditos = GetApiData("http://localhost/api_Creditos/rest/api/listarTodosCreditos");
 
             ViewBag.Creditos = creditos.Tables[0];
             ViewBag.Empleados = empleados.Tables[0];
@@ -93,7 +94,7 @@ namespace app_sistemaCreditos.Controllers
 
         public ActionResult newPago(int IdCredito, int MontoPago, int IdEmpleado)
         {
-            var url = "http://localhost/api-sistemaCreditos/rest/api/insertarPago";
+            var url = "http://localhost/api_Creditos/rest/api/insertarPago";
 
             var nuevoPago = new
             {
@@ -147,7 +148,7 @@ namespace app_sistemaCreditos.Controllers
         public void GetCredito(string Id, decimal pago)
         {
             DataSet dsi = new DataSet();
-            var url = "http://localhost/api-sistemaCreditos/rest/api/listarCreditoXID?ID=" + Id;
+            var url = "http://localhost/api_Creditos/rest/api/listarCreditoXID?ID=" + Id;
 
 
             var request = (HttpWebRequest)WebRequest.Create(url);
@@ -196,7 +197,7 @@ namespace app_sistemaCreditos.Controllers
         public void GetCreditoActualizarEliminar(string Id)
         {
             DataSet dsi = new DataSet();
-            var url = "http://localhost/api-sistemaCreditos/rest/api/listarCreditoXID?ID=" + Id;
+            var url = "http://localhost/api_Creditos/rest/api/listarCreditoXID?ID=" + Id;
 
 
             var request = (HttpWebRequest)WebRequest.Create(url);
@@ -244,10 +245,10 @@ namespace app_sistemaCreditos.Controllers
 
         public ActionResult updateCredito(int ID, int IdDeudor, int IdArticulo, int IdAmortizacion, int IdEmpleado, decimal SaldoAmortizacion, decimal SaldoActual, decimal Cuota, int NoCuotas)
         {
-            var url = "http://localhost/api-sistemaCreditos/rest/api/actualizarCredito";
+            var url = "http://localhost/api_Creditos/rest/api/actualizarCredito";
 
             var estado = 1;
-            if(SaldoAmortizacion == SaldoActual)
+            if (SaldoAmortizacion == SaldoActual)
             {
                 estado = 0;
             }
@@ -309,7 +310,7 @@ namespace app_sistemaCreditos.Controllers
 
         public ActionResult updatePago(int ID, int IdCredito, decimal MontoPago, int IdEmpleado, int IDCreditoAnterior)
         {
-            var url = "http://localhost/api-sistemaCreditos/rest/api/actualizarPagos";
+            var url = "http://localhost/api_Creditos/rest/api/actualizarPagos";
 
             var actualizarPago = new
             {
@@ -341,7 +342,7 @@ namespace app_sistemaCreditos.Controllers
                         var apiResponse = JsonConvert.DeserializeObject<ApiResponse>(responseText);
 
                         if (apiResponse.Respuesta == 1)
-                        { 
+                        {
                             var idCredit = IdCredito.ToString();
                             var idCreditoAnterior = IDCreditoAnterior.ToString();
                             GetCreditoActualizarEliminar(idCreditoAnterior);
@@ -366,7 +367,7 @@ namespace app_sistemaCreditos.Controllers
 
         public ActionResult deletePago(int ID, int IdCredito)
         {
-            var url = "http://localhost/api-sistemaCreditos/rest/api/eliminarPago";
+            var url = "http://localhost/api_Creditos/rest/api/eliminarPago";
 
             var idPago = new
             {
@@ -414,6 +415,39 @@ namespace app_sistemaCreditos.Controllers
                 return RedirectToAction("Pago");
             }
 
+        }
+
+        
+
+        public ActionResult GenerateReport()
+        {
+            LocalReport localReport = new LocalReport();
+            localReport.ReportPath = Server.MapPath("~/Reports/PagosReport.rdl");
+
+            DataSet ds = GetApiData("http://localhost/api_Creditos/rest/api/listarPagos");
+
+            ReportDataSource reportDataSource = new ReportDataSource("PagoDataSet", ds.Tables[0]);
+            localReport.DataSources.Add(reportDataSource);
+
+            string reportType = "PDF";
+            string mimeType;
+            string encoding;
+            string fileNameExtension;
+
+            string[] streams;
+            Warning[] warnings;
+            byte[] renderedBytes;
+
+            renderedBytes = localReport.Render(
+                reportType,
+                null,
+                out mimeType,
+                out encoding,
+                out fileNameExtension,
+                out streams,
+                out warnings);
+
+            return File(renderedBytes, mimeType, "PagosReport.pdf");
         }
     }
 }
